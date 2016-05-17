@@ -28,3 +28,7 @@ Brewards is an app designed to provide incentives to regulars at breweries by ke
 4. A user selects a beer and a popup will appear, asking for the brewery to confirm.
 5. After confirmation, the "punch" is added the users "punchcard" and the users profile data is updated. 
 6. A user can then check the status of their updated "punchcard" by navigating to the "Punchcards" section.
+
+### Strech Goals
+* Build portal for new breweries to sign up
+* Offer one new type of reward (besides just the punchcard)
