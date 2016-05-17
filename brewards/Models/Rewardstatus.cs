@@ -9,7 +9,9 @@ namespace brewards.Models
     {
         public int RewardstatusId { get; set; }
         public int BreweryId { get; set; }
-        public int UserId { get; set; }
+
+        //retrieves user id
+        public virtual ApplicationUser UserId { get; set; }
         public int Number_purchased { get; set; }
     }
 }
