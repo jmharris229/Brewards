@@ -36,9 +36,40 @@ namespace brewards.Migrations
                 new Beer {BeerId=4, Beer_name="Leghorn", BreweryId=1, Beer_type="Rye IPA", Beer_logo="www.jackalopebrew.com/new/wp-content/uploads/2013/09/jacka-leghorn-500x500.png"},
             };
 
+            //Jackalope
             context.Breweries.AddOrUpdate(
                 brewery => brewery.Brewery_Name,
                 new Brewery { BreweryId= 1, Brewery_Name="Jackalope Brewing Co.", Brewery_address="701 8th Avenue South", Brewery_city="Nashville", Brewery_state="TN", Brewery_zip="37203", Brewery_phone="6158734313", Brewery_url= "www.jackalopebrew.com", Brewery_logo= "www.drinkabeerandplayagame.com/wp-content/uploads/2015/06/jackalope_logo_trademark.jpg", Brewery_beers= Jackalope_Beers  }
+                );
+            //Tennessee Brew works
+            context.Breweries.AddOrUpdate(
+            brewery => brewery.Brewery_Name,
+            new Brewery { BreweryId = 2, Brewery_Name = "Tennessee Brew Works", Brewery_address = "809 Ewing Avenue", Brewery_city = "Nashville", Brewery_state = "TN", Brewery_zip = "37203", Brewery_phone = "6154360050", Brewery_url = "www.tnbrew.com", Brewery_logo = "www.tnbrew.com/sites/all/themes/tnbrew/img/logo.png", Brewery_beers = Jackalope_Beers }
+                );
+            //Bearded Iris Brewing Co.
+            context.Breweries.AddOrUpdate(
+            brewery => brewery.Brewery_Name,
+            new Brewery { BreweryId = 2, Brewery_Name = "Bearded Iris Brewing Co.", Brewery_address = "101 Van Buren St.", Brewery_city = "Nashville", Brewery_state = "TN", Brewery_zip = "37208", Brewery_phone = "", Brewery_url = "www.beardedirisbrewing.com", Brewery_logo = "www.mtsusidelines.com/wp-content/uploads/2016/02/MTSUSidelines_Lifestyles_Food_BeardedIrisLogo_FILE.jpg", Brewery_beers = Jackalope_Beers }
+                );
+            //Yazoo Brewing Co.
+            context.Breweries.AddOrUpdate(
+            brewery => brewery.Brewery_Name,
+            new Brewery { BreweryId = 2, Brewery_Name = "Yazoo Brewing Co.", Brewery_address = "901 Division St", Brewery_city = "Nashville", Brewery_state = "TN", Brewery_zip = "37207", Brewery_phone = "6158914649", Brewery_url = "www.yazoobrew.com", Brewery_logo = "www.yazoobrew.com/images/Yazoologo-Red.png", Brewery_beers = Jackalope_Beers }
+                );
+            //TailGate Brewing Co.
+            context.Breweries.AddOrUpdate(
+            brewery => brewery.Brewery_Name,
+            new Brewery { BreweryId = 2, Brewery_Name = "Tailgate Brewing Co.", Brewery_address = "7300 Charlotte Pike", Brewery_city = "Nashville", Brewery_state = "TN", Brewery_zip = "37209", Brewery_phone = "6158619842", Brewery_url = "www.tailgatebeer.com/", Brewery_logo = "www.tailgatebeer.com/wp-content/uploads/2015/04/beer_menu_tailgate.jpg", Brewery_beers = Jackalope_Beers }
+                );
+            //Southern Grist Brewing Co.
+            context.Breweries.AddOrUpdate(
+            brewery => brewery.Brewery_Name,
+            new Brewery { BreweryId = 2, Brewery_Name = "Southern Grist Brewing Co.", Brewery_address = "1201 Porter Rd", Brewery_city = "Nashville", Brewery_state = "TN", Brewery_zip = "37206", Brewery_phone = "6157271201", Brewery_url = "www.southerngristbrewing.com", Brewery_logo = "www.res.cloudinary.com/ratebeer/image/upload/w_400,c_limit/brew_26443.jpg", Brewery_beers = Jackalope_Beers }
+                );
+            //Black Abbey Brewing Co.
+            context.Breweries.AddOrUpdate(
+            brewery => brewery.Brewery_Name,
+            new Brewery { BreweryId = 2, Brewery_Name = "Black Abbey Brewing Co.", Brewery_address = "2952 Sidco Drive", Brewery_city = "Nashville", Brewery_state = "TN", Brewery_zip = "37204", Brewery_phone = "6157550070", Brewery_url = "www.blackabbeybrewing.com", Brewery_logo = "www.trademarks.justia.com/media/image.php?serial=85266168", Brewery_beers = Jackalope_Beers }
                 );
         }
     }

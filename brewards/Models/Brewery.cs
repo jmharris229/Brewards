@@ -37,7 +37,6 @@ namespace brewards.Models
         */
 
         [MaxLength(15), MinLength(10)]
-        [Required]
         public string Brewery_phone { get; set; }
 
         [MaxLength(100)]
