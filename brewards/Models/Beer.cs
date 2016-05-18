@@ -20,7 +20,6 @@ namespace brewards.Models
         public string Beer_type { get; set; }
 
         [MaxLength(600)]
-        [Required]
         public string Beer_logo { get; set; }
 
         //collection of purchases for each beer
