@@ -5,7 +5,7 @@ using System.Web;
 
 namespace brewards.Models
 {
-    public class Userpurchases
+    public class Userpurchase
     {
         public int UserpurchaseId { get; set; }
 
