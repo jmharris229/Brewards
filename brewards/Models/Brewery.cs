@@ -36,7 +36,7 @@ namespace brewards.Models
         public int Brewery_latitude { get; set; }
         */
 
-        [MaxLength(15), MinLength(10)]
+        [MaxLength(11)]
         public string Brewery_phone { get; set; }
 
         [MaxLength(100)]
