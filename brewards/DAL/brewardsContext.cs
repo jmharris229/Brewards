@@ -7,11 +7,11 @@ using System.Web;
 
 namespace brewards.DAL
 {
-    public class brewardsContext : DbContext
+    public class brewardsContext : ApplicationDbContext
     {
         public virtual DbSet<Beer> Beers { get; set; }
         public virtual DbSet<Brewery> Breweries { get; set; }
-        public virtual DbSet<Rewardstatus> Rstatuses { get; set; }
-        public virtual DbSet<Userpurchase> Userpurchases { get; set; }
+        public virtual DbSet<Rewardstatus> Reward_statuses { get; set; }
+        public virtual DbSet<Userpurchase> User_purchases { get; set; }
     }
 }

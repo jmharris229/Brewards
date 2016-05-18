@@ -10,6 +10,10 @@ namespace brewards.Models
     {
         public int BreweryId { get; set; }
 
+        [MaxLength(100)]
+        [Required]
+        public string Brewery_Name { get; set; }
+
         //address fields
         [MaxLength(75)]
         [Required]
