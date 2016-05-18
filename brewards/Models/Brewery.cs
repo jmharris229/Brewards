@@ -19,11 +19,11 @@ namespace brewards.Models
         [Required]
         public string Brewery_city { get; set; }
 
-        [MaxLength(3)]
+        [MaxLength(3), MinLength(2)]
         [Required]
         public string Brewery_state { get; set; }
 
-        [MaxLength(6)]
+        [MaxLength(6), MinLength(5)]
         [Required]
         public string Brewery_zip { get; set; } 
 
@@ -32,7 +32,7 @@ namespace brewards.Models
         public int Brewery_latitude { get; set; }
         */
 
-        [MaxLength(15)]
+        [MaxLength(15), MinLength(10)]
         [Required]
         public string Brewery_phone { get; set; }
 
