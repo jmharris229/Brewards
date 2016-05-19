@@ -23,5 +23,10 @@ namespace brewards.DAL
         {
             return _context.Beers.ToList();
         }
+
+        public List<Brewery> GetAllBreweries()
+        {
+            return _context.Breweries.ToList();
+        }
     }
 }
