@@ -28,6 +28,7 @@ namespace brewards.Migrations
             //      new Person { FullName = "Rowan Miller" }
             //    );
             //
+
             List<Beer> Jackalope_Beers = new List<Beer>
             {
                 new Beer {BeerId=1, Beer_name="Thunder Ann", BreweryId=1, Beer_type="APA", Beer_logo="www.jackalopebrew.com/new/wp-content/uploads/2013/09/jacka-thunderann-500x500.png"},
@@ -88,7 +89,7 @@ namespace brewards.Migrations
             //Jackalope
             context.Breweries.AddOrUpdate(
                 brewery => brewery.Brewery_Name,
-                new Brewery { BreweryId= 1, Brewery_Name="Jackalope Brewing Co.", Brewery_address="701 8th Avenue South", Brewery_city="Nashville", Brewery_state="TN", Brewery_zip="37203", Brewery_phone="6158734313", Brewery_url= "www.jackalopebrew.com", Brewery_logo= "www.drinkabeerandplayagame.com/wp-content/uploads/2015/06/jackalope_logo_trademark.jpg", Brewery_beers= Jackalope_Beers  }
+                new Brewery { BreweryId = 1, Brewery_Name = "Jackalope Brewing Co.", Brewery_address = "701 8th Avenue South", Brewery_city = "Nashville", Brewery_state = "TN", Brewery_zip = "37203", Brewery_phone = "6158734313", Brewery_url = "www.jackalopebrew.com", Brewery_logo = "www.drinkabeerandplayagame.com/wp-content/uploads/2015/06/jackalope_logo_trademark.jpg", Brewery_beers = Jackalope_Beers }
                 );
             //Tennessee Brew works
             context.Breweries.AddOrUpdate(
