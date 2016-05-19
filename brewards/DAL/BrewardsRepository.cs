@@ -21,7 +21,16 @@ namespace brewards.DAL
 
         public List<Beer> GetAllBeers()
         {
-            return _context.Beers.ToList();
+            IEnumerable<Beer> Beers = _context.Beers;
+            IEnumerable<Brewery> Breweries = _context.Breweries;
+
+            var joinQuery = from beer in Beers
+                            join brewery in Breweries on beer.BreweryId equals brewery.BreweryId
+                            select new { BeerId = beer.BeerId, Beer_name = beer.Beer_name, BreweryName = brewery.Brewery_Name, Beer_type = beer.Beer_type, Beer_logo = beer.Beer_logo };
+
+            //List<Beer> beers = joinQuery.Cast<Beer>().ToList();
+
+            return joinQuery.ToList();
         }
 
         public List<Brewery> GetAllBreweries()
