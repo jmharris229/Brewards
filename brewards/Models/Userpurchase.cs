@@ -13,7 +13,7 @@ namespace brewards.Models
         public DateTime Purchase_date { get; set; }
           
         //navigation property for user object
-        public virtual ApplicationUser UserId { get; set; }
+        public virtual ApplicationUser Purchaser { get; set; }
 
         //navigation property for beer object
         public virtual Beer Beer_info { get; set; }

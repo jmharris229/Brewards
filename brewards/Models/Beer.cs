@@ -23,7 +23,7 @@ namespace brewards.Models
         public string Beer_logo { get; set; }
 
         //navigation property for brewery object
-        public virtual Brewery Brewery_info { get; set; }
+        //public virtual Brewery Brewery_info { get; set; }
 
         //collection of purchases for each beer
         //public virtual ICollection<Userpurchase> Beer_purchases { get; set; }
