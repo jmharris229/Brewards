@@ -7,11 +7,19 @@ namespace brewards.Models
 {
     public class Userpurchase
     {
+        //primary key
         public int UserpurchaseId { get; set; }
 
-        //retrieves user ID
-        public virtual ApplicationUser UserId { get; set; }
-        public int BeerId { get; set; }
         public DateTime Purchase_date { get; set; }
+          
+        //navigation property for user object
+        public virtual ApplicationUser UserId { get; set; }
+
+        //navigation property for beer object
+        public virtual Beer Beer_info { get; set; }
+
+        //navigation property for brewery object
+        public virtual Brewery Brewery_info { get; set; }
+
     }
 }
