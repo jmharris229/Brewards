@@ -22,24 +22,35 @@ app.controller('mapCtrl', function ($http, $q) {
     }
 
     function logCoordinates(position) {
+        //creates coordinates from geolocation
         var pos = {
             lat: position.coords.latitude,
             lng: position.coords.longitude
         };
-        $http.get('https://maps.googleapis.com/maps/api/geocode/json?latlng='+pos.lat+','+pos.lng+'&key=AIzaSyCaP1HGGwG3R2OpeRAoIQaZSNkj4LeGLhk')
-        .then(function (response) {
-            console.log(response.data.results);
-            var commaPos = response.data.results[2].formatted_address.indexOf(',');
-            var city = response.data.results[2].formatted_address.substring(0, commaPos);
-            console.log(city);
-        });
+        //api request to google maps to retrieve current city
+        /*$http.get('https://maps.googleapis.com/maps/api/geocode/json?latlng='+pos.lat+','+pos.lng+'&key=AIzaSyCaP1HGGwG3R2OpeRAoIQaZSNkj4LeGLhk')
+            .then(function (response) {
+                
+                //parses google maps object for city
+                var commaPos = response.data.results[2].formatted_address.indexOf(',');
+                var city = response.data.results[2].formatted_address.substring(0, commaPos);
+
+                //call to retrieve city breweries
+                getCityBreweries(city);
+        });*/
 
     };
+    //returns a json string of breweries just in current location city
+    function getCityBreweries(city) {
+        //get request to web api to retrieve current city breweries
+        $http.get('/api/brewery?breweryCity='+city)
+            .then(function (response) {
+                console.log(response);
+        });
+    }
 
-    $http.get('/api/brewery')
-        .then(function (response) {
-            console.log(response);
-        })
+    getCityBreweries("Nashville");
+
 
         /*infoWindow.setPosition(pos);
         infoWindow.setContent('Location found.');
