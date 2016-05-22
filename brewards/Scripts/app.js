@@ -15,9 +15,33 @@ app.config(['$routeProvider',function ($routeProvider) {
 
 app.controller('mapCtrl', function ($http, $q) {
 
+    if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(logCoordinates)
+    } else {
+        Alert("device does not support geolocation");
+    }
 
-    $http.jsonp('//maps.googleapis.com/maps/api/geocode/json?latlng=40.714224,-73.961452&key=AIzaSyCaP1HGGwG3R2OpeRAoIQaZSNkj4LeGLhk')
-    .then(function (response) {
-        console.log(response.data);
-    });
+    function logCoordinates(position) {
+        var pos = {
+            lat: position.coords.latitude,
+            lng: position.coords.longitude
+        };
+        $http.get('https://maps.googleapis.com/maps/api/geocode/json?latlng='+pos.lat+','+pos.lng+'&key=AIzaSyCaP1HGGwG3R2OpeRAoIQaZSNkj4LeGLhk')
+        .then(function (response) {
+            console.log(response.data.results);
+            var commaPos = response.data.results[2].formatted_address.indexOf(',');
+            var city = response.data.results[2].formatted_address.substring(0, commaPos);
+            console.log(city);
+        });
+
+    };
+
+    $http.get('/api/brewery')
+        .then(function (response) {
+            console.log(response);
+        })
+
+        /*infoWindow.setPosition(pos);
+        infoWindow.setContent('Location found.');
+        map.setCenter(pos);*/
 });
