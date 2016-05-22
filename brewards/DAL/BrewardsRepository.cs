@@ -21,24 +21,27 @@ namespace brewards.DAL
 
         public List<Beer> GetAllBeers()
         {
-
             return _context.Beers.ToList();
-
-            /*IEnumerable<Beer> Beers = _context.Beers;
-            IEnumerable<Brewery> Breweries = _context.Breweries;
-
-            var joinQuery = from beer in Beers
-                            join brewery in Breweries on beer.BreweryId equals brewery.BreweryId
-                            select new Beer { BeerId = beer.BeerId, Beer_name = beer.Beer_name, beer.Brewery_Name = brewery.Brewery_Name, Beer_type = beer.Beer_type, Beer_logo = beer.Beer_logo };
-
-            //List<Beer> beers = joinQuery.Cast<Beer>().ToList();
-
-            return joinQuery.ToList();*/
         }
 
         public List<Brewery> GetAllBreweries()
         {
             return _context.Breweries.ToList();
+        }
+
+        public Brewery GetBrewery(string brewery_name)
+        {
+            Brewery req_Brewery = this.GetAllBreweries().Find(b => b.Brewery_Name == brewery_name);
+            return req_Brewery;
+        }
+
+        public void AddPurchase(Beer beer, Brewery brewery, ApplicationUser user)
+        {
+            DateTime PointOfSale = DateTime.Now;
+            Userpurchase added_purchase = new Userpurchase() { Beer_info = beer, Brewery_info = brewery, Purchaser = user, Purchase_date = PointOfSale};
+
+            _context.User_purchases.Add(added_purchase);
+            _context.SaveChanges();
         }
     }
 }
