@@ -12,3 +12,12 @@ app.config(['$routeProvider',function ($routeProvider) {
         })
         .otherwise({ redirectTo: '/' });
 }]);
+
+app.controller('mapCtrl', function ($http, $q) {
+
+
+    $http.jsonp('//maps.googleapis.com/maps/api/geocode/json?latlng=40.714224,-73.961452&key=AIzaSyCaP1HGGwG3R2OpeRAoIQaZSNkj4LeGLhk')
+    .then(function (response) {
+        console.log(response.data);
+    });
+});
