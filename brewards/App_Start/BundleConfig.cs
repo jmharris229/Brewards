@@ -28,7 +28,7 @@ namespace brewards
                       "~/Content/site.css"));
             bundles.Add(new ScriptBundle("~/bundles/angular").Include(
                 "~/Scripts/angular.min.js",
-                "~/Scirpts/angular-route.min.js",
+                "~/Scripts/angular-route.min.js",
                 "~/Scripts/app.js"
                 ));
         }
