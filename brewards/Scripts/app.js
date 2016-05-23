@@ -15,7 +15,6 @@ app.config(['$routeProvider',function ($routeProvider) {
 
 app.controller('mapCtrl', function ($http, $q) {
 
-
     $(document).ready(function () {
         var googleScript = document.createElement('script');
         googleScript.setAttribute('src', "https://maps.googleapis.com/maps/api/js?key=AIzaSyCaP1HGGwG3R2OpeRAoIQaZSNkj4LeGLhk&callback=CurrentLoc");
@@ -28,8 +27,6 @@ app.controller('mapCtrl', function ($http, $q) {
         }
         $('head').append(googleScript);
     });
-
-
 
     function logCoordinates(position) {
         //creates coordinates from geolocation
@@ -53,7 +50,7 @@ app.controller('mapCtrl', function ($http, $q) {
     //returns a json string of breweries just in current location city
     function getCityBreweries(city, pos) {
         //get request to web api to retrieve current city breweries
-        $http.get('/api/brewery?breweryCity='+city)
+        $http.get('/api/brewery?breweryCity=Nashville')
             .then(function (response) {
                 var map;
                 function initMap() {
@@ -61,13 +58,25 @@ app.controller('mapCtrl', function ($http, $q) {
                         center: { lat: pos.lat, lng: pos.lng },
                         zoom: 8
                     });
+
+                    for (var i = 0; i < response.data.length; i++) {
+                        var address = response.data[i].Brewery_address + response.data[i].Brewery_city + response.data[i].Brewery_state + response.data[i].Brewery_zip;
+                        var geocoder = new google.maps.Geocoder();
+                        geocoder.geocode({ 'address': address }, function(results, status){
+                            if(status === google.maps.GeocoderStatus.OK){
+                                var marker = new google.maps.Marker({
+                                    map: map,
+                                    position: results[0].geometry.location
+                                });
+                            }
+                        })
+                   
+                    }
+
                 }
                 initMap();
             })
     };
-
-    //getCityBreweries("Nashville");
-
 
         /*infoWindow.setPosition(pos);
         infoWindow.setContent('Location found.');
