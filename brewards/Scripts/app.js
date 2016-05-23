@@ -15,11 +15,21 @@ app.config(['$routeProvider',function ($routeProvider) {
 
 app.controller('mapCtrl', function ($http, $q) {
 
-    if (navigator.geolocation) {
-        navigator.geolocation.getCurrentPosition(logCoordinates)
-    } else {
-        Alert("device does not support geolocation");
-    }
+
+    $(document).ready(function () {
+        var googleScript = document.createElement('script');
+        googleScript.setAttribute('src', "https://maps.googleapis.com/maps/api/js?key=AIzaSyCaP1HGGwG3R2OpeRAoIQaZSNkj4LeGLhk&callback=CurrentLoc");
+        window.CurrentLoc = function () {
+            if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(logCoordinates)
+            } else {
+                Alert("device does not support geolocation");
+            }
+        }
+        $('head').append(googleScript);
+    });
+
+
 
     function logCoordinates(position) {
         //creates coordinates from geolocation
@@ -28,7 +38,7 @@ app.controller('mapCtrl', function ($http, $q) {
             lng: position.coords.longitude
         };
         //api request to google maps to retrieve current city
-        /*$http.get('https://maps.googleapis.com/maps/api/geocode/json?latlng='+pos.lat+','+pos.lng+'&key=AIzaSyCaP1HGGwG3R2OpeRAoIQaZSNkj4LeGLhk')
+        $http.get('https://maps.googleapis.com/maps/api/geocode/json?latlng='+pos.lat+','+pos.lng+'&key=AIzaSyCaP1HGGwG3R2OpeRAoIQaZSNkj4LeGLhk')
             .then(function (response) {
                 
                 //parses google maps object for city
@@ -36,20 +46,27 @@ app.controller('mapCtrl', function ($http, $q) {
                 var city = response.data.results[2].formatted_address.substring(0, commaPos);
 
                 //call to retrieve city breweries
-                getCityBreweries(city);
-        });*/
+                getCityBreweries(city, pos);
+        });
 
     };
     //returns a json string of breweries just in current location city
-    function getCityBreweries(city) {
+    function getCityBreweries(city, pos) {
         //get request to web api to retrieve current city breweries
         $http.get('/api/brewery?breweryCity='+city)
             .then(function (response) {
-                console.log(response);
-        });
-    }
+                var map;
+                function initMap() {
+                    map = new google.maps.Map(document.getElementById('map'), {
+                        center: { lat: pos.lat, lng: pos.lng },
+                        zoom: 8
+                    });
+                }
+                initMap();
+            })
+    };
 
-    getCityBreweries("Nashville");
+    //getCityBreweries("Nashville");
 
 
         /*infoWindow.setPosition(pos);
