@@ -25,10 +25,15 @@ namespace brewards
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
-                      "~/Content/site.css"));
+                      "~/Content/site.css",
+                      "~/Content/angular-material.min.css" 
+                      ));
             bundles.Add(new ScriptBundle("~/bundles/angular").Include(
                 "~/Scripts/angular.min.js",
                 "~/Scripts/angular-route.min.js",
+                "~/Scripts/angular-material/angular-material.min.js",
+                "~/Scripts/angular-animate/angular-animate.min.js",
+                "~/Scripts/angular-aria/angular-aria.min.js",
                 "~/Scripts/app.js"
                 ));
         }

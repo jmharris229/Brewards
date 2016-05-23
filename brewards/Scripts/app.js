@@ -1,4 +1,4 @@
-﻿var app = angular.module("BrewardsApp", ['ngRoute']);
+﻿var app = angular.module("BrewardsApp", ['ngRoute', 'ngMaterial']);
 
 app.config(['$routeProvider',function ($routeProvider) {
     $routeProvider
@@ -13,8 +13,32 @@ app.config(['$routeProvider',function ($routeProvider) {
         .otherwise({ redirectTo: '/' });
 }]);
 
-app.controller('mapCtrl', function ($http, $q) {
+app.controller('mapCtrl', function ($http, $q, $mdSidenav, $scope, $log) {
+    
+    this.toggleRight = buildToggler('right');
+    this.isOpenRight = function(){
+        return $mdSidenav('right').isOpen();
+    }
 
+
+    function buildToggler(navID) {
+        return function () {
+            $mdSidenav(navID)
+      		.toggle()
+      		.then(function () {
+      		    $log.debug("toggle " + navID + " is done");
+      		});
+        }
+    }
+
+    this.close = function () {
+        $mdSidenav('right').close()
+        .then(function () {
+            $log.debug("close RIGHT is done");
+        });
+    }
+
+    var pos;
     $(document).ready(function () {
         var googleScript = document.createElement('script');
         googleScript.setAttribute('src', "https://maps.googleapis.com/maps/api/js?key=AIzaSyCaP1HGGwG3R2OpeRAoIQaZSNkj4LeGLhk&callback=CurrentLoc");
@@ -30,7 +54,7 @@ app.controller('mapCtrl', function ($http, $q) {
 
     function logCoordinates(position) {
         //creates coordinates from geolocation
-        var pos = {
+        pos = {
             lat: position.coords.latitude,
             lng: position.coords.longitude
         };
@@ -53,12 +77,13 @@ app.controller('mapCtrl', function ($http, $q) {
         $http.get('/api/brewery?breweryCity=Nashville')
             .then(function (response) {
                 var map;
+                //function to instantiate map with center at passed city
                 function initMap() {
                     map = new google.maps.Map(document.getElementById('map'), {
                         center: { lat: pos.lat, lng: pos.lng },
                         zoom: 8
                     });
-
+                    //for loop to place markers of breweries
                     for (var i = 0; i < response.data.length; i++) {
                         var address = response.data[i].Brewery_address + response.data[i].Brewery_city + response.data[i].Brewery_state + response.data[i].Brewery_zip;
                         var geocoder = new google.maps.Geocoder();
@@ -69,15 +94,21 @@ app.controller('mapCtrl', function ($http, $q) {
                                     position: results[0].geometry.location
                                 });
                             }
-                        })
-                   
+                        })                
                     }
-
                 }
                 initMap();
             })
     };
-
+    
+    $scope.manLoc = function () {
+        var address = $("#manLocation").val;
+        address = address.replace(/ /g,"+");
+        $http.get('https://maps.googleapis.com/maps/api/geocode/json?address=' + address + '&key=AIzaSyCaP1HGGwG3R2OpeRAoIQaZSNkj4LeGLhk')
+            .then(function (response) {
+                logcoordinates();
+            });
+    }
         /*infoWindow.setPosition(pos);
         infoWindow.setContent('Location found.');
         map.setCenter(pos);*/

@@ -1,7 +1,22 @@
-﻿<section>
+﻿<section ng-controller="mapCtrl as MapCtrl">
     <p>This is the map page</p>
-
+    <input type="text" id="manLocation" />
+    <button ng-click="manLoc()">Submit location</button>
+    <button ng-click="currentLoc()">get current location</button>
     <div id="map"></div>
-   
+    <button ng-click="MapCtrl.toggleRight()">open</button>
+
+    <md-sidenav class="md-sidenav-right md-whiteframe-z2" md-component-id="right">
+        <md-toolbar class="md-theme-light">
+            <h1 class="md-toolbar-tools">Sidenav Right</h1>
+        </md-toolbar>
+        <md-content layout-padding>
+            <p>test context</p>
+            <md-button ng-click="close()" class="md-primary">
+                Close Sidenav Right
+            </md-button>
+        </md-content>
+    </md-sidenav>
+
 </section>
 
