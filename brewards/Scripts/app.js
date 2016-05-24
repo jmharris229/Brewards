@@ -4,7 +4,7 @@ app.config(['$routeProvider',function ($routeProvider) {
     $routeProvider
         .when('/map', {
             templateUrl: '/Templates/map.html',
-            controller: 'mapCtrl'
+            controller: 'mapCtrl as MapCtrl'
         })
         .when('/rewards', {
             templateUrl: '/Templates/rewards.html',
@@ -14,7 +14,9 @@ app.config(['$routeProvider',function ($routeProvider) {
 }]);
 
 app.controller('mapCtrl', function ($http, $q, $mdSidenav, $scope, $log) {
-    
+    var vm = this;
+    vm.breweries = "";
+    vm.currentCity;
     this.toggleRight = buildToggler('right');
     this.isOpenRight = function(){
         return $mdSidenav('right').isOpen();
@@ -65,17 +67,19 @@ app.controller('mapCtrl', function ($http, $q, $mdSidenav, $scope, $log) {
                 //parses google maps object for city
                 var commaPos = response.data.results[2].formatted_address.indexOf(',');
                 var city = response.data.results[2].formatted_address.substring(0, commaPos);
-
+                vm.currentCity = city;
                 //call to retrieve city breweries
                 getCityBreweries(city, pos);
         });
-
     };
+
     //returns a json string of breweries just in current location city
     function getCityBreweries(city, pos) {
         //get request to web api to retrieve current city breweries
         $http.get('/api/brewery?breweryCity=Nashville')
             .then(function (response) {
+                vm.breweries = response.data;
+                console.log(vm.breweries);
                 var map;
                 //function to instantiate map with center at passed city
                 function initMap() {
@@ -101,7 +105,7 @@ app.controller('mapCtrl', function ($http, $q, $mdSidenav, $scope, $log) {
             })
     };
     
-    $scope.manLoc = function () {
+    this.manLoc = function () {
         var address = $("#manLocation").val;
         address = address.replace(/ /g,"+");
         $http.get('https://maps.googleapis.com/maps/api/geocode/json?address=' + address + '&key=AIzaSyCaP1HGGwG3R2OpeRAoIQaZSNkj4LeGLhk')

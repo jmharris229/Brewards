@@ -1,4 +1,4 @@
-﻿<section ng-controller="mapCtrl as MapCtrl">
+﻿<section>
     <p>This is the map page</p>
     <input type="text" id="manLocation" />
     <button ng-click="manLoc()">Submit location</button>
@@ -11,10 +11,19 @@
             <h1 class="md-toolbar-tools">Sidenav Right</h1>
         </md-toolbar>
         <md-content layout-padding>
-            <p>test context</p>
-            <md-button ng-click="close()" class="md-primary">
-                Close Sidenav Right
-            </md-button>
+            <md-list>
+                <md-subheader class="md-no-sticky">{{MapCtrl.currentCity}}</md-subheader>
+                <md-list-item class="md-3-line" ng-repeat="brewery in MapCtrl.breweries">
+                    <img src="http://{{brewery.Brewery_logo}}" class="md-avatar" alt="{{brewery.Brewery_Name}}" />
+                    <div class="md-list-item-text" layout="column">
+                        <h3>{{ brewery.Brewery_Name }}</h3>
+                    </div>
+                </md-list-item>
+                <md-divider></md-divider>
+                <md-button ng-click="close()" class="md-primary">
+                    Close Sidenav Right
+                </md-button>
+            </md-list>
         </md-content>
     </md-sidenav>
 
