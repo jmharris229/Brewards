@@ -35,7 +35,7 @@
                 <img src="http://{{beer.Beer_logo}}" class="md-avatar" alt="" />
                 <div class="md-list-item-text" layout="column">
                     <h3>{{ beer.Beer_name }}</h3>
-                    <button ng-click="MapCtrl.addPunch(beer, MapCtrl.breweries[0])">add punch</button>
+                    <button ng-click="MapCtrl.addPunch(beer.BeerId, MapCtrl.breweries[0].BreweryId)">add punch</button>
                 </div>
                 <!-- ng-animate-swap="MapCtrl.breweryInfo" -->
             </md-list-item>
