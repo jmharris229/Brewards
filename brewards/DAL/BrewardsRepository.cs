@@ -35,13 +35,39 @@ namespace brewards.DAL
             return req_Brewery;
         }
 
-        public void AddPurchase(Beer beer, Brewery brewery, ApplicationUser user)
+        public Brewery getBreweryById(int brewery_id)
         {
-            DateTime PointOfSale = DateTime.Now;
-            Userpurchase added_purchase = new Userpurchase() { Beer_info = beer, Brewery_info = brewery, Purchaser = user, Purchase_date = PointOfSale};
+            return _context.Breweries.FirstOrDefault(b => b.BreweryId == brewery_id);
+        }
 
-            _context.User_purchases.Add(added_purchase);
-            _context.SaveChanges();
+        public Beer GetBeer(int beer)
+        {
+            return _context.Beers.FirstOrDefault(b => b.BeerId == beer);
+        }
+
+        public bool AddPurchase(int beer_Id, int brewery_Id, string user_Id)
+        {
+            bool success = true;
+
+            DateTime PointOfSale = DateTime.Now;
+
+            Beer found_beer = this.GetBeer(beer_Id);
+            Brewery found_brewery = this.getBreweryById(brewery_Id);
+            ApplicationUser found_user = _context.Users.FirstOrDefault(i => i.Id == user_Id);
+
+            object[] UpComps = new object[] { found_beer, found_brewery, found_user };
+
+            if(UpComps.Any(i => i == null))
+            {
+                success = false;
+            }
+            else
+            {
+                _context.User_purchases.Add(new Userpurchase() { Beer_info = found_beer, Brewery_info = found_brewery, Purchaser = found_user, Purchase_date = PointOfSale });
+                _context.SaveChanges();
+            }
+
+            return success;
         }
     }
 }

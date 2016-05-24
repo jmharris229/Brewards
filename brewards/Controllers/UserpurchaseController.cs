@@ -25,15 +25,23 @@ namespace brewards.Controllers
             _repo = repo;
         }
         
-        /*[ResponseType(typeof(Userpurchase))]
-        public IHttpActionResult PostPurchase(Userpurchase purchase)
+        [ResponseType(typeof(void))]
+        [HttpPut]
+        public IHttpActionResult PostPurchase(int beer, int brewery)
         {
             string user_id = User.Identity.GetUserId();
-            ApplicationUser user = _repo.GetUser(user_id);
 
-            _repo.AddPurchase(purchase.Beer_info, purchase.Brewery_info, purchase.Purchaser);
-            return View();
-        }*/
+            bool success = _repo.AddPurchase(beer, brewery, User.Identity.GetUserId());
+
+            if (success)
+            {
+                return StatusCode(HttpStatusCode.OK);
+            }
+            else
+            {
+                return StatusCode(HttpStatusCode.BadRequest);
+            }
+        }
 
 
     }

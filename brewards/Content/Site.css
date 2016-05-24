@@ -26,3 +26,18 @@ textarea {
     height: 250px;
     width: 250px;
 }
+.swap-animation.ng-enter, .swap-animation.ng-leave {
+  transition:0.5s linear all;
+}
+.swap-animation.ng-enter {
+  left:-250px;
+}
+.swap-animation.ng-enter-active {
+  top:0px;
+}
+.swap-animation.ng-leave {
+  top:0px;
+}
+.swap-animation.ng-leave-active {
+  left:250px;
+}

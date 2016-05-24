@@ -1,8 +1,8 @@
 ﻿<section>
     <p>This is the map page</p>
     <input type="text" id="manLocation" />
-    <button ng-click="manLoc()">Submit location</button>
-    <button ng-click="currentLoc()">get current location</button>
+    <button ng-click="MapCtrl.manualLoc()">Submit location</button>
+    <button ng-click="MapCtrl.currentLoc()">get current location</button>
     <div id="map"></div>
     <button ng-click="MapCtrl.toggleRight()">open</button>
 
@@ -13,11 +13,12 @@
         <md-content layout-padding>
             <md-list>
                 <md-subheader class="md-no-sticky">{{MapCtrl.currentCity}}</md-subheader>
-                <md-list-item class="md-3-line" ng-repeat="brewery in MapCtrl.breweries">
+                <md-list-item id="{{brewery.Brewery_Name}}"  ng-click="MapCtrl.breweryView($index)" class="md-3-line swap-animation" ng-repeat="brewery in MapCtrl.breweries">
                     <img src="http://{{brewery.Brewery_logo}}" class="md-avatar" alt="{{brewery.Brewery_Name}}" />
                     <div class="md-list-item-text" layout="column">
                         <h3>{{ brewery.Brewery_Name }}</h3>
                     </div>
+                <!-- ng-animate-swap="MapCtrl.breweryInfo" -->
                 </md-list-item>
                 <md-divider></md-divider>
                 <md-button ng-click="close()" class="md-primary">
@@ -26,6 +27,24 @@
             </md-list>
         </md-content>
     </md-sidenav>
+
+    <div>
+        <h3>{{MapCtrl.breweries[0].Brewery_Name}}</h3>
+        <md-list>
+            <md-list-item class="md-3-line" ng-repeat="beer in MapCtrl.breweries[0].Brewery_beers">
+                <img src="http://{{beer.Beer_logo}}" class="md-avatar" alt="" />
+                <div class="md-list-item-text" layout="column">
+                    <h3>{{ beer.Beer_name }}</h3>
+                    <button ng-click="MapCtrl.addPunch(beer, MapCtrl.breweries[0])">add punch</button>
+                </div>
+                <!-- ng-animate-swap="MapCtrl.breweryInfo" -->
+            </md-list-item>
+            <md-divider></md-divider>
+            <md-button ng-click="close()" class="md-primary">
+                Close Sidenav Right
+            </md-button>
+        </md-list>
+    </div>
 
 </section>
 
