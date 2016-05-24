@@ -73,5 +73,10 @@ namespace brewards.DAL
         {
             _context.Breweries.Add(jackalope);
         }
+
+        public List<Userpurchase> getUserPurchases()
+        {
+            return _context.User_purchases.ToList();
+        }
     }
 }
