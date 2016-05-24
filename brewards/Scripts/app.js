@@ -144,7 +144,7 @@ app.controller('mapCtrl', function ($http, $q, $mdSidenav, $scope, $log) {
             brewSel : parseInt(brewery)
         }
         
-        $http.put('/api/userpurchases?beer=' + punchSelected.beerSel + '&brewery=' + punchSelected.brewSel)
+        $http.put('/api/Userpurchase?beer=' + punchSelected.beerSel + '&brewery=' + punchSelected.brewSel)
             .error(function () {
                 alert('failure');
             })
