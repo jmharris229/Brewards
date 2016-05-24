@@ -149,6 +149,6 @@ app.controller('mapCtrl', function ($http, $q, $mdSidenav, $scope, $log) {
             })
             .success(function () {
                 alert("success");
-            })
+            });
     }
 });

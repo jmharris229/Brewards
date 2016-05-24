@@ -50,7 +50,6 @@ namespace brewards.DAL
             bool success = true;
 
             DateTime PointOfSale = DateTime.Now;
-
             Beer found_beer = this.GetBeer(beer_Id);
             Brewery found_brewery = this.getBreweryById(brewery_Id);
             ApplicationUser found_user = _context.Users.FirstOrDefault(i => i.Id == user_Id);
@@ -68,6 +67,11 @@ namespace brewards.DAL
             }
 
             return success;
+        }
+
+        public void addBrewery(Brewery jackalope)
+        {
+            _context.Breweries.Add(jackalope);
         }
     }
 }
