@@ -158,6 +158,57 @@ namespace brewards.Tests.DAL
 
             Assert.AreEqual(expected, actual);
         }
+        [TestMethod]
+        public void RepoEnsureICanGetBreweryById()
+        {
+            List<Beer> beers = new List<Beer>
+            {
+                new Beer {
+                BeerId = 1,
+                Beer_name = "Thunder Ann",
+                Beer_type = "APA",
+                Beer_logo = "www.jackalopebrew.com/new/wp-content/uploads/2013/09/jacka-thunderann-500x500.png" }
+            };
+
+
+            Brewery Jackalope = new Brewery()
+            {
+                BreweryId = 1,
+                Brewery_Name = "Jackalope Brewing Co.",
+                Brewery_address = "701 8th Avenue South",
+                Brewery_city = "Nashville",
+                Brewery_state = "TN",
+                Brewery_zip = "37203",
+                Brewery_phone = "6158734313",
+                Brewery_url = "www.jackalopebrew.com",
+                Brewery_logo = "www.drinkabeerandplayagame.com/wp-content/uploads/2015/06/jackalope_logo_trademark.jpg",
+                Brewery_beers = beers
+            };
+
+            brewery_datasource.Add(Jackalope);
+            ConnectMockToDatastore();
+            string expected = "Jackalope Brewing Co.";
+            Brewery actual = repo.getBreweryById(1);
+
+            Assert.AreEqual(expected, actual.Brewery_Name);
+        }
+        [TestMethod]
+        public void RepoEnsureICanGetBeerById()
+        {
+            ConnectMockToDatastore();
+            Beer Jackalope = new Beer
+            {
+                BeerId = 1,
+                Beer_name = "Thunder Ann",
+                Beer_type = "APA",
+                Beer_logo = "www.jackalopebrew.com/new/wp-content/uploads/2013/09/jacka-thunderann-500x500.png"
+            };
+            beer_datasource.Add(Jackalope);
+            string expected = "Thunder Ann";
+            Beer actual = repo.GetBeer(1);
+
+            Assert.AreEqual(expected, actual.Beer_name);
+        }
 
         [TestMethod]
         public void RepoEnsureICanAddPurchase()
@@ -221,10 +272,45 @@ namespace brewards.Tests.DAL
             };
 
             string user_id = "fake-id";
-            repo.addBrewery(Jackalope);
+            brewery_datasource.Add(Jackalope);
+
             bool success = repo.AddPurchase(1, 1, user_id);
 
             Assert.IsTrue(success);
+            //Assert.AreEqual(1, repo.getUserPurchases("user_id").Count());
+        }
+        [TestMethod]
+        public void RepoEnsureICanRetrievePurchase()
+        {
+            ConnectMockToDatastore();
+            List<Beer> beers = new List<Beer>
+            {
+                new Beer {
+                BeerId = 1,
+                Beer_name = "Thunder Ann",
+                Beer_type = "APA",
+                Beer_logo = "www.jackalopebrew.com/new/wp-content/uploads/2013/09/jacka-thunderann-500x500.png" }
+            };
+
+
+            Brewery Jackalope = new Brewery()
+            {
+                BreweryId = 1,
+                Brewery_Name = "Jackalope Brewing Co.",
+                Brewery_address = "701 8th Avenue South",
+                Brewery_city = "Nashville",
+                Brewery_state = "TN",
+                Brewery_zip = "37203",
+                Brewery_phone = "6158734313",
+                Brewery_url = "www.jackalopebrew.com",
+                Brewery_logo = "www.drinkabeerandplayagame.com/wp-content/uploads/2015/06/jackalope_logo_trademark.jpg",
+                Brewery_beers = beers
+            };
+
+            string user_id = "fake-id";
+            repo.addBrewery(Jackalope);
+            bool success = repo.AddPurchase(1, 1, user_id);
+
             Assert.AreEqual(1, repo.getUserPurchases("user_id").Count());
         }
     }

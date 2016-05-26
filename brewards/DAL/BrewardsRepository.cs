@@ -76,7 +76,8 @@ namespace brewards.DAL
 
         public IEnumerable<Userpurchase> getUserPurchases(string user_id)
         {
-            return _context.User_purchases.Where(up => up.Purchaser.Id == user_id);
+            IEnumerable<Userpurchase> pur = _context.User_purchases.Where(up => up.Purchaser.Id == user_id);
+            return pur;
         }
     }
 }

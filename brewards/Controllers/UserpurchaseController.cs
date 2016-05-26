@@ -46,8 +46,10 @@ namespace brewards.Controllers
         public IEnumerable<Userpurchase> Get()
         {
             string user_id = User.Identity.GetUserId();
+           
+            IEnumerable<Userpurchase> up = _repo.getUserPurchases(user_id);
 
-            return _repo.getUserPurchases(user_id);
+            return up;
         }
 
     }
