@@ -225,7 +225,7 @@ namespace brewards.Tests.DAL
             bool success = repo.AddPurchase(1, 1, user_id);
 
             Assert.IsTrue(success);
-            Assert.AreEqual(1, repo.getUserPurchases().Count());
+            Assert.AreEqual(1, repo.getUserPurchases("user_id").Count());
         }
     }
 }

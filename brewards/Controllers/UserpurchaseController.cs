@@ -42,7 +42,13 @@ namespace brewards.Controllers
                 return StatusCode(HttpStatusCode.BadRequest);
             }
         }
+        
+        public IEnumerable<Userpurchase> Get()
+        {
+            string user_id = User.Identity.GetUserId();
 
+            return _repo.getUserPurchases(user_id);
+        }
 
     }
 }

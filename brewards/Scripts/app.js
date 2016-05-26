@@ -137,13 +137,13 @@ app.controller('mapCtrl', function ($http, $q, $mdSidenav, $scope, $log) {
         vm.breweryInfo = vm.breweries[index];
     }
 
-    vm.addPunch = function(beer, brewery){
+    vm.addPunch = function (beer, brewery) {
         console.log(beer, brewery);
         var punchSelected = {
-            beerSel : parseInt(beer),
-            brewSel : parseInt(brewery)
+            beerSel: parseInt(beer),
+            brewSel: parseInt(brewery)
         }
-        
+
         $http.put('/api/Userpurchase?beer=' + punchSelected.beerSel + '&brewery=' + punchSelected.brewSel)
             .error(function () {
                 alert('failure');
@@ -152,4 +152,13 @@ app.controller('mapCtrl', function ($http, $q, $mdSidenav, $scope, $log) {
                 alert("success");
             });
     }
+
+    vm.purchases = function () {
+        console.log("ran iffe");
+        $http.get('/api/Userpurchase')
+            .then(function (response) {
+                console.log(response.data);
+            }
+        )};
+
 });
