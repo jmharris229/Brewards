@@ -27,11 +27,14 @@ namespace brewards.Controllers
         
         [ResponseType(typeof(void))]
         [HttpPut]
-        public IHttpActionResult PostPurchase(int beer, int brewery)
+        public IHttpActionResult PostPurchase(Userpurchase purchase)
         {
             string user_id = User.Identity.GetUserId();
-
-            bool success = _repo.AddPurchase(beer, brewery, User.Identity.GetUserId());
+            ApplicationUser user = _repo.getUser(user_id);
+            DateTime POS = DateTime.Now;
+            Beer beer = purchase.Beer_info;
+            Brewery brewery = purchase.Brewery_info;
+            bool success = _repo.AddPurchase(beer, brewery, user, POS);
 
             if (success)
             {

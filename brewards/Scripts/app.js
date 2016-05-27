@@ -139,12 +139,12 @@ app.controller('mapCtrl', function ($http, $q, $mdSidenav, $scope, $log) {
 
     vm.addPunch = function (beer, brewery) {
         console.log(beer, brewery);
-        var punchSelected = {
-            beerSel: parseInt(beer),
-            brewSel: parseInt(brewery)
+        var userpurchase = {
+            Beer_info: beer,
+            Brewery_info: brewery
         }
-
-        $http.put('/api/Userpurchase?beer=' + punchSelected.beerSel + '&brewery=' + punchSelected.brewSel)
+        console.log(userpurchase);
+        $http.put('/api/Userpurchase?purchase='+userpurchase)
             .error(function () {
                 alert('failure');
             })
