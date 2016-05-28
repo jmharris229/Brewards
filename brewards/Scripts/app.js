@@ -90,6 +90,7 @@ app.controller('mapCtrl', function ($http, $q, $mdSidenav, $scope, $log) {
         $http.get('/api/brewery?breweryCity=Nashville')
             .then(function (response) {
                 vm.breweries = response.data;
+                console.log(vm.breweries);
                 var map;
                 //function to instantiate map with center at passed city
                 function initMap() {
@@ -141,10 +142,11 @@ app.controller('mapCtrl', function ($http, $q, $mdSidenav, $scope, $log) {
         console.log(beer, brewery);
         var userpurchase = {
             Beer_info: beer,
-            Brewery_info: brewery
-        }
+            Brewery_info: brewery,
+        };
+
         console.log(userpurchase);
-        $http.put('/api/Userpurchase?purchase='+userpurchase)
+        $http.post('/api/Userpurchase?purchase=',userpurchase)
             .error(function () {
                 alert('failure');
             })
@@ -157,7 +159,7 @@ app.controller('mapCtrl', function ($http, $q, $mdSidenav, $scope, $log) {
         console.log("ran iffe");
         $http.get('/api/Userpurchase')
             .then(function (response) {
-                console.log(response.data);
+                console.log(response);
             }
         )};
 

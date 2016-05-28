@@ -50,28 +50,19 @@ namespace brewards.DAL
             return _context.Beers.FirstOrDefault(b => b.BeerId == beer);
         }
 
-        public bool AddPurchase(Beer beer, Brewery brewery, ApplicationUser user, DateTime POS)
+        public void AddPurchase(Beer beer, Brewery brewery, ApplicationUser user, DateTime POS)
         {
-            bool success = true;
 
             //DateTime PointOfSale = DateTime.Now;
             //Beer found_beer = this.GetBeer(beer_Id);
            // Brewery found_brewery = this.getBreweryById(brewery_Id);
             //ApplicationUser found_user = _context.Users.FirstOrDefault(i => i.Id == user_Id);
 
-            object[] UpComps = new object[] { beer, brewery, user, POS };
+            //object[] UpComps = new object[] { beer, brewery, user, POS };
 
-            if(UpComps.Any(i => i == null))
-            {
-                success = false;
-            }
-            else
-            {
-                _context.User_purchases.Add(new Userpurchase() { Beer_info = beer, Brewery_info = brewery, Purchaser = user, Purchase_date = POS });
-                _context.SaveChanges();
-            }
+            _context.User_purchases.Add(new Userpurchase() { Beer_info = beer, Brewery_info = brewery, Purchaser = user, Purchase_date = POS });
+            _context.SaveChanges();
 
-            return success;
         }
 
         public void addBrewery(Brewery jackalope)
@@ -79,10 +70,10 @@ namespace brewards.DAL
             _context.Breweries.Add(jackalope);
         }
 
-        public IEnumerable<Userpurchase> getUserPurchases(string user_id)
+        public List<Userpurchase> getUserPurchases(string user_id)
         {
-            IEnumerable<Userpurchase> pur = _context.User_purchases.Where(up => up.Purchaser.Id == user_id);
-            return pur;
+
+            return _context.User_purchases.ToList();
         }
     }
 }

@@ -8,6 +8,7 @@ using System.Net;
 using System.Net.Http;
 using System.Web.Http;
 using System.Web.Http.Description;
+using Newtonsoft.Json.Linq;
 
 namespace brewards.Controllers
 {
@@ -26,31 +27,24 @@ namespace brewards.Controllers
         }
         
         [ResponseType(typeof(void))]
-        [HttpPut]
+        [HttpPost]
         public IHttpActionResult PostPurchase(Userpurchase purchase)
         {
+            //JObject formPurchase = JObject.Parse(purchase);
             string user_id = User.Identity.GetUserId();
             ApplicationUser user = _repo.getUser(user_id);
             DateTime POS = DateTime.Now;
-            Beer beer = purchase.Beer_info;
-            Brewery brewery = purchase.Brewery_info;
-            bool success = _repo.AddPurchase(beer, brewery, user, POS);
 
-            if (success)
-            {
-                return StatusCode(HttpStatusCode.OK);
-            }
-            else
-            {
-                return StatusCode(HttpStatusCode.BadRequest);
-            }
+            _repo.AddPurchase(purchase.Beer_info, purchase.Brewery_info, user, POS);
+
+            return Ok(purchase);
         }
         
-        public IEnumerable<Userpurchase> Get()
+        public List<Userpurchase> Get()
         {
             string user_id = User.Identity.GetUserId();
            
-            IEnumerable<Userpurchase> up = _repo.getUserPurchases(user_id);
+            List<Userpurchase> up = _repo.getUserPurchases(user_id).FindAll(u => u.Purchaser.Id == user_id);
 
             return up;
         }
