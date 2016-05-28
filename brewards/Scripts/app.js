@@ -100,7 +100,7 @@ app.controller('mapCtrl', function ($http, $q, $mdSidenav, $scope, $log) {
                     });
                     //for loop to place markers of breweries
                     for (var i = 0; i < response.data.length; i++) {
-                        var address = response.data[i].Brewery_address + response.data[i].Brewery_city + response.data[i].Brewery_state + response.data[i].Brewery_zip;
+                        var address = response.data[i].brewery_address + response.data[i].brewery_city + response.data[i].brewery_state + response.data[i].brewery_zip;
                         var geocoder = new google.maps.Geocoder();
                         geocoder.geocode({ 'address': address }, function(results, status){
                             if(status === google.maps.GeocoderStatus.OK){
