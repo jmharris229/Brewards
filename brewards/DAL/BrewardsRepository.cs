@@ -64,6 +64,18 @@ namespace brewards.DAL
             //object[] UpComps = new object[] { beer, brewery, user, POS };
 
             _context.User_purchases.Add(purchase);
+
+            Rewardstatus punchcard = _context.Reward_statuses.FirstOrDefault(punchThere => punchThere.UserId.Id == purchase.Purchaser.Id && punchThere.Brewery_info.Brewery_Name == purchase.Brewery_info.Brewery_Name);
+
+            if(punchcard == null)
+            {
+                Rewardstatus newPunchCard = new Rewardstatus { UserId = purchase.Purchaser, Brewery_info = purchase.Brewery_info, Number_purchased = 1 };
+                _context.Reward_statuses.Add(newPunchCard);
+            }
+            else
+            {
+                punchcard.Number_purchased += 1;
+            }
             _context.SaveChanges();
 
         }
@@ -76,7 +88,7 @@ namespace brewards.DAL
         public List<Userpurchase> getUserPurchases(string user_id)
         {
 
-            return _context.User_purchases.ToList();
+            return _context.User_purchases.Where(user => user.Purchaser.Id == user_id).ToList();
         }
     }
 }

@@ -34,7 +34,9 @@ namespace brewards
                 "~/Scripts/angular-material/angular-material.min.js",
                 "~/Scripts/angular-animate/angular-animate.min.js",
                 "~/Scripts/angular-aria/angular-aria.min.js",
-                "~/Scripts/app.js"
+                "~/Scripts/app.js",
+                "~/Scripts/mapCtrl.js",
+                "~/Scripts/rewardsCtrl.js"
                 ));
         }
     }

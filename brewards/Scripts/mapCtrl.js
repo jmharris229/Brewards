@@ -1,29 +1,14 @@
-﻿var app = angular.module("BrewardsApp", ['ngRoute', 'ngMaterial', 'ngAnimate']);
-
-app.config(['$routeProvider',function ($routeProvider) {
-    $routeProvider
-        .when('/map', {
-            templateUrl: '/Templates/map.html',
-            controller: 'mapCtrl as MapCtrl'
-        })
-        .when('/rewards', {
-            templateUrl: '/Templates/rewards.html',
-            controller: 'rewardsCtrl'
-        })
-        .otherwise({ redirectTo: '/' });
-}]);
-/*
-app.controller('mapCtrl', function ($http, $q, $mdSidenav, $scope, $log) {
+﻿app.controller('mapCtrl', function ($http, $q, $mdSidenav, $scope, $log) {
 
 
     var vm = this;
     var pos;
     vm.breweries;
     vm.currentCity;
-    
+
     //side nav functionality
     vm.toggleRight = buildToggler('right');
-    vm.isOpenRight = function(){
+    vm.isOpenRight = function () {
         return $mdSidenav('right').isOpen();
     }
     function buildToggler(navID) {
@@ -71,9 +56,9 @@ app.controller('mapCtrl', function ($http, $q, $mdSidenav, $scope, $log) {
         };
 
         //api request to google maps to retrieve current city from coordinates
-        $http.get('https://maps.googleapis.com/maps/api/geocode/json?latlng='+pos.lat+','+pos.lng+'&key=AIzaSyCaP1HGGwG3R2OpeRAoIQaZSNkj4LeGLhk')
+        $http.get('https://maps.googleapis.com/maps/api/geocode/json?latlng=' + pos.lat + ',' + pos.lng + '&key=AIzaSyCaP1HGGwG3R2OpeRAoIQaZSNkj4LeGLhk')
             .then(function (response) {
-                
+
                 //parses google maps object for city
                 var commaPos = response.data.results[2].formatted_address.indexOf(',');
                 var city = response.data.results[2].formatted_address.substring(0, commaPos);
@@ -81,7 +66,7 @@ app.controller('mapCtrl', function ($http, $q, $mdSidenav, $scope, $log) {
 
                 //call to retrieve city breweries
                 getCityBreweries(pos);
-        });
+            });
     };
 
     //returns a json string of breweries just in current location city
@@ -102,25 +87,26 @@ app.controller('mapCtrl', function ($http, $q, $mdSidenav, $scope, $log) {
                     for (var i = 0; i < response.data.length; i++) {
                         var address = response.data[i].brewery_address + response.data[i].brewery_city + response.data[i].brewery_state + response.data[i].brewery_zip;
                         var geocoder = new google.maps.Geocoder();
-                        geocoder.geocode({ 'address': address }, function(results, status){
-                            if(status === google.maps.GeocoderStatus.OK){
+                        geocoder.geocode({ 'address': address }, function (results, status) {
+                            if (status === google.maps.GeocoderStatus.OK) {
                                 var marker = new google.maps.Marker({
                                     map: map,
+                                    icon: response.data[i].brewery_logo,
                                     position: results[0].geometry.location
                                 });
                             }
-                        })                
+                        })
                     }
                 }
                 initMap();
             })
     };
-    
+
     //retrieves position and city from entered address
     vm.manualLoc = function () {
         var address = $("#manLocation").val();
         console.log(address);
-        address = address.replace(/ /g,"+");
+        address = address.replace(/ /g, "+");
         $http.get('https://maps.googleapis.com/maps/api/geocode/json?address=' + address + '&key=AIzaSyCaP1HGGwG3R2OpeRAoIQaZSNkj4LeGLhk')
             .then(function (response) {
                 console.log(response.data);
@@ -130,9 +116,9 @@ app.controller('mapCtrl', function ($http, $q, $mdSidenav, $scope, $log) {
                 getCityBreweries(pos);
             });
     }
-        infoWindow.setPosition(pos);
-        infoWindow.setContent('Location found.');
-        map.setCenter(pos);
+    /*infoWindow.setPosition(pos);
+    infoWindow.setContent('Location found.');
+    map.setCenter(pos);*/
     vm.breweryInfo;
     vm.breweryView = function (index) {
         vm.breweryInfo = vm.breweries[index];
@@ -146,7 +132,7 @@ app.controller('mapCtrl', function ($http, $q, $mdSidenav, $scope, $log) {
         };
 
         console.log(userpurchase);
-        $http.post('/api/Userpurchase?purchase=',userpurchase)
+        $http.post('/api/Userpurchase?purchase=', userpurchase)
             .error(function () {
                 alert('failure');
             })
@@ -156,11 +142,12 @@ app.controller('mapCtrl', function ($http, $q, $mdSidenav, $scope, $log) {
     }
 
     vm.purchases = function () {
-        console.log("ran iffe");
+
         $http.get('/api/Userpurchase')
             .then(function (response) {
                 console.log(response);
             }
-        )};
+        )
+    };
 
-});*/
+});

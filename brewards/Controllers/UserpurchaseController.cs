@@ -9,6 +9,7 @@ using System.Net.Http;
 using System.Web.Http;
 using System.Web.Http.Description;
 using Newtonsoft.Json.Linq;
+using System.Collections;
 
 namespace brewards.Controllers
 {
@@ -30,7 +31,6 @@ namespace brewards.Controllers
         [HttpPost]
         public IHttpActionResult PostPurchase(Userpurchase purchase)
         {
-            //JObject formPurchase = JObject.Parse(purchase);
             string user_id = User.Identity.GetUserId();
             purchase.Purchaser = _repo.getUser(user_id);
             purchase.Purchase_date = DateTime.Now;
@@ -40,13 +40,11 @@ namespace brewards.Controllers
             return Ok(purchase);
         }
         
-        public List<Userpurchase> Get()
+        public IEnumerable<Userpurchase> Get()
         {
             string user_id = User.Identity.GetUserId();
-           
-            List<Userpurchase> up = _repo.getUserPurchases(user_id).FindAll(u => u.Purchaser.Id == user_id);
+            return _repo.getUserPurchases(user_id);
 
-            return up;
         }
 
     }
