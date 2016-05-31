@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace brewards.Models
 {
@@ -21,6 +22,9 @@ namespace brewards.Models
 
         [MaxLength(600)]
         public string Beer_logo { get; set; }
+    
+        //[ForeignKey("BreweryId")]
+        public int BreweryId { get; set; }
 
         //navigation property for brewery object
         //public virtual Brewery Brewery_info { get; set; }

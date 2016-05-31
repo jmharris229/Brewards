@@ -50,17 +50,20 @@ namespace brewards.DAL
             return _context.Beers.FirstOrDefault(b => b.BeerId == beer);
         }
 
-        public void AddPurchase(Beer beer, Brewery brewery, ApplicationUser user, DateTime POS)
+        public void AddPurchase(Userpurchase purchase)
         {
 
             //DateTime PointOfSale = DateTime.Now;
-            //Beer found_beer = this.GetBeer(beer_Id);
-           // Brewery found_brewery = this.getBreweryById(brewery_Id);
+            _context.Beers.Attach(purchase.Beer_info);
+            _context.Breweries.Attach(purchase.Brewery_info);
+
+            //purchase.Beer_info = this.GetBeer(purchase.Beer_info.BeerId);
+            //purchase.Brewery_info = this.getBreweryById(purchase.Brewery_info.BreweryId);
             //ApplicationUser found_user = _context.Users.FirstOrDefault(i => i.Id == user_Id);
 
             //object[] UpComps = new object[] { beer, brewery, user, POS };
 
-            _context.User_purchases.Add(new Userpurchase() { Beer_info = beer, Brewery_info = brewery, Purchaser = user, Purchase_date = POS });
+            _context.User_purchases.Add(purchase);
             _context.SaveChanges();
 
         }

@@ -32,10 +32,10 @@ namespace brewards.Controllers
         {
             //JObject formPurchase = JObject.Parse(purchase);
             string user_id = User.Identity.GetUserId();
-            ApplicationUser user = _repo.getUser(user_id);
-            DateTime POS = DateTime.Now;
+            purchase.Purchaser = _repo.getUser(user_id);
+            purchase.Purchase_date = DateTime.Now;
 
-            _repo.AddPurchase(purchase.Beer_info, purchase.Brewery_info, user, POS);
+            _repo.AddPurchase(purchase);
 
             return Ok(purchase);
         }
