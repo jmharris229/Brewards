@@ -7,14 +7,14 @@
             //debugger;
                 console.log(response.data);
 
-                analyzePurchases(response.data);
+                //analyzePurchases(response.data);
             }
         )
     }
 
     vm.renderPunchcards();
     
-    function analyzePurchases(purchases) {
+    /*function analyzePurchases(purchases) {
         var userBreweries = [];
         var userBeers = [];
         vm.punchCards = [];
@@ -76,6 +76,6 @@
 
         console.log(vm.punchCards);
 
-    }
+    }*/
 
 });

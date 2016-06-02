@@ -40,15 +40,11 @@ namespace brewards.Controllers
             return Ok(purchase);
         }
         
-        public IEnumerable<Userpurchase> Get()
+        public IEnumerable<UserPurchaseViewModel> Get()
         {
             string user_id = User.Identity.GetUserId();
 
-            var blah = _repo.getUserPurchases(user_id);
-
-
-
-            return blah;
+            return _repo.getUserPurchases(user_id);
         }
 
     }
