@@ -19,15 +19,20 @@ namespace brewards.Services
             {
                 if (brewery_dictionary.ContainsKey(purchase.Brewery_info.Brewery_Name))
                 {
-
+                    if(brewery_dictionary[purchase.Brewery_info.Brewery_Name].purchased_beers.FirstOrDefault(x => x.beer_name == purchase.Beer_info.Beer_name) == null)
+                    {
+                        Litebeer firstBeer = new Litebeer { beer_name = purchase.Beer_info.Beer_name, number_purchased = 1, logo = purchase.Beer_info.Beer_logo };
+                        brewery_dictionary[purchase.Brewery_info.Brewery_Name].purchased_beers.Add(firstBeer);
+                    }
+                    
                     brewery_dictionary[purchase.Brewery_info.Brewery_Name].number_purchased += 1;
                 }
                 else
                 {
                     List<Litebeer> Beers = new List<Litebeer>();
-                    Litebeer firstBeer = new Litebeer{ beer_name = purchase.Beer_info.Beer_name, number_purchased = 1, logo = purchase.Beer_info.Beer_logo}
+                    Litebeer firstBeer = new Litebeer { beer_name = purchase.Beer_info.Beer_name, number_purchased = 1, logo = purchase.Beer_info.Beer_logo };
                     Beers.Add(firstBeer);
-                    brewery_dictionary.Add(purchase.Brewery_info.Brewery_Name, new UserPurchaseViewModel { brewery_name = purchase.Brewery_info.Brewery_Name, number_purchased = 1, purchased_beers = Beers});
+                    brewery_dictionary.Add(purchase.Brewery_info.Brewery_Name, new UserPurchaseViewModel { brewery_name = purchase.Brewery_info.Brewery_Name, number_purchased = 1, purchased_beers = Beers  });
                 }
 
                 //creates beer count dictionary
