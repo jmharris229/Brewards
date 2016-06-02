@@ -36,7 +36,10 @@ namespace brewards
                 "~/Scripts/angular-aria/angular-aria.min.js",
                 "~/Scripts/app.js",
                 "~/Scripts/mapCtrl.js",
-                "~/Scripts/rewardsCtrl.js"
+                "~/Scripts/rewardsCtrl.js"                
+                ));
+            bundles.Add(new ScriptBundle("~/bundles/libraries").Include(
+                "~/Scripts/lodash.min.js"
                 ));
         }
     }

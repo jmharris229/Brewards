@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using System.Data.Entity;
 
 namespace brewards.DAL
 {
@@ -53,19 +54,13 @@ namespace brewards.DAL
         public void AddPurchase(Userpurchase purchase)
         {
 
-            //DateTime PointOfSale = DateTime.Now;
             _context.Beers.Attach(purchase.Beer_info);
             _context.Breweries.Attach(purchase.Brewery_info);
 
-            //purchase.Beer_info = this.GetBeer(purchase.Beer_info.BeerId);
-            //purchase.Brewery_info = this.getBreweryById(purchase.Brewery_info.BreweryId);
-            //ApplicationUser found_user = _context.Users.FirstOrDefault(i => i.Id == user_Id);
-
-            //object[] UpComps = new object[] { beer, brewery, user, POS };
-
             _context.User_purchases.Add(purchase);
 
-            Rewardstatus punchcard = _context.Reward_statuses.FirstOrDefault(punchThere => punchThere.UserId.Id == purchase.Purchaser.Id && punchThere.Brewery_info.Brewery_Name == purchase.Brewery_info.Brewery_Name);
+           //implementation to add punchcard to reward status table
+           /* Rewardstatus punchcard = _context.Reward_statuses.FirstOrDefault(punchThere => punchThere.UserId.Id == purchase.Purchaser.Id && punchThere.Brewery_info.Brewery_Name == purchase.Brewery_info.Brewery_Name);
 
             if(punchcard == null)
             {
@@ -75,20 +70,20 @@ namespace brewards.DAL
             else
             {
                 punchcard.Number_purchased += 1;
-            }
+            }*/
+
             _context.SaveChanges();
 
         }
 
-        public void addBrewery(Brewery jackalope)
+        public void addBrewery(Brewery newBrewery)
         {
-            _context.Breweries.Add(jackalope);
+            _context.Breweries.Add(newBrewery);
         }
 
         public List<Userpurchase> getUserPurchases(string user_id)
         {
-
-            return _context.User_purchases.Where(user => user.Purchaser.Id == user_id).ToList();
+            return _context.User_purchases.Include(p=>p.Brewery_info.Brewery_beers).Where(user => user.Purchaser.Id == user_id).ToList();
         }
     }
 }
