@@ -87,15 +87,24 @@
                     for (var i = 0; i < response.data.length; i++) {
                         var address = response.data[i].brewery_address + response.data[i].brewery_city + response.data[i].brewery_state + response.data[i].brewery_zip;
                         var geocoder = new google.maps.Geocoder();
-                        geocoder.geocode({ 'address': address }, function (results, status) {
+                        var counter = 0;
+                        geocoder.geocode({ 'address': address }, function (results, status, i) {
+                            
+                            console.log(i);
+                            var icon = {
+                                url: "http://" + response.data[counter].brewery_logo,
+                                scaledSize: new google.maps.Size(25,25)
+                            }
                             if (status === google.maps.GeocoderStatus.OK) {
                                 var marker = new google.maps.Marker({
                                     map: map,
-                                    icon: response.data[i].brewery_logo,
+                                    icon: icon,
                                     position: results[0].geometry.location
                                 });
                             }
+                            counter++;
                         })
+                        
                     }
                 }
                 initMap();

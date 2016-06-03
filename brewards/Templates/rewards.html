@@ -1,5 +1,4 @@
-﻿<p>this is the rewards page</p>
-<article>
+﻿<article>
     <md-list flex>
         <md-subheader class="md-no-sticky">PUNCHCARDS</md-subheader>
         <md-list-item class="md-3-line" ng-repeat="brewery in RewardsCtrl.punchcardData" ng-click="null">
@@ -11,6 +10,7 @@
                     <img class="breweryBeerLogos" src="http://{{ beer.logo }}" alt="{{beer.beer_name}}"/> {{beer.beer_name}}: {{beer.number_purchased}}         
                 </span>
             </div>
+            <md-button ng-show="brewery.number_purchased >= 8">REDEEM</md-button>
         </md-list-item>
         <md-divider></md-divider>
     </md-list>
