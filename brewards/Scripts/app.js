@@ -8,7 +8,7 @@ app.config(['$routeProvider',function ($routeProvider) {
         })
         .when('/rewards', {
             templateUrl: '/Templates/rewards.html',
-            controller: 'rewardsCtrl'
+            controller: 'rewardsCtrl as RewardsCtrl'
         })
         .otherwise({ redirectTo: '/' });
 }]);

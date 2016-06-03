@@ -1,2 +1,18 @@
 ﻿<p>this is the rewards page</p>
+<article>
+    <md-list flex>
+        <md-subheader class="md-no-sticky">PUNCHCARDS</md-subheader>
+        <md-list-item class="md-3-line" ng-repeat="brewery in RewardsCtrl.punchcardData" ng-click="null">
+            <img src="http://{{brewery.brewery_logo}}?{{$index}}" class="md-avatar" alt="{{brewery.brewery_name}}" />
+            <div class="md-list-item-text" layout="column">
+                <h3>{{ brewery.brewery_name }}</h3>
+                <h4>Number Punches: {{ brewery.number_purchased }}</h4>
+                <span ng-repeat="beer in brewery.purchased_beers">
+                    <img class="breweryBeerLogos" src="http://{{ beer.logo }}" alt="{{beer.beer_name}}"/> {{beer.beer_name}}: {{beer.number_purchased}}         
+                </span>
+            </div>
+        </md-list-item>
+        <md-divider></md-divider>
+    </md-list>
+</article>
 

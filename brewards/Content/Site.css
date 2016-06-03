@@ -41,3 +41,7 @@ textarea {
 .swap-animation.ng-leave-active {
   left:250px;
 }
+.breweryBeerLogos{
+    height: 25px;
+    width: 25px;
+}
