@@ -32,9 +32,9 @@ namespace brewards.DAL
             return _context.Breweries.ToList();
         }
 
-        public Brewery GetBrewery(string brewery_name)
+        public IEnumerable<Brewery> GetBrewery(string brewery_name)
         {
-            Brewery req_Brewery = this.GetAllBreweries().Find(b => b.Brewery_Name == brewery_name);
+            IEnumerable<Brewery> req_Brewery = _context.Breweries.Where(br => br.Brewery_Name == brewery_name);
             return req_Brewery;
         }
 
@@ -55,27 +55,11 @@ namespace brewards.DAL
 
         public void AddPurchase(Userpurchase purchase)
         {
-
-            //_context.Beers.Attach(purchase.Beer_info);
-            //_context.Breweries.Attach(purchase.Brewery_info);
+            _context.Breweries.Attach(purchase.Brewery_info);
+            purchase.Beer_info = _context.Beers.Find(purchase.Beer_info.BeerId);
 
             _context.User_purchases.Add(purchase);
-
-           //implementation to add punchcard to reward status table
-           /* Rewardstatus punchcard = _context.Reward_statuses.FirstOrDefault(punchThere => punchThere.UserId.Id == purchase.Purchaser.Id && punchThere.Brewery_info.Brewery_Name == purchase.Brewery_info.Brewery_Name);
-
-            if(punchcard == null)
-            {
-                Rewardstatus newPunchCard = new Rewardstatus { UserId = purchase.Purchaser, Brewery_info = purchase.Brewery_info, Number_purchased = 1 };
-                _context.Reward_statuses.Add(newPunchCard);
-            }
-            else
-            {
-                punchcard.Number_purchased += 1;
-            }*/
-
             _context.SaveChanges();
-
         }
 
         public void addBrewery(Brewery newBrewery)

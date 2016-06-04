@@ -23,10 +23,18 @@ namespace brewards.Controllers
             _repo = repo;
         }
 
-        public IEnumerable<Brewery> Get(string breweryCity)
+        //gets a list of breweries by city name
+        public IEnumerable<Brewery> GetBreweries(string breweryCity)
         {
             IEnumerable<Brewery> cityBreweries = _repo.GetAllBreweries().FindAll(b => b.Brewery_city == breweryCity);
             return cityBreweries;
+        }
+
+        //gets a specific brewery by brewery name
+        public IEnumerable<Brewery> GetBreweryByName(string breweryName)
+        {
+            IEnumerable<Brewery> brewery = _repo.GetBrewery(breweryName);
+            return brewery;
         }
 
     }

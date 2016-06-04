@@ -4,6 +4,7 @@
     var vm = this;
     var pos;
     vm.breweries;
+    vm.brewery;
     vm.currentCity;
 
     //side nav functionality
@@ -74,7 +75,7 @@
         //get request to web api to retrieve current city breweries, Nashville will be replaced with vm.currentcity
         $http.get('/api/brewery?breweryCity=Nashville')
             .then(function (response) {
-                vm.breweries = response.data;
+                //vm.breweries = response.data;
                 console.log(vm.breweries);
                 var map;
                 //function to instantiate map with center at passed city
@@ -86,11 +87,10 @@
                     //for loop to place markers of breweries
                     for (var i = 0; i < response.data.length; i++) {
                         var address = response.data[i].brewery_address + response.data[i].brewery_city + response.data[i].brewery_state + response.data[i].brewery_zip;
+                        console.log(response.data[i].brewery_Name);
                         var geocoder = new google.maps.Geocoder();
                         var counter = 0;
                         geocoder.geocode({ 'address': address }, function (results, status, i) {
-                            
-                            console.log(i);
                             var icon = {
                                 url: "http://" + response.data[counter].brewery_logo,
                                 scaledSize: new google.maps.Size(25,25)
@@ -101,6 +101,13 @@
                                     icon: icon,
                                     position: results[0].geometry.location
                                 });
+                                var brewerymark = response.data[counter].brewery_Name;
+                                marker.addListener('click', function () {
+                                    console.log(brewerymark);
+                                    map.setZoom(8);
+                                    getSpecificBrewery(brewerymark);
+                                    vm.toggleRight();
+                                })
                             }
                             counter++;
                         })
@@ -110,6 +117,16 @@
                 initMap();
             })
     };
+
+    function getSpecificBrewery(brewery) {
+        console.log(brewery)
+        $http.get('/api/brewery?breweryName=' + brewery)
+            .then(function (response) {
+                console.log(response.data);
+                console.log(response.data[0]);
+                vm.brewery = response.data[0];
+            })
+    }
 
     //retrieves position and city from entered address
     vm.manualLoc = function () {

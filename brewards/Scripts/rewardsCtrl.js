@@ -4,11 +4,7 @@
     vm.renderPunchcards = function () {
         $http.get('/api/Userpurchase')
             .then(function (response) {
-                //debugger;
-
-                console.log(response.data);
                 vm.punchcardData = response.data;
-                //analyzePurchases(response.data);
             }
         )
     }

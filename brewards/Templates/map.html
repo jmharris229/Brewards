@@ -13,20 +13,14 @@
             <h1 class="md-toolbar-tools">Sidenav Right</h1>
         </md-toolbar>
         <md-content layout-padding>
-            <md-list>
-                <md-subheader class="md-no-sticky">{{MapCtrl.currentCity}}</md-subheader>
-                <md-list-item id="{{brewery.brewery_Name}}"  ng-click="MapCtrl.breweryView($index)" class="md-3-line swap-animation" ng-repeat="brewery in MapCtrl.breweries">
-                    <img src="http://{{brewery.brewery_logo}}" class="md-avatar" alt="{{brewery.brewery_Name}}" />
-                    <div class="md-list-item-text" layout="column">
-                        <h3>{{ brewery.brewery_Name }}</h3>
-                    </div>
-                <!-- ng-animate-swap="MapCtrl.breweryInfo" -->
-                </md-list-item>
-                <md-divider></md-divider>
-                <md-button ng-click="close()" class="md-primary">
-                    Close Sidenav Right
-                </md-button>
-            </md-list>
+            <img src="http://{{MapCtrl.brewery.brewery_logo}}" alt="{{MapCtrl.brewery.brewery_Name}}"/>
+            <h3>{{MapCtrl.brewery.brewery_Name}}</h3>
+            <ul ng-repeat="beer in MapCtrl.brewery.brewery_beers">
+                <li>
+                    <img src="http://{{beer.beer_logo}}" alt="{{beer.beer_name}}"/>
+                    {{beer.beer_name}}
+                </li>
+            </ul>
         </md-content>
     </md-sidenav>
 
