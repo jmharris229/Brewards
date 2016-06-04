@@ -75,7 +75,7 @@
         //get request to web api to retrieve current city breweries, Nashville will be replaced with vm.currentcity
         $http.get('/api/brewery?breweryCity=Nashville')
             .then(function (response) {
-                //vm.breweries = response.data;
+                vm.breweries = response.data;
                 console.log(vm.breweries);
                 var map;
                 //function to instantiate map with center at passed city
@@ -101,7 +101,7 @@
                                     icon: icon,
                                     position: results[0].geometry.location
                                 });
-                                var brewerymark = response.data[counter].brewery_Name;
+                                var brewerymark = counter;
                                 marker.addListener('click', function () {
                                     console.log(brewerymark);
                                     map.setZoom(8);
@@ -119,13 +119,15 @@
     };
 
     function getSpecificBrewery(brewery) {
-        console.log(brewery)
-        $http.get('/api/brewery?breweryName=' + brewery)
+        console.log(brewery);
+        console.log(vm.breweries);
+        vm.brewery = vm.breweries[brewery];
+        /*$http.get('/api/brewery?breweryName=' + brewery)
             .then(function (response) {
                 console.log(response.data);
                 console.log(response.data[0]);
                 vm.brewery = response.data[0];
-            })
+            })*/
     }
 
     //retrieves position and city from entered address
