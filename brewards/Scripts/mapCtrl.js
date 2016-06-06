@@ -102,8 +102,9 @@
                                     optimized: false
                                 });
                                 //puts event listener on marker click, opens side nav with clicked brewery info
+                                //switch to mousedown for production and demo
                                 var brewerymark = counter;
-                                marker.addListener('mousedown', function () {
+                                marker.addListener('click', function () {
                                     map.setZoom(8);
                                     getSpecificBrewery(brewerymark);
                                     vm.toggleRight();

@@ -9,7 +9,6 @@ Brewards is an app designed to provide incentives to regulars at breweries by ke
 * "Nearby Breweries" section:
  * Google Map that uses current location and pins nearby breweries.
  * Includes a slide out nav menu to display brewery info, beers available, purchase status, and "punchcard" status.
- * Authorization feature for breweries to confirm purchases by users
 * "Punchcards" section:
  * Provides a list of active "punchcards" a user currently has.
  * Displays the current progress of the "punchcard".
