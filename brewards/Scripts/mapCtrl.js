@@ -98,11 +98,12 @@
                                 var marker = new google.maps.Marker({
                                     map: map,
                                     icon: icon,
-                                    position: results[0].geometry.location
+                                    position: results[0].geometry.location,
+                                    optimized: false
                                 });
                                 //puts event listener on marker click, opens side nav with clicked brewery info
                                 var brewerymark = counter;
-                                marker.addListener('click', function () {
+                                marker.addListener('mousedown', function () {
                                     map.setZoom(8);
                                     getSpecificBrewery(brewerymark);
                                     vm.toggleRight();
