@@ -232,6 +232,10 @@
     <Compile Include="Migrations\201605281832201_beerclassupdate.Designer.cs">
       <DependentUpon>201605281832201_beerclassupdate.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201606050346143_addbrewerypin.cs" />
+    <Compile Include="Migrations\201606050346143_addbrewerypin.Designer.cs">
+      <DependentUpon>201606050346143_addbrewerypin.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Beer.cs" />
@@ -356,6 +360,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201605281832201_beerclassupdate.resx">
       <DependentUpon>201605281832201_beerclassupdate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201606050346143_addbrewerypin.resx">
+      <DependentUpon>201606050346143_addbrewerypin.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

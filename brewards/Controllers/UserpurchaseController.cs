@@ -31,13 +31,22 @@ namespace brewards.Controllers
         [HttpPost]
         public IHttpActionResult PostPurchase(Userpurchase purchase)
         {
-            string user_id = User.Identity.GetUserId();
-            purchase.Purchaser = _repo.getUser(user_id);
-            purchase.Purchase_date = DateTime.Now;
+            bool PinMatch = _repo.MatchPin(purchase.Brewery_info.Brewery_pin);
 
-            _repo.AddPurchase(purchase);
+            if (PinMatch)
+            {
+                string user_id = User.Identity.GetUserId();
+                purchase.Purchaser = _repo.getUser(user_id);
+                purchase.Purchase_date = DateTime.Now;
 
-            return Ok(purchase);
+                _repo.AddPurchase(purchase);
+
+                return Ok(purchase);
+            }
+            else
+            {
+                return NotFound();
+            }
         }
         
         public IEnumerable<UserPurchaseViewModel> Get()

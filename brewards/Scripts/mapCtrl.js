@@ -1,4 +1,4 @@
-﻿app.controller('mapCtrl', function ($http, $q, $mdSidenav, $scope, $log) {
+﻿app.controller('mapCtrl', function ($http, $q, $mdSidenav, $scope, $log, $mdDialog) {
 
 
     var vm = this;
@@ -76,7 +76,6 @@
         $http.get('/api/brewery?breweryCity=Nashville')
             .then(function (response) {
                 vm.breweries = response.data;
-                console.log(vm.breweries);
                 var map;
                 //function to instantiate map with center at passed city
                 function initMap() {
@@ -87,7 +86,6 @@
                     //for loop to place markers of breweries
                     for (var i = 0; i < response.data.length; i++) {
                         var address = response.data[i].brewery_address + response.data[i].brewery_city + response.data[i].brewery_state + response.data[i].brewery_zip;
-                        console.log(response.data[i].brewery_Name);
                         var geocoder = new google.maps.Geocoder();
                         var counter = 0;
                         geocoder.geocode({ 'address': address }, function (results, status, i) {
@@ -95,15 +93,16 @@
                                 url: "http://" + response.data[counter].brewery_logo,
                                 scaledSize: new google.maps.Size(25,25)
                             }
+                            //creates new marker
                             if (status === google.maps.GeocoderStatus.OK) {
                                 var marker = new google.maps.Marker({
                                     map: map,
                                     icon: icon,
                                     position: results[0].geometry.location
                                 });
+                                //puts event listener on marker click, opens side nav with clicked brewery info
                                 var brewerymark = counter;
                                 marker.addListener('click', function () {
-                                    console.log(brewerymark);
                                     map.setZoom(8);
                                     getSpecificBrewery(brewerymark);
                                     vm.toggleRight();
@@ -118,26 +117,19 @@
             })
     };
 
+    //sets the side nav to the specific brewery info
     function getSpecificBrewery(brewery) {
-        console.log(brewery);
-        console.log(vm.breweries);
+        
         vm.brewery = vm.breweries[brewery];
-        /*$http.get('/api/brewery?breweryName=' + brewery)
-            .then(function (response) {
-                console.log(response.data);
-                console.log(response.data[0]);
-                vm.brewery = response.data[0];
-            })*/
+        console.log(vm.brewery);
     }
 
     //retrieves position and city from entered address
     vm.manualLoc = function () {
         var address = $("#manLocation").val();
-        console.log(address);
         address = address.replace(/ /g, "+");
         $http.get('https://maps.googleapis.com/maps/api/geocode/json?address=' + address + '&key=AIzaSyCaP1HGGwG3R2OpeRAoIQaZSNkj4LeGLhk')
             .then(function (response) {
-                console.log(response.data);
                 pos.lat = response.data.results[0].geometry.location.lat;
                 pos.lng = response.data.results[0].geometry.location.lng;
                 vm.currentCity = response.data.results[0].address_components[0].long_name;
@@ -152,14 +144,13 @@
         vm.breweryInfo = vm.breweries[index];
     }
 
-    vm.addPunch = function (beer, brewery) {
-        console.log(beer, brewery);
+    //post purchase to database
+    vm.addPunch = function (beer, brewery, pin) {
+        brewery.Brewery_pin = parseInt(pin);
         var userpurchase = {
             Beer_info: beer,
             Brewery_info: brewery,
         };
-
-        console.log(userpurchase);
         $http.post('/api/Userpurchase?purchase=', userpurchase)
             .error(function () {
                 alert('failure');
@@ -169,13 +160,39 @@
             });
     }
 
-    vm.purchases = function () {
+    /*vm.confirmPunch = function (ev, beer, brewery) {
+        // Appending dialog to document.body to cover sidenav in docs app
+        var confirm = $mdDialog.prompt()
+          .title('Confirm Punch')
+          .targetEvent(ev)
+          .ok('Add punch')
+          .cancel('Cancel');
+        $mdDialog.show(confirm).then(function (result) {
+            vm.addPunch(beer, brewery, result);
+        }, function () {
+            $scope.status = 'You didn\'t name your dog.';
+        });
+    };*/
 
-        $http.get('/api/Userpurchase')
-            .then(function (response) {
-                console.log(response);
-            }
-        )
+    vm.confirmPunch = function(ev) {
+        $mdDialog.show({
+            controller: DialogController,
+            contentElement: '#myDialog',
+            parent: angular.element(document.body),
+            targetEvent: ev,
+            clickOutsideToClose: true
+        });
     };
-
 });
+
+function DialogController($scope, $mdDialog) {
+  $scope.hide = function() {
+    $mdDialog.hide();
+  };
+  $scope.cancel = function() {
+    $mdDialog.cancel();
+  };
+  $scope.answer = function(answer) {
+    $mdDialog.hide(answer);
+  };
+}

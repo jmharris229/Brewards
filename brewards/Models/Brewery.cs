@@ -32,6 +32,9 @@ namespace brewards.Models
         [Required]
         public string Brewery_zip { get; set; }
 
+
+        [Range(1000, 9999)]
+        public int Brewery_pin { get; set; }
         /*    
         public int Brewery_longitude { get; set; }
         public int Brewery_latitude { get; set; }

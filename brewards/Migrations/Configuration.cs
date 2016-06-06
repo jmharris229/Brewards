@@ -88,37 +88,37 @@ namespace brewards.Migrations
             //Jackalope
             context.Breweries.AddOrUpdate(
                 brewery => brewery.Brewery_Name,
-                new Brewery{ BreweryId = 1, Brewery_Name = "Jackalope Brewing Co.", Brewery_address = "701 8th Avenue South", Brewery_city = "Nashville", Brewery_state = "TN", Brewery_zip = "37203", Brewery_phone = "6158734313", Brewery_url = "www.jackalopebrew.com", Brewery_logo = "www.drinkabeerandplayagame.com/wp-content/uploads/2015/06/jackalope_logo_trademark.jpg", Brewery_beers = Jackalope_Beers }
+                new Brewery{ BreweryId = 1, Brewery_Name = "Jackalope Brewing Co.", Brewery_address = "701 8th Avenue South", Brewery_city = "Nashville", Brewery_state = "TN", Brewery_zip = "37203", Brewery_phone = "6158734313", Brewery_url = "www.jackalopebrew.com", Brewery_logo = "www.drinkabeerandplayagame.com/wp-content/uploads/2015/06/jackalope_logo_trademark.jpg", Brewery_beers = Jackalope_Beers, Brewery_pin = 1000 }
                 );
             //Tennessee Brew works
             context.Breweries.AddOrUpdate(
             brewery => brewery.Brewery_Name,
-            new Brewery { BreweryId = 2, Brewery_Name = "Tennessee Brew Works", Brewery_address = "809 Ewing Avenue", Brewery_city = "Nashville", Brewery_state = "TN", Brewery_zip = "37203", Brewery_phone = "6154360050", Brewery_url = "www.tnbrew.com", Brewery_logo = "www.tnbrew.com/sites/all/themes/tnbrew/img/logo.png", Brewery_beers = TBW_Beers }
+            new Brewery { BreweryId = 2, Brewery_Name = "Tennessee Brew Works", Brewery_address = "809 Ewing Avenue", Brewery_city = "Nashville", Brewery_state = "TN", Brewery_zip = "37203", Brewery_phone = "6154360050", Brewery_url = "www.tnbrew.com", Brewery_logo = "www.tnbrew.com/sites/all/themes/tnbrew/img/logo.png", Brewery_beers = TBW_Beers, Brewery_pin = 1001 }
                 );
             //Bearded Iris Brewing Co.
             context.Breweries.AddOrUpdate(
             brewery => brewery.Brewery_Name,
-            new Brewery { BreweryId = 3, Brewery_Name = "Bearded Iris Brewing Co.", Brewery_address = "101 Van Buren St.", Brewery_city = "Nashville", Brewery_state = "TN", Brewery_zip = "37208", Brewery_phone = "", Brewery_url = "www.beardedirisbrewing.com", Brewery_logo = "www.mtsusidelines.com/wp-content/uploads/2016/02/MTSUSidelines_Lifestyles_Food_BeardedIrisLogo_FILE.jpg", Brewery_beers = BI_Beers }
+            new Brewery { BreweryId = 3, Brewery_Name = "Bearded Iris Brewing Co.", Brewery_address = "101 Van Buren St.", Brewery_city = "Nashville", Brewery_state = "TN", Brewery_zip = "37208", Brewery_phone = "", Brewery_url = "www.beardedirisbrewing.com", Brewery_logo = "www.mtsusidelines.com/wp-content/uploads/2016/02/MTSUSidelines_Lifestyles_Food_BeardedIrisLogo_FILE.jpg", Brewery_beers = BI_Beers,Brewery_pin = 1002 }
                 );
             //Yazoo Brewing Co.
             context.Breweries.AddOrUpdate(
             brewery => brewery.Brewery_Name,
-            new Brewery { BreweryId = 4, Brewery_Name = "Yazoo Brewing Co.", Brewery_address = "901 Division St", Brewery_city = "Nashville", Brewery_state = "TN", Brewery_zip = "37207", Brewery_phone = "6158914649", Brewery_url = "www.yazoobrew.com", Brewery_logo = "www.yazoobrew.com/images/Yazoologo-Red.png", Brewery_beers = Yazoo_Beers }
+            new Brewery { BreweryId = 4, Brewery_Name = "Yazoo Brewing Co.", Brewery_address = "901 Division St", Brewery_city = "Nashville", Brewery_state = "TN", Brewery_zip = "37207", Brewery_phone = "6158914649", Brewery_url = "www.yazoobrew.com", Brewery_logo = "www.yazoobrew.com/images/Yazoologo-Red.png", Brewery_beers = Yazoo_Beers, Brewery_pin = 1003 }
                 );
             //TailGate Brewing Co.
             context.Breweries.AddOrUpdate(
             brewery => brewery.Brewery_Name,
-            new Brewery { BreweryId = 5, Brewery_Name = "Tailgate Brewing Co.", Brewery_address = "7300 Charlotte Pike", Brewery_city = "Nashville", Brewery_state = "TN", Brewery_zip = "37209", Brewery_phone = "6158619842", Brewery_url = "www.tailgatebeer.com/", Brewery_logo = "www.tailgatebeer.com/wp-content/uploads/2015/04/beer_menu_tailgate.jpg", Brewery_beers = Tailgate_Beers }
+            new Brewery { BreweryId = 5, Brewery_Name = "Tailgate Brewing Co.", Brewery_address = "7300 Charlotte Pike", Brewery_city = "Nashville", Brewery_state = "TN", Brewery_zip = "37209", Brewery_phone = "6158619842", Brewery_url = "www.tailgatebeer.com/", Brewery_logo = "www.tailgatebeer.com/wp-content/uploads/2015/04/beer_menu_tailgate.jpg", Brewery_beers = Tailgate_Beers, Brewery_pin = 1004 }
                 );
             //Southern Grist Brewing Co.
             context.Breweries.AddOrUpdate(
             brewery => brewery.Brewery_Name,
-            new Brewery { BreweryId = 6, Brewery_Name = "Southern Grist Brewing Co.", Brewery_address = "1201 Porter Rd", Brewery_city = "Nashville", Brewery_state = "TN", Brewery_zip = "37206", Brewery_phone = "6157271201", Brewery_url = "www.southerngristbrewing.com", Brewery_logo = "www.res.cloudinary.com/ratebeer/image/upload/w_400,c_limit/brew_26443.jpg", Brewery_beers = SG_Beers }
+            new Brewery { BreweryId = 6, Brewery_Name = "Southern Grist Brewing Co.", Brewery_address = "1201 Porter Rd", Brewery_city = "Nashville", Brewery_state = "TN", Brewery_zip = "37206", Brewery_phone = "6157271201", Brewery_url = "www.southerngristbrewing.com", Brewery_logo = "www.res.cloudinary.com/ratebeer/image/upload/w_400,c_limit/brew_26443.jpg", Brewery_beers = SG_Beers, Brewery_pin = 1005 }
                 );
             //Black Abbey Brewing Co.
             context.Breweries.AddOrUpdate(
             brewery => brewery.Brewery_Name,
-            new Brewery { BreweryId = 7, Brewery_Name = "Black Abbey Brewing Co.", Brewery_address = "2952 Sidco Drive", Brewery_city = "Nashville", Brewery_state = "TN", Brewery_zip = "37204", Brewery_phone = "6157550070", Brewery_url = "www.blackabbeybrewing.com", Brewery_logo = "www.trademarks.justia.com/media/image.php?serial=85266168", Brewery_beers = BA_Beers }
+            new Brewery { BreweryId = 7, Brewery_Name = "Black Abbey Brewing Co.", Brewery_address = "2952 Sidco Drive", Brewery_city = "Nashville", Brewery_state = "TN", Brewery_zip = "37204", Brewery_phone = "6157550070", Brewery_url = "www.blackabbeybrewing.com", Brewery_logo = "www.trademarks.justia.com/media/image.php?serial=85266168", Brewery_beers = BA_Beers, Brewery_pin = 1006 }
                 );
         }
     }

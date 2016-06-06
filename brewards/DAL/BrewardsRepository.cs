@@ -38,6 +38,18 @@ namespace brewards.DAL
             return req_Brewery;
         }
 
+        internal bool MatchPin(int pin)
+        {
+            if(_context.Breweries.FirstOrDefault(brew => brew.Brewery_pin == pin) != null)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
         internal ApplicationUser getUser(string user_id)
         {
             return _context.Users.FirstOrDefault(user => user.Id == user_id);
@@ -55,7 +67,7 @@ namespace brewards.DAL
 
         public void AddPurchase(Userpurchase purchase)
         {
-            _context.Breweries.Attach(purchase.Brewery_info);
+            purchase.Brewery_info = _context.Breweries.Find(purchase.Brewery_info.BreweryId);
             purchase.Beer_info = _context.Beers.Find(purchase.Beer_info.BeerId);
 
             _context.User_purchases.Add(purchase);
