@@ -162,7 +162,7 @@
             });
     }
 
-    /*vm.confirmPunch = function (ev, beer, brewery) {
+    vm.confirmPunch = function (ev, beer, brewery) {
         // Appending dialog to document.body to cover sidenav in docs app
         var confirm = $mdDialog.prompt()
           .title('Confirm Punch')
@@ -174,9 +174,9 @@
         }, function () {
             $scope.status = 'You didn\'t name your dog.';
         });
-    };*/
+    };
 
-    vm.confirmPunch = function(ev) {
+    /*vm.confirmPunch = function(ev) {
         $mdDialog.show({
             controller: DialogController,
             contentElement: '#myDialog',
@@ -184,7 +184,7 @@
             targetEvent: ev,
             clickOutsideToClose: true
         });
-    };
+    };*/
 });
 
 function DialogController($scope, $mdDialog) {

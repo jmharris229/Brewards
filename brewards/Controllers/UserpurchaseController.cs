@@ -31,7 +31,8 @@ namespace brewards.Controllers
         [HttpPost]
         public IHttpActionResult PostPurchase(Userpurchase purchase)
         {
-            bool PinMatch = _repo.MatchPin(purchase.Brewery_info.Brewery_pin);
+
+            bool PinMatch = _repo.MatchPin(purchase.Brewery_info.Brewery_pin, purchase.Brewery_info.Brewery_Name);
 
             if (PinMatch)
             {

@@ -38,9 +38,10 @@ namespace brewards.DAL
             return req_Brewery;
         }
 
-        internal bool MatchPin(int pin)
+        internal bool MatchPin(int pin, string brewery_name)
         {
-            if(_context.Breweries.FirstOrDefault(brew => brew.Brewery_pin == pin) != null)
+            Brewery returnedBrewery = _context.Breweries.FirstOrDefault(brew => brew.Brewery_pin == pin && brew.Brewery_Name == brewery_name);
+            if (returnedBrewery != null)
             {
                 return true;
             }
