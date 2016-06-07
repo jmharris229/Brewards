@@ -214,6 +214,7 @@
     <Compile Include="Controllers\BreweryController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\RewardstatusController.cs" />
     <Compile Include="Controllers\UserpurchaseController.cs" />
     <Compile Include="DAL\brewardsContext.cs" />
     <Compile Include="DAL\BrewardsRepository.cs" />

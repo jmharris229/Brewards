@@ -32,6 +32,23 @@ namespace brewards.DAL
             return _context.Breweries.ToList();
         }
 
+        internal void AddRedemption(Rewardstatus redemption)
+        {
+            Rewardstatus found_existing_punchcard = _context.Reward_statuses.FirstOrDefault(brewery => brewery.Brewery_info.BreweryId == redemption.Brewery_info.BreweryId);
+
+            if(found_existing_punchcard != null)
+            {
+                found_existing_punchcard.Redeem_date = redemption.Redeem_date;
+                _context.SaveChanges();
+            }
+            else
+            {
+                redemption.Brewery_info = _context.Breweries.Find(found_existing_punchcard.Brewery_info.BreweryId);
+                _context.Reward_statuses.Add(redemption);
+                _context.SaveChanges();
+            }
+        }
+
         public IEnumerable<Brewery> GetBrewery(string brewery_name)
         {
             IEnumerable<Brewery> req_Brewery = _context.Breweries.Where(br => br.Brewery_Name == brewery_name);
@@ -83,12 +100,17 @@ namespace brewards.DAL
         public List<UserPurchaseViewModel> getUserPurchases(string user_id)
         {
             List<Rewardstatus> punchcards = _context.Reward_statuses.Where(reward => reward.User.Id == user_id).ToList();
+            List<Userpurchase> filtered_purchases = new List<Userpurchase>();
             foreach (var punchcard in punchcards)
             {
-                List<Userpurchase> purchases = _context.User_purchases.Include(p => p.Brewery_info.Brewery_beers).Where(user => user.Purchaser.Id == user_id && user.Purchase_date > punchcard.Redeem_date).ToList();
+                List<Userpurchase> prefiltered_purchases = _context.User_purchases.Include(p => p.Brewery_info.Brewery_beers).Where(user => user.Purchaser.Id == user_id && user.Purchase_date > punchcard.Redeem_date).ToList();
+                prefiltered_purchases.ForEach(delegate (Userpurchase purchase)
+                    {
+                        filtered_purchases.Add(purchase);
+                    });
             }
             
-            List<UserPurchaseViewModel> viewModelPurchases = service.ToUserPurchaseViewModel(purchases);
+            List<UserPurchaseViewModel> viewModelPurchases = service.ToUserPurchaseViewModel(filtered_purchases);
             return viewModelPurchases;
         }
     }

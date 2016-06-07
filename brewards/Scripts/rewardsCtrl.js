@@ -22,8 +22,16 @@
     vm.renderPunchcards();
 
     vm.redeem = function (brewery) {
-        console.log(brewery.redeemable);
-        brewery.redeemable = false;
+        var redemption = {
+            Brewery_info: brewery            
+        }
+        $http.put('/api/reward?=', redemption)
+            .error(function () {
+                alert("failure");
+            })
+            .success(function () {
+                alert("success");
+            });
     }
 
 
