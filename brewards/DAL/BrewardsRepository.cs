@@ -34,7 +34,7 @@ namespace brewards.DAL
 
         internal void AddRedemption(Rewardstatus redemption)
         {
-            Rewardstatus found_existing_punchcard = _context.Reward_statuses.FirstOrDefault(brewery => brewery.Brewery_info.BreweryId == redemption.Brewery_info.BreweryId);
+            Rewardstatus found_existing_punchcard = _context.Reward_statuses.FirstOrDefault(punchcard => punchcard.Brewery_info.BreweryId == redemption.Brewery_info.BreweryId);
 
             if(found_existing_punchcard != null)
             {

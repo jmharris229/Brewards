@@ -10,7 +10,7 @@
                     <img class="breweryBeerLogos" src="http://{{ beer.logo }}" alt="{{beer.beer_name}}"/> {{beer.beer_name}}: {{beer.number_purchased}}         
                 </span>
             </div>
-            <md-button ng-show="brewery.redeemable" ng-click="RewardsCtrl.redeem(brewery)">REDEEM</md-button>
+            <md-button ng-show="{{brewery.number_purchased >= 8}}" ng-click="RewardsCtrl.redeem(brewery)">REDEEM</md-button>
         </md-list-item>
         <md-divider></md-divider>
     </md-list>
