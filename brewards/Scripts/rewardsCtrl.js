@@ -24,7 +24,7 @@
     vm.redeem = function (viewModelData) {
         console.log(viewModelData);
         var redemption = {
-            Brewery_info: viewModelData.Brewery_info            
+            Brewery_info: viewModelData.brewery_info            
         }
         console.log(redemption);
         console.log(redemption);
