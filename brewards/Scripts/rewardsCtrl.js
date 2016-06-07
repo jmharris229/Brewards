@@ -4,7 +4,6 @@
     vm.renderPunchcards = function () {
         $http.get('/api/Userpurchase')
             .then(function (response) {
-                console.log("hello")
                 for (var i = 0; i < response.data.length; i++) {
                     if (response.data[i].number_purchased / 8 == 0 || response.data[i].number_purchased / 8 == 1) {
                         response.data[i].number_purchased = 0;
@@ -15,7 +14,6 @@
                         response.data[i].redeemable = false;
                     }
                 }
-
                 vm.punchcardData = response.data;
             }
         )

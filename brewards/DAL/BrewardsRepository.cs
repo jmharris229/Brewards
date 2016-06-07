@@ -82,7 +82,12 @@ namespace brewards.DAL
 
         public List<UserPurchaseViewModel> getUserPurchases(string user_id)
         {
-            List<Userpurchase> purchases = _context.User_purchases.Include(p => p.Brewery_info.Brewery_beers).Where(user => user.Purchaser.Id == user_id).ToList();
+            List<Rewardstatus> punchcards = _context.Reward_statuses.Where(reward => reward.User.Id == user_id).ToList();
+            foreach (var punchcard in punchcards)
+            {
+                List<Userpurchase> purchases = _context.User_purchases.Include(p => p.Brewery_info.Brewery_beers).Where(user => user.Purchaser.Id == user_id && user.Purchase_date > punchcard.Redeem_date).ToList();
+            }
+            
             List<UserPurchaseViewModel> viewModelPurchases = service.ToUserPurchaseViewModel(purchases);
             return viewModelPurchases;
         }

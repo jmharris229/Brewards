@@ -7,11 +7,11 @@ namespace brewards.Models
 {
     public class Rewardstatus
     {
-        public int RewardstatusId { get; set; }
-        public virtual Brewery Brewery_info { get; set; }
+        public int RewardstatusId { get; set; }       
+        public DateTime Redeem_date { get; set; }
 
         //retrieves user object
-        public virtual ApplicationUser UserId { get; set; }
-        public int Number_purchased { get; set; }
+        public virtual ApplicationUser User { get; set; }
+        public virtual Brewery Brewery_info { get; set; }
     }
 }
