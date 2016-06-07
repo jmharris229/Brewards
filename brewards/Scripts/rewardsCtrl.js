@@ -9,12 +9,10 @@
                     if (response.data[i].number_purchased / 8 == 0 || response.data[i].number_purchased / 8 == 1) {
                         response.data[i].number_purchased = 0;
                         response.data[i].redeemable = true;
-                        console.log("hit divisble")
                     } else {
                         var remainder = (response.data[i].number_purchased / 8) * 8;
                         response.data[i].number_purchased = remainder;
                         response.data[i].redeemable = false;
-                        console.log("hit reaminder")
                     }
                 }
 
@@ -25,6 +23,10 @@
 
     vm.renderPunchcards();
 
+    vm.redeem = function (brewery) {
+        console.log(brewery.redeemable);
+        brewery.redeemable = false;
+    }
 
 
 
