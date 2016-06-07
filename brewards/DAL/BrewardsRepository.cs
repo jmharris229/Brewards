@@ -101,14 +101,23 @@ namespace brewards.DAL
         {
             List<Rewardstatus> punchcards = _context.Reward_statuses.Where(reward => reward.User.Id == user_id).ToList();
             List<Userpurchase> filtered_purchases = new List<Userpurchase>();
-            foreach (var punchcard in punchcards)
+
+            if(punchcards.Count > 0)
             {
-                List<Userpurchase> prefiltered_purchases = _context.User_purchases.Include(p => p.Brewery_info.Brewery_beers).Where(user => user.Purchaser.Id == user_id && user.Purchase_date > punchcard.Redeem_date).ToList();
-                prefiltered_purchases.ForEach(delegate (Userpurchase purchase)
+                foreach (var punchcard in punchcards)
+                {
+                    List<Userpurchase> prefiltered_purchases = _context.User_purchases.Include(p => p.Brewery_info.Brewery_beers).Where(user => user.Purchaser.Id == user_id && user.Purchase_date > punchcard.Redeem_date).ToList();
+                    prefiltered_purchases.ForEach(delegate (Userpurchase purchase)
                     {
                         filtered_purchases.Add(purchase);
                     });
+                }
             }
+            else
+            {
+                filtered_purchases = _context.User_purchases.Include(p => p.Brewery_info.Brewery_beers).Where(user => user.Purchaser.Id == user_id).ToList();
+            }
+
             
             List<UserPurchaseViewModel> viewModelPurchases = service.ToUserPurchaseViewModel(filtered_purchases);
             return viewModelPurchases;
