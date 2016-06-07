@@ -43,7 +43,7 @@ namespace brewards.DAL
             }
             else
             {
-                redemption.Brewery_info = _context.Breweries.Find(found_existing_punchcard.Brewery_info.BreweryId);
+                redemption.Brewery_info = _context.Breweries.Find(redemption.Brewery_info.BreweryId);
                 _context.Reward_statuses.Add(redemption);
                 _context.SaveChanges();
             }

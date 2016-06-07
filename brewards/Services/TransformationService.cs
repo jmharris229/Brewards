@@ -48,7 +48,7 @@ namespace brewards.Services
                     Beers.Add(firstBeer);
 
                     //adds the new userpurchase view model for a brewery to the dictionary
-                    brewery_dictionary.Add(purchase.Brewery_info.Brewery_Name, new UserPurchaseViewModel { brewery_name = purchase.Brewery_info.Brewery_Name, number_purchased = 1, brewery_logo = purchase.Brewery_info.Brewery_logo, purchased_beers = Beers  });
+                    brewery_dictionary.Add(purchase.Brewery_info.Brewery_Name, new UserPurchaseViewModel { Brewery_info = purchase.Brewery_info, number_purchased = 1, purchased_beers = Beers  });
                 }
             }
             //loop through the dictionary and add each brewery to the original user purchase view model list
