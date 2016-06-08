@@ -146,9 +146,23 @@
         vm.breweryInfo = vm.breweries[index];
     }
 
+    vm.pin;
+    vm.confirming = true;
+    vm.confirm = false;
+    vm.confirmPunch = function (ev, beer, brewery) {
+        console.log("add punch clicked")
+        vm.punchInfo = {
+            beer: beer,
+            brewery: brewery
+        }
+        //$('#confirmPunchPage').css('visibility', 'visible');
+        $('#confirmPunchPage').removeClass('hidden');
+       // $('#confirmPunchPage').slideUp();
+    };
+
     //post purchase to database
-    vm.addPunch = function (beer, brewery, pin) {
-        brewery.Brewery_pin = parseInt(pin);
+    vm.addPunch = function (beer, brewery) {
+        brewery.Brewery_pin = parseInt(vm.pin);
         var userpurchase = {
             Beer_info: beer,
             Brewery_info: brewery,
@@ -161,40 +175,4 @@
                 alert("success");
             });
     }
-
-    vm.confirmPunch = function (ev, beer, brewery) {
-        // Appending dialog to document.body to cover sidenav in docs app
-        var confirm = $mdDialog.prompt()
-          .title('Confirm Punch')
-          .targetEvent(ev)
-          .ok('Add punch')
-          .cancel('Cancel');
-        $mdDialog.show(confirm).then(function (result) {
-            vm.addPunch(beer, brewery, result);
-        }, function () {
-            $scope.status = 'You didn\'t name your dog.';
-        });
-    };
-
-    /*vm.confirmPunch = function(ev) {
-        $mdDialog.show({
-            controller: DialogController,
-            contentElement: '#myDialog',
-            parent: angular.element(document.body),
-            targetEvent: ev,
-            clickOutsideToClose: true
-        });
-    };*/
 });
-
-function DialogController($scope, $mdDialog) {
-  $scope.hide = function() {
-    $mdDialog.hide();
-  };
-  $scope.cancel = function() {
-    $mdDialog.cancel();
-  };
-  $scope.answer = function(answer) {
-    $mdDialog.hide(answer);
-  };
-}

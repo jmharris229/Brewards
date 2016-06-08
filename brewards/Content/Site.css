@@ -8,6 +8,7 @@
     padding-top:50px;
     padding-left: 15px;
     padding-right: 15px;
+    overflow:hidden;
 }
 
 /* Override the default bootstrap behavior where horizontal description lists 
@@ -42,4 +43,8 @@ textarea {
 .middleNavButton{
     border-right-color:white;
     border-left-color: white;
+}
+#confirmPunchPage{
+    padding-top:100%;
+    position: relative;
 }

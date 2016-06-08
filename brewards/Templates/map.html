@@ -18,30 +18,30 @@
                 <li>
                     <img class="addBeerLogo" src="http://{{beer.beer_logo}}" alt="{{beer.beer_name}}"/>
                     {{beer.beer_name}}
-                    <button ng-click="MapCtrl.confirmPunch($event, beer, MapCtrl.brewery)"</button>
+                    <button ng-click="MapCtrl.confirmPunch($event, beer, MapCtrl.brewery)">Add</button>
                     <!--<button ng-click="MapCtrl.addPunch(beer, MapCtrl.brewery)">add punch</button>-->
                 </li>
             </ul>
         </md-content>
     </md-sidenav>
-
-  <!--
-      <div style="visibility: hidden">
-        <div class="md-dialog-container" id="myDialog">
-            <md-dialog layout-padding aria-label="confirmation">
-                <h2>Pre-Rendered Dialog</h2>
-                <p>
-                    This is a pre-rendered dialog, which means that <code>$mdDialog</code> doesn't compile its
-                    template on each opening.
-                    <br /><br />
-                    The Dialog Element is a static element in the DOM, which is just visually hidden.<br />
-                    Once the dialog opens, we just fetch the element from the DOM into our dialog and upon close
-                    we restore the element back into its old DOM position.
-                </p>
-            </md-dialog>
-        </div>
-    </div>
-  -->  
-
 </section>
+
+<div id="confirmPunchPage" class="hidden">
+    <h3>Confirm Punch</h3>
+    <section id="confirmPunchInfo">
+        <img class="breweryBeerLogos" src="http://{{MapCtrl.punchInfo.beer.beer_logo}}" alt="{{MapCtrl.punchInfo.beer.beer_name}}"/>
+        <h3 class="addBreweryLogo">{{MapCtrl.punchInfo.beer.beer_name}}</h3>
+        <h5>{{MapCtrl.punchInfo.brewery.brewery_Name}}</h5>
+    </section>
+    <p ng-show="MapCtrl.confirming">Enter Brewery Pin</p>
+    <md-input-container ng-show="MapCtrl.confirming">
+        <label>Brewery Pin</label>
+        <input ng-model="MapCtrl.pin" type="text"/>
+    </md-input-container> 
+    <h4 ng-show="MapCtrl.confirm">Punch Added!</h4>
+
+    <button ng-hide="MapCtrl.confirm" ng-click="MapCtrl.addPunch(MapCtrl.punchInfo.beer, MapCtrl.punchInfo.brewery)">Add Punch</button>
+    <button ng-hide="MapCtrl.confirm" ng-click="MapCtrl.CloseConfirm()">Cancel</button>
+    <button ng-show="MapCtrl.confirm" ng-click="MapCtrl.CloseConfirm()">Close</button>
+</div>
 
