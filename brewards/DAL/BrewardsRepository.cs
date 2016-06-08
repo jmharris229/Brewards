@@ -5,6 +5,7 @@ using System.Linq;
 using System.Web;
 using System.Data.Entity;
 using brewards.Services;
+using Twilio;
 
 namespace brewards.DAL
 {
@@ -90,6 +91,21 @@ namespace brewards.DAL
 
             _context.User_purchases.Add(purchase);
             _context.SaveChanges();
+
+            IEnumerable<UserPurchaseViewModel> PunchCompletionCheck = this.GetPunchPurchases(purchase.Purchaser.Id);
+
+            if(PunchCompletionCheck.Any(punchcard => punchcard.number_purchased == 8)){
+                var accountSid = "AC28be16ce6f70bdd23fd0e145145e32d7";
+                var authToken = "9403d4ab2c431105bc14d164daec8528";
+
+                var twilio = new TwilioRestClient(accountSid, authToken);
+
+                var message = twilio.SendMessage(
+                    "+14695072619",
+                    "+12149084758",
+                    "CHEERS! There's nothing sweeter in life than free beer. head over to your Brewards app to redeem your free pour of the nectar of the gods!"
+                    );
+            }
         }
 
         public void addBrewery(Brewery newBrewery)

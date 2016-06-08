@@ -6,7 +6,7 @@
             <img src="http://{{brewery.brewery_info.brewery_logo}}" class="md-avatar" alt="{{brewery.brewery_info.brewery_Name}}" />
             <div class="md-list-item-text" layout="column">
                 <h3>{{ brewery.brewery_info.brewery_Name }}</h3>
-                <h4>Number Punches: {{ brewery.number_purchased }}</h4>
+                <h4>Number Purchases: {{ brewery.number_purchased }}</h4>
                 <span ng-repeat="beer in brewery.purchased_beers">
                     <img class="breweryBeerLogos" src="http://{{ beer.logo }}" alt="{{beer.beer_name}}" /> {{beer.beer_name}}: {{beer.number_purchased}}
                 </span>

@@ -10,6 +10,7 @@ using System.Web.Http;
 using System.Web.Http.Description;
 using Newtonsoft.Json.Linq;
 using System.Collections;
+using Twilio;
 
 namespace brewards.Controllers
 {
@@ -62,7 +63,6 @@ namespace brewards.Controllers
             {
                 return _repo.GetAllPurchases(user_id);
             }
-
         }
 
     }
