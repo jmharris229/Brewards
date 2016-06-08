@@ -10,5 +10,9 @@ app.config(['$routeProvider',function ($routeProvider) {
             templateUrl: '/Templates/rewards.html',
             controller: 'rewardsCtrl as RewardsCtrl'
         })
+        .when('/purchases', {
+            templateUrl: '/Templates/purchases.html',
+            controller: 'purchasesCtrl as PurchasesCtrl'
+        })
         .otherwise({ redirectTo: '/' });
 }]);

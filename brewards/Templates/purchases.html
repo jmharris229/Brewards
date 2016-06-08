@@ -1,0 +1,18 @@
+﻿<article>   
+    <md-list flex>
+        <md-subheader class="md-no-sticky">Purchases</md-subheader>
+        <input ng-model="searchBrewery" placeholder="Search Breweries" />
+        <md-list-item class="md-3-line" ng-repeat="brewery in PurchasesCtrl.purchaseData | orderBy: 'brewery_name' | filter:searchBrewery" ng-click="null">
+            <img src="http://{{brewery.brewery_info.brewery_logo}}" class="md-avatar" alt="{{brewery.brewery_info.brewery_Name}}" />
+            <div class="md-list-item-text" layout="column">
+                <h3>{{ brewery.brewery_info.brewery_Name }}</h3>
+                <h4>Number Punches: {{ brewery.number_purchased }}</h4>
+                <span ng-repeat="beer in brewery.purchased_beers">
+                    <img class="breweryBeerLogos" src="http://{{ beer.logo }}" alt="{{beer.beer_name}}" /> {{beer.beer_name}}: {{beer.number_purchased}}
+                </span>
+            </div>
+            <md-divider></md-divider>
+        </md-list-item>
+
+    </md-list>
+</article>

@@ -97,7 +97,7 @@ namespace brewards.DAL
             _context.Breweries.Add(newBrewery);
         }
 
-        public List<UserPurchaseViewModel> getUserPurchases(string user_id)
+        public List<UserPurchaseViewModel> GetPunchPurchases(string user_id)
         {
             List<Rewardstatus> punchcards = _context.Reward_statuses.Where(reward => reward.User.Id == user_id).ToList();
             List<Userpurchase> filtered_purchases = new List<Userpurchase>();
@@ -121,6 +121,14 @@ namespace brewards.DAL
             
             List<UserPurchaseViewModel> viewModelPurchases = service.ToUserPurchaseViewModel(filtered_purchases);
             return viewModelPurchases;
+        }
+
+        public IEnumerable<UserPurchaseViewModel> GetAllPurchases(string user_id)
+        {
+            List<Userpurchase> UserPurchases = _context.User_purchases.Where(purchase => purchase.Purchaser.Id == user_id).ToList();
+
+            List<UserPurchaseViewModel> ViewModelPurchases = service.ToUserPurchaseViewModel(UserPurchases);
+            return ViewModelPurchases;
         }
     }
 }

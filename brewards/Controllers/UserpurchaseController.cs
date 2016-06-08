@@ -50,10 +50,19 @@ namespace brewards.Controllers
             }
         }
         
-        public IEnumerable<UserPurchaseViewModel> Get()
+        public IEnumerable<UserPurchaseViewModel> Get(string filter)
         {
+            bool boolfilter = Convert.ToBoolean(filter);
             string user_id = User.Identity.GetUserId();
-            return _repo.getUserPurchases(user_id);
+            if (boolfilter)
+            {
+                return _repo.GetPunchPurchases(user_id);
+            }
+            else
+            {
+                return _repo.GetAllPurchases(user_id);
+            }
+
         }
 
     }

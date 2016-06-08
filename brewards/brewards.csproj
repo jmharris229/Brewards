@@ -304,11 +304,13 @@
     <Content Include="Scripts\lodash.min.js" />
     <Content Include="Scripts\mapCtrl.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
+    <Content Include="Scripts\purchasesCtrl.js" />
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
     <Content Include="Scripts\rewardsCtrl.js" />
     <Content Include="Scripts\_references.js" />
     <Content Include="Templates\map.html" />
+    <Content Include="Templates\purchases.html" />
     <Content Include="Templates\rewards.html" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">

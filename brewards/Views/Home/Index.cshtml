@@ -2,8 +2,22 @@
     ViewBag.Title = "Home Page";
 }
 
-    <p>this si teh home page</p>
-    <p>{{1+1}}</p>
-    <ng-view></ng-view>
+<ng-view></ng-view>
+
+<footer class="navbar navbar-inverse navbar-fixed-bottom">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-4 col-sm-4 col-xs-4">
+                <a href="/#/map">Map</a>
+            </div>
+            <div class="col-md-4 col-sm-4 col-xs-4 middleNavButton">
+                <a href="/#/rewards">Punchcards</a>
+            </div>
+            <div class="col-md-4 col-sm-4 col-xs-4">
+                <a href="/#/purchases">Purchases</a>
+            </div>
+        </div>
+    </div>
+</footer>
 
 
