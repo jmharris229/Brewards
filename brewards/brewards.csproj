@@ -231,6 +231,7 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\RewardstatusController.cs" />
+    <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Controllers\UserpurchaseController.cs" />
     <Compile Include="DAL\brewardsContext.cs" />
     <Compile Include="DAL\BrewardsRepository.cs" />
@@ -297,6 +298,7 @@
     <Content Include="Scripts\angular.js" />
     <Content Include="Scripts\angular.min.js" />
     <Content Include="Scripts\app.js" />
+    <Content Include="Scripts\authService.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="ApplicationInsights.config">
@@ -325,6 +327,7 @@
     <Content Include="Scripts\respond.min.js" />
     <Content Include="Scripts\rewardsCtrl.js" />
     <Content Include="Scripts\_references.js" />
+    <Content Include="Templates\bottomnav.html" />
     <Content Include="Templates\map.html" />
     <Content Include="Templates\purchases.html" />
     <Content Include="Templates\rewards.html" />

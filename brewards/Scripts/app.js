@@ -4,15 +4,37 @@ app.config(['$routeProvider',function ($routeProvider) {
     $routeProvider
         .when('/map', {
             templateUrl: '/Templates/map.html',
-            controller: 'mapCtrl as MapCtrl'
+            controller: 'mapCtrl as MapCtrl',
+            authorize: true
         })
         .when('/rewards', {
             templateUrl: '/Templates/rewards.html',
-            controller: 'rewardsCtrl as RewardsCtrl'
+            controller: 'rewardsCtrl as RewardsCtrl',
+            authorize: true
         })
         .when('/purchases', {
             templateUrl: '/Templates/purchases.html',
-            controller: 'purchasesCtrl as PurchasesCtrl'
+            controller: 'purchasesCtrl as PurchasesCtrl',
+            authorize: true
         })
         .otherwise({ redirectTo: '/' });
 }]);
+app.run(function ($rootScope, $location) {
+    $rootScope.$on('$routeChangeStart', function (evt, to, from) {
+        if (to.authorize === true) {
+            to.resolve = to.resolve || {}
+            if (!to.resolve.authorizationResolver) {
+                to.resolve.authorizationResolver = ['authService', function (authService) {
+                    return authService.getAuth();
+                }]
+            }
+        }
+    });
+    $rootScope.$on('$routeChangeError', function (evt, to, from, error) {
+        $location.path('/');
+        if (error instanceof AuthorizationError) {
+            $location
+                .path('/')
+        }
+    });
+});

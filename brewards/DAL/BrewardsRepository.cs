@@ -94,15 +94,15 @@ namespace brewards.DAL
 
             IEnumerable<UserPurchaseViewModel> PunchCompletionCheck = this.GetPunchPurchases(purchase.Purchaser.Id);
 
-            if(PunchCompletionCheck.Any(punchcard => punchcard.number_purchased == 8)){
-                var accountSid = "AC28be16ce6f70bdd23fd0e145145e32d7";
-                var authToken = "9403d4ab2c431105bc14d164daec8528";
+            if(PunchCompletionCheck.Any(punchcard => punchcard.Brewery_info.Brewery_Name == purchase.Brewery_info.Brewery_Name && punchcard.number_purchased == 8)){
+                var accountSid = "--";
+                var authToken = "--";
 
                 var twilio = new TwilioRestClient(accountSid, authToken);
 
                 var message = twilio.SendMessage(
-                    "+14695072619",
-                    "+12149084758",
+                    "+---",
+                    "+---",
                     "CHEERS! There's nothing sweeter in life than free beer. head over to your Brewards app to redeem your free pour of the nectar of the gods!"
                     );
             }

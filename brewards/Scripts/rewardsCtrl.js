@@ -1,4 +1,4 @@
-﻿app.controller('rewardsCtrl', function ($http, $q, $scope, $log) {
+﻿app.controller('rewardsCtrl', function ($http, $q, $scope, $log, authService) {
     var vm = this;
     vm.punchcardData;
     vm.renderPunchcards = function () {

@@ -1,4 +1,4 @@
-﻿app.controller('mapCtrl', function ($http, $q, $mdSidenav, $scope, $log, $mdDialog) {
+﻿app.controller('mapCtrl', function ($http, $q, $mdSidenav, $scope, $log, $mdDialog, authService) {
 
 
     var vm = this;
