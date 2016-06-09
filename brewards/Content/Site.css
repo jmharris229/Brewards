@@ -44,24 +44,30 @@ textarea {
     border-right-color:white;
     border-left-color: white;
 }
+
+@keyframes confirmShow {
+    from{
+        background-color:red;
+    }to{
+         background-color: white;
+     }
+}
+
+#confirmPunchPage{
+    top:100%;
+    position: absolute;
+    background-color: red;
+}
+
+#confirmPunchPage.animate-show {
+  animation: 0.5s confirmShow;
+}
 /*#confirmPunchPage{
-    padding-top:100%;
-    position: relative;
+    animation: 0.5s confirmShow;
 }*/
-.animate-show {
-  line-height: 20px;
-  opacity: 1;
-  padding: 10px;
-  border: 1px solid black;
-  background: white;
-}
 
-.animate-show.ng-hide-add, .animate-show.ng-hide-remove {
-  transition: all linear 0.5s;
-}
-
-.animate-show.ng-hide {
+/*.animate-show.ng-hide {
   line-height: 0;
   opacity: 0;
   padding: 0 10px;
-}
+}*/
