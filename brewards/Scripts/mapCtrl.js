@@ -1,4 +1,4 @@
-﻿app.controller('mapCtrl', function ($http, $q, $mdSidenav, $scope, $log, $mdDialog, authService) {
+﻿app.controller('mapCtrl', function ($http, $q, $mdSidenav, $scope, $log, $mdDialog, authService, $animate) {
 
 
     var vm = this;
@@ -149,14 +149,16 @@
     vm.pin;
     vm.confirming = true;
     vm.confirm = false;
+    vm.open = false;
     vm.confirmPunch = function (ev, beer, brewery) {
+        vm.open = true;
         console.log("add punch clicked")
         vm.punchInfo = {
             beer: beer,
             brewery: brewery
         }
         //$('#confirmPunchPage').css('visibility', 'visible');
-        $('#confirmPunchPage').removeClass('hidden');
+        //$('#confirmPunchPage').removeClass('hidden');
        // $('#confirmPunchPage').slideUp();
     };
 
@@ -175,4 +177,10 @@
                 alert("success");
             });
     }
+
+    //$animate.on('click', '#confirmPunchPage', function callback(element, phase) {
+    //    console.log("animation fired");
+    //})
+
+
 });
