@@ -101,8 +101,8 @@ namespace brewards.DAL
                 var twilio = new TwilioRestClient(accountSid, authToken);
 
                 var message = twilio.SendMessage(
-                    "+---",
-                    "+---",
+                    "+--",
+                    "+--",
                     "CHEERS! There's nothing sweeter in life than free beer. head over to your Brewards app to redeem your free pour of the nectar of the gods!"
                     );
             }
@@ -122,7 +122,7 @@ namespace brewards.DAL
             {
                 foreach (var punchcard in punchcards)
                 {
-                    List<Userpurchase> prefiltered_purchases = _context.User_purchases.Include(p => p.Brewery_info.Brewery_beers).Where(user => user.Purchaser.Id == user_id && user.Purchase_date > punchcard.Redeem_date).ToList();
+                    List<Userpurchase> prefiltered_purchases = _context.User_purchases.Include(p => p.Brewery_info.Brewery_beers).Where(user => user.Purchaser.Id == user_id && user.Purchase_date > punchcard.Redeem_date && user.Brewery_info.Brewery_Name == punchcard.Brewery_info.Brewery_Name).ToList();
                     prefiltered_purchases.ForEach(delegate (Userpurchase purchase)
                     {
                         filtered_purchases.Add(purchase);

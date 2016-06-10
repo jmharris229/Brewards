@@ -147,24 +147,23 @@
     }
 
     vm.pin;
-    vm.confirming = true;
-    vm.confirm = false;
+    vm.confirmed = false;
+    vm.confirm = true;
     vm.open = false;
     vm.confirmPunch = function (ev, beer, brewery) {
         vm.open = true;
-        console.log("add punch clicked")
         vm.punchInfo = {
             beer: beer,
             brewery: brewery
         }
-        //$('#confirmPunchPage').css('visibility', 'visible');
-        //$('#confirmPunchPage').removeClass('hidden');
-       // $('#confirmPunchPage').slideUp();
     };
 
     //post purchase to database
     vm.addPunch = function (beer, brewery) {
         brewery.Brewery_pin = parseInt(vm.pin);
+        vm.pin = "";
+        vm.confirm = false;
+        vm.confirmed = true;
         var userpurchase = {
             Beer_info: beer,
             Brewery_info: brewery,
@@ -177,10 +176,7 @@
                 alert("success");
             });
     }
-
-    //$animate.on('click', '#confirmPunchPage', function callback(element, phase) {
-    //    console.log("animation fired");
-    //})
-
-
+    vm.CloseConfirm = function () {
+        vm.open = false;
+    }
 });

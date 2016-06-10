@@ -45,23 +45,23 @@ textarea {
     border-left-color: white;
 }
 
-@keyframes confirmShow {
+/*@keyframes confirmShow {
     from{
-        background-color:red;
+        top: 100%;
     }to{
-         background-color: white;
+         top: 0%;
      }
-}
+}*/
 
-#confirmPunchPage{
+/*#confirmPunchPage{
     top:100%;
     position: absolute;
-    background-color: red;
-}
+    position: relative;
+}*/
 
-#confirmPunchPage.animate-show {
-  animation: 0.5s confirmShow;
-}
+/*#confirmPunchPage.animate-show {
+  animation: 2s confirmShow;
+}*/
 /*#confirmPunchPage{
     animation: 0.5s confirmShow;
 }*/

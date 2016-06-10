@@ -30,18 +30,18 @@
     <h3>Confirm Punch</h3>
     <section id="confirmPunchInfo">
         <img class="breweryBeerLogos" src="http://{{MapCtrl.punchInfo.beer.beer_logo}}" alt="{{MapCtrl.punchInfo.beer.beer_name}}"/>
-        <h3 class="addBreweryLogo">{{MapCtrl.punchInfo.beer.beer_name}}</h3>
+        <h3>{{MapCtrl.punchInfo.beer.beer_name}}</h3>
         <h5>{{MapCtrl.punchInfo.brewery.brewery_Name}}</h5>
     </section>
     <p ng-show="MapCtrl.confirming">Enter Brewery Pin</p>
-    <md-input-container ng-show="MapCtrl.confirming">
+    <md-input-container ng-show="MapCtrl.confirm">
         <label>Brewery Pin</label>
         <input ng-model="MapCtrl.pin" type="text"/>
     </md-input-container> 
-    <h4 ng-show="MapCtrl.confirm">Punch Added!</h4>
+    <h4 ng-show="MapCtrl.confirmed">Punch Added!</h4>
 
-    <button ng-hide="MapCtrl.confirm" ng-click="MapCtrl.addPunch(MapCtrl.punchInfo.beer, MapCtrl.punchInfo.brewery)">Add Punch</button>
-    <button ng-hide="MapCtrl.confirm" ng-click="MapCtrl.CloseConfirm()">Cancel</button>
-    <button ng-show="MapCtrl.confirm" ng-click="MapCtrl.CloseConfirm()">Close</button>
+    <button ng-show="MapCtrl.confirm" ng-click="MapCtrl.addPunch(MapCtrl.punchInfo.beer, MapCtrl.punchInfo.brewery)">Add Punch</button>
+    <button ng-show="MapCtrl.confirm" ng-click="MapCtrl.CloseConfirm()">Cancel</button>
+    <button ng-show="MapCtrl.confirmed" ng-click="MapCtrl.CloseConfirm()">Close</button>
 </div>
 
