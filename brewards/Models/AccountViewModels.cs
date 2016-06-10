@@ -79,6 +79,12 @@ namespace brewards.Models
         [Display(Name = "Confirm password")]
         [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
         public string ConfirmPassword { get; set; }
+
+        [Required]
+        [DataType(DataType.PhoneNumber)]
+        [Display(Name ="Phone Number")]
+        [StringLength(10, ErrorMessage ="The format required is 1234567890, no hyphens")]
+        public string PhoneNumber { get; set; }
     }
 
     public class ResetPasswordViewModel

@@ -1,5 +1,6 @@
 ﻿app.service('authService', function ($http) {
     var self = this;
+
     self.getAuth = function () {
        return $http.get('api/user')
             .then(function (response) {
