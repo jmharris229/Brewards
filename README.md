@@ -1,6 +1,6 @@
 # Brewards
 
-**TL;DR**: A virtual punchcard reward app for regulars to keep track of beers drank and earn rewards for doing so. This is a second semester capstone for Nashville Software School and uses C#, Javascript, Angular, ASP.Net MVC, Angular Material, Twilio, and Bootstrap.
+**TL;DR**: A virtual punchcard reward app for regulars to keep track of beers drank and earn rewards for doing so. This is a second semester capstone for Nashville Software School and uses C#, Javascript, Web API, Angular, ASP.Net MVC, Angular Material, Twilio, Google Maps, and Bootstrap.
 
 ### Description
 Brewards is an app designed to provide incentives to regulars at breweries by keeping track of their virtual "punchcards". Once a user buys a beer from a brewery, a "punchcard" is set up for that user at that specific brewery. As a user continues to visit that brewery, they will eventually have accumulated enough "punches" for a free pint. After the user has completed a "punchcard", they will receive a text notifying them that they have earned a free pint and is then redeemable at the brewery. After redemption, the punchcard is nullified and can no longer be used and removed from the users "Punchcard" section.
@@ -31,6 +31,7 @@ Brewards is an app designed to provide incentives to regulars at breweries by ke
 4. A user selects a beer and a popup will appear, asking for the brewery to confirm.
 5. After confirmation, the "punch" is added the users "punchcard" and the users profile data is updated. 
 6. A user can then check the status of their updated "punchcard" by navigating to the "Punchcards" section.
+7. A user can also see the purchase in the "Purchases" section.
 
 ### Stretch Goals
 * Build portal for new breweries to sign up.
