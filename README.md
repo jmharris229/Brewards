@@ -1,9 +1,9 @@
 # Brewards
 
-**TL;DR**: A virtual punchcard reward app for regulars to keep track of beers drank and earn rewards for doing so. This is a second semester capstone for Nashville Software School and uses C#, Javascript, Angular, ASP.Net MVC, and Bootstrap.
+**TL;DR**: A virtual punchcard reward app for regulars to keep track of beers drank and earn rewards for doing so. This is a second semester capstone for Nashville Software School and uses C#, Javascript, Angular, ASP.Net MVC, Angular Material, Twilio, and Bootstrap.
 
 ### Description
-Brewards is an app designed to provide incentives to regulars at breweries by keeping track of their virtual "punchcards". Once a user buys a beer from a brewery, a "punchcard" is set up for that user at that specific brewery. As a user continues to visit that brewery, they will eventually have accumulated enough "punches" for a free pint. After the user has completed a "punchcard", they will receive a text notifying them that they have earned a free pint and is then redeemable at the brewery and a new "punchcard" is created. 
+Brewards is an app designed to provide incentives to regulars at breweries by keeping track of their virtual "punchcards". Once a user buys a beer from a brewery, a "punchcard" is set up for that user at that specific brewery. As a user continues to visit that brewery, they will eventually have accumulated enough "punches" for a free pint. After the user has completed a "punchcard", they will receive a text notifying them that they have earned a free pint and is then redeemable at the brewery. After redemption, the punchcard is nullified and can no longer be used and removed from the users "Punchcard" section.
 
 ### Features
 * "Nearby Breweries" section:
@@ -18,9 +18,11 @@ Brewards is an app designed to provide incentives to regulars at breweries by ke
   * Visual cue to the user that they have an available "punchcard" to redeem.
   * This button is used by the brewery to authorize the redemption.
   * Once confirmed, the punchcard status becomes expired and can no longer be used.
+* "Purchases" section:
+ * Similar to the "Punchcards" section, this page provides a list of breweries you have made purchases at.
+ * Provides a running total of how many of each beer you have bought at each brewery. 
 * Notification of completed "punchcard":
- * Once a "punchcard" is completed a text message will be sent to user to notify them that they have earned a free pint.
- * A user will also get a in-app notification through a pop up with a congratulations message, with a button to the rewards section.
+ * Once a "punchcard" is completed a text message, through Twilio, will be sent to user to notify them that they have earned a free pint.
 
 ### Userflow
 1. A user logs in to the app and is automatically directed to the "Nearby Breweries" section.

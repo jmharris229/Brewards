@@ -25,8 +25,9 @@ textarea {
     max-width: 280px;
 }
 #map{
-    height: 250px;
-    width: 250px;
+    position: relative;
+    height: inherit;
+    width: inherit;
 }
 .breweryBeerLogos{
     height: 25px;
@@ -71,3 +72,16 @@ textarea {
   opacity: 0;
   padding: 0 10px;
 }*/
+.mapSearchTools{
+    position: fixed;
+    top:60px;
+    width: 100%;
+    text-align: center;
+    z-index:100;
+}
+.bottomNav{
+    z-index: 102;
+}
+.sideNav{
+    z-index:101;
+}

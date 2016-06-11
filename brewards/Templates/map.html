@@ -1,13 +1,20 @@
 ﻿<section>
-    <p>This is the map page</p>
-    <input type="text" id="manLocation" />
-    <button ng-click="MapCtrl.manualLoc()">Submit location</button>
-    <button ng-click="MapCtrl.currentLoc()">get current location</button>
 
+    <div class="mapSearchTools">
+        <!-- input div for address -->
+        <input type="text" id="manLocation" />
+
+        <!-- get current location button -->
+        <button ng-click="MapCtrl.currentLoc()"><span class="glyphicon glyphicon-screenshot" aria-hidden="true"></span></button>
+
+        <!-- submit address button -->
+        <button ng-click="MapCtrl.manualLoc()">Find Breweries</button>
+    </div>
+
+    <!-- map div -->
     <div id="map"></div>
-    <button ng-click="MapCtrl.toggleRight()">open</button>
 
-    <md-sidenav class="md-sidenav-right md-whiteframe-z2" md-component-id="right">
+    <md-sidenav class="md-sidenav-right md-whiteframe-z2 sideNav" md-component-id="right">
         <md-toolbar class="md-theme-light">
             <h1 class="md-toolbar-tools">Sidenav Right</h1>
         </md-toolbar>
@@ -44,4 +51,6 @@
     <button ng-show="MapCtrl.confirm" ng-click="MapCtrl.CloseConfirm()">Cancel</button>
     <button ng-show="MapCtrl.confirmed" ng-click="MapCtrl.CloseConfirm()">Close</button>
 </div>
+
+<div ng-include="'/Templates/bottomnav.html'"></div>
 
