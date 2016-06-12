@@ -26,8 +26,8 @@ textarea {
 }
 #map{
     position: relative;
-    height: inherit;
-    width: inherit;
+    height: 250px;
+    width: 250px;
 }
 .breweryBeerLogos{
     height: 25px;
@@ -81,6 +81,13 @@ textarea {
 }
 .bottomNav{
     z-index: 102;
+}
+.bottomNav div{
+    line-height: 50px;
+}
+.bottomNav div a{
+    font-size: 1.3em;
+    color: white;
 }
 .sideNav{
     z-index:101;
