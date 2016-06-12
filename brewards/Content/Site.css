@@ -9,6 +9,7 @@
     padding-left: 15px;
     padding-right: 15px;
     overflow:hidden;
+    height: 100%;
 }
 
 /* Override the default bootstrap behavior where horizontal description lists 
@@ -27,7 +28,11 @@ textarea {
 #map{
     position: relative;
     height: 250px;
-    width: 250px;
+}
+#mapdum{
+    height: inherit;
+    width: 100%;
+    border: 1px solid black
 }
 .breweryBeerLogos{
     height: 25px;

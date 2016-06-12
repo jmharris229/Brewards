@@ -59,11 +59,12 @@
         //api request to google maps to retrieve current city from coordinates
         $http.get('https://maps.googleapis.com/maps/api/geocode/json?latlng=' + pos.lat + ',' + pos.lng + '&key=AIzaSyCaP1HGGwG3R2OpeRAoIQaZSNkj4LeGLhk')
             .then(function (response) {
-
+                console.log(response.data);
                 //parses google maps object for city
-                var commaPos = response.data.results[2].formatted_address.indexOf(',');
+                var commaPos = response.data.results[2].formatted_address.indexOf('-');
                 var city = response.data.results[2].formatted_address.substring(0, commaPos);
                 vm.currentCity = city;
+                console.log(city);
 
                 //call to retrieve city breweries
                 getCityBreweries(pos);
@@ -80,8 +81,10 @@
                 //function to instantiate map with center at passed city
                 function initMap() {
                     map = new google.maps.Map(document.getElementById('map'), {
-                        center: { lat: pos.lat, lng: pos.lng },
-                        zoom: 8
+                        //eventually change in pos.lng and pos lat for varaibles
+                        center: { lat: 36.174465, lng: -86.767960 },
+                        zoom: 10,
+                        mapTypeControl: false
                     });
                     //for loop to place markers of breweries
                     for (var i = 0; i < response.data.length; i++) {
