@@ -1,5 +1,4 @@
 ﻿<section>
-
     <div class="mapSearchTools">
         <!-- input div for address -->
         <input type="text" id="manLocation" />
@@ -15,7 +14,7 @@
     <div id="mapdum">
         <div id="map"></div>
     </div>
-
+    <!-- side nav start -->
     <md-sidenav class="md-sidenav-right md-whiteframe-z2 sideNav" md-component-id="right">
         <md-toolbar class="md-theme-light">
             <h1 class="md-toolbar-tools">Sidenav Right</h1>
@@ -33,6 +32,27 @@
             </ul>
         </md-content>
     </md-sidenav>
+    <!-- side nav finish -->
+</section>
+
+<h3>Nearby Breweries:</h3>
+<section>
+    <md-list flex id="nearbyBreweries">
+        <!--<md-subheader class="md-no-sticky">Nearby Breweries</md-subheader>-->
+        <!--<input ng-model="searchBrewery" placeholder="Search Breweries" />-->
+        <md-list-item aria-label="" class="md-3-line" ng-repeat="brewery in MapCtrl.breweries | orderBy: 'brewery_name'" ng-click="null">
+            <img src="http://{{brewery.brewery_logo}}" class="md-avatar" alt="{{brewery.brewery_Name}}" />
+            <div class="md-list-item-text" layout="column">
+                <h3>{{ brewery.brewery_Name }}</h3>
+                <p>{{brewery.brewery_address}}</p>
+                <p>{{brewery.brewery_city}}, {{brewery.brewery_state}} {{brewery.brewery_zip}}</p>
+                <!--<span ng-repeat="beer in brewery.brewery_beers">
+                    <img class="breweryBeerLogos" src="http://{{ beer.beer_logo }}" alt="{{beer.beer_name}}" /> {{beer.beer_name}}: {{beer.number_purchased}}
+                </span>-->
+            </div>
+            <md-divider></md-divider>
+        </md-list-item>
+    </md-list>
 </section>
 
 <div id="confirmPunchPage" class="check-element animate-show" ng-show="MapCtrl.open">

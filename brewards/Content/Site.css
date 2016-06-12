@@ -97,3 +97,9 @@ textarea {
 .sideNav{
     z-index:101;
 }
+
+#nearbyBreweries{
+    height: 250px;
+    overflow: scroll;
+}
+

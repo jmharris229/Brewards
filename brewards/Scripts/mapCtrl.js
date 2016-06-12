@@ -77,6 +77,7 @@
         $http.get('/api/brewery?breweryCity=Nashville')
             .then(function (response) {
                 vm.breweries = response.data;
+                console.log(vm.breweries);
                 var map;
                 //function to instantiate map with center at passed city
                 function initMap() {
@@ -123,8 +124,7 @@
     };
 
     //sets the side nav to the specific brewery info
-    function getSpecificBrewery(brewery) {
-        
+    function getSpecificBrewery(brewery) {       
         vm.brewery = vm.breweries[brewery];
         console.log(vm.brewery);
     }
