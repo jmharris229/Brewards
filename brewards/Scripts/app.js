@@ -2,6 +2,11 @@
 
 app.config(['$routeProvider',function ($routeProvider) {
     $routeProvider
+        .when('/', {
+            templateUrl: '/Templates/home.html',
+            controller: 'homeCtrl as HomeCtrl',
+            authorize: false
+        })
         .when('/map', {
             templateUrl: '/Templates/map.html',
             controller: 'mapCtrl as MapCtrl',

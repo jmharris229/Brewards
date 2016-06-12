@@ -38,7 +38,8 @@ namespace brewards
                 "~/Scripts/mapCtrl.js",
                 "~/Scripts/rewardsCtrl.js",
                 "~/Scripts/purchasesCtrl.js",
-                "~/Scripts/authService.js"
+                "~/Scripts/authService.js",
+                "~/Scripts/homeCtrl.js"
                 ));
             bundles.Add(new ScriptBundle("~/bundles/libraries").Include(
                 "~/Scripts/lodash.min.js"

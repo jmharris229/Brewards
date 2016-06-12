@@ -309,6 +309,7 @@
     <Content Include="Scripts\angular-aria\angular-aria.min.js.map" />
     <Content Include="Scripts\angular-animate\angular-animate.min.js.map" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
+    <Content Include="Scripts\homeCtrl.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
@@ -328,6 +329,7 @@
     <Content Include="Scripts\rewardsCtrl.js" />
     <Content Include="Scripts\_references.js" />
     <Content Include="Templates\bottomnav.html" />
+    <Content Include="Templates\home.html" />
     <Content Include="Templates\map.html" />
     <Content Include="Templates\purchases.html" />
     <Content Include="Templates\rewards.html" />
