@@ -23,8 +23,8 @@
     <!-- all breweries section -->
     <section ng-switch-when="breweries">
         <h3>Nearby Breweries:</h3>
+        <span>Select a brewery</span>
         <md-list flex class="mapSwitch">
-            <!--<md-subheader class="md-no-sticky">Nearby Breweries</md-subheader>-->
             <!--<input ng-model="searchBrewery" placeholder="Search Breweries" />-->
             <md-list-item aria-label="" class="md-3-line" ng-repeat="brewery in MapCtrl.breweries | orderBy: 'brewery_name'" ng-click="MapCtrl.getSpecificBrewery($index)">
                 <img src="http://{{brewery.brewery_logo}}" class="md-avatar" alt="{{brewery.brewery_Name}}" />
