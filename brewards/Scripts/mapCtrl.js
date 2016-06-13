@@ -6,6 +6,7 @@
     vm.breweries;
     vm.brewery;
     vm.currentCity;
+    vm.punchStatus = 'breweries';
 
     //side nav functionality
     vm.toggleRight = buildToggler('right');
@@ -110,7 +111,7 @@
                                 var brewerymark = counter;
                                 marker.addListener('click', function () {
                                     map.setZoom(8);
-                                    getSpecificBrewery(brewerymark);
+                                    vm.getSpecificBrewery(brewerymark);
                                     vm.toggleRight();
                                 })
                             }
@@ -124,10 +125,16 @@
     };
 
     //sets the side nav to the specific brewery info
-    function getSpecificBrewery(brewery) {       
+    vm.getSpecificBrewery = function (brewery) {
+        console.log(brewery);
         vm.brewery = vm.breweries[brewery];
         console.log(vm.brewery);
-    }
+        vm.punchStatus = 'selectBeer';
+    };
+
+    vm.goToConfirmation = function (beer) {
+        
+    };
 
     //retrieves position and city from entered address
     vm.manualLoc = function () {
@@ -153,13 +160,14 @@
     vm.confirmed = false;
     vm.confirm = true;
     vm.open = false;
-    vm.confirmPunch = function (ev, beer, brewery) {
-        vm.open = true;
+    vm.confirmPunch = function (beer, brewery) {
+        vm.punchStatus = 'confirmation';
         vm.punchInfo = {
             beer: beer,
             brewery: brewery
         }
     };
+
 
     //post purchase to database
     vm.addPunch = function (beer, brewery) {
@@ -180,6 +188,6 @@
             });
     }
     vm.CloseConfirm = function () {
-        vm.open = false;
+        vm.punchStatus = 'breweries';
     }
 });

@@ -14,65 +14,69 @@
     <div id="mapdum">
         <div id="map"></div>
     </div>
-    <!-- side nav start -->
-    <md-sidenav class="md-sidenav-right md-whiteframe-z2 sideNav" md-component-id="right">
-        <md-toolbar class="md-theme-light">
-            <h1 class="md-toolbar-tools">Sidenav Right</h1>
-        </md-toolbar>
-        <md-content layout-padding>
-            <img class="addBreweryLogo" src="http://{{MapCtrl.brewery.brewery_logo}}" alt="{{MapCtrl.brewery.brewery_Name}}"/>
-            <h3>{{MapCtrl.brewery.brewery_Name}}</h3>
-            <ul ng-repeat="beer in MapCtrl.brewery.brewery_beers">
-                <li>
-                    <img class="addBeerLogo" src="http://{{beer.beer_logo}}" alt="{{beer.beer_name}}"/>
-                    {{beer.beer_name}}
-                    <button ng-click="MapCtrl.confirmPunch($event, beer, MapCtrl.brewery)">Add</button>
-                    <!--<button ng-click="MapCtrl.addPunch(beer, MapCtrl.brewery)">add punch</button>-->
-                </li>
-            </ul>
-        </md-content>
-    </md-sidenav>
-    <!-- side nav finish -->
+
 </section>
 
-<h3>Nearby Breweries:</h3>
-<section>
-    <md-list flex id="nearbyBreweries">
-        <!--<md-subheader class="md-no-sticky">Nearby Breweries</md-subheader>-->
-        <!--<input ng-model="searchBrewery" placeholder="Search Breweries" />-->
-        <md-list-item aria-label="" class="md-3-line" ng-repeat="brewery in MapCtrl.breweries | orderBy: 'brewery_name'" ng-click="null">
-            <img src="http://{{brewery.brewery_logo}}" class="md-avatar" alt="{{brewery.brewery_Name}}" />
-            <div class="md-list-item-text" layout="column">
-                <h3>{{ brewery.brewery_Name }}</h3>
-                <p>{{brewery.brewery_address}}</p>
-                <p>{{brewery.brewery_city}}, {{brewery.brewery_state}} {{brewery.brewery_zip}}</p>
-                <!--<span ng-repeat="beer in brewery.brewery_beers">
-                    <img class="breweryBeerLogos" src="http://{{ beer.beer_logo }}" alt="{{beer.beer_name}}" /> {{beer.beer_name}}: {{beer.number_purchased}}
-                </span>-->
-            </div>
-            <md-divider></md-divider>
-        </md-list-item>
-    </md-list>
-</section>
 
-<div id="confirmPunchPage" class="check-element animate-show" ng-show="MapCtrl.open">
-    <h3>Confirm Punch</h3>
-    <section id="confirmPunchInfo">
-        <img class="breweryBeerLogos" src="http://{{MapCtrl.punchInfo.beer.beer_logo}}" alt="{{MapCtrl.punchInfo.beer.beer_name}}"/>
-        <h3>{{MapCtrl.punchInfo.beer.beer_name}}</h3>
-        <h5>{{MapCtrl.punchInfo.brewery.brewery_Name}}</h5>
+<article ng-switch on="MapCtrl.punchStatus">
+
+    <!-- all breweries section -->
+    <section ng-switch-when="breweries">
+        <h3>Nearby Breweries:</h3>
+        <md-list flex class="mapSwitch">
+            <!--<md-subheader class="md-no-sticky">Nearby Breweries</md-subheader>-->
+            <!--<input ng-model="searchBrewery" placeholder="Search Breweries" />-->
+            <md-list-item aria-label="" class="md-3-line" ng-repeat="brewery in MapCtrl.breweries | orderBy: 'brewery_name'" ng-click="MapCtrl.getSpecificBrewery($index)">
+                <img src="http://{{brewery.brewery_logo}}" class="md-avatar" alt="{{brewery.brewery_Name}}" />
+                <div class="md-list-item-text" layout="column">
+                    <h3>{{ brewery.brewery_Name }}</h3>
+                    <p>{{brewery.brewery_address}}</p>
+                    <p>{{brewery.brewery_city}}, {{brewery.brewery_state}} {{brewery.brewery_zip}}</p>
+                </div>
+                <md-divider></md-divider>
+            </md-list-item>
+        </md-list>
     </section>
-    <p ng-show="MapCtrl.confirming">Enter Brewery Pin</p>
-    <md-input-container ng-show="MapCtrl.confirm">
-        <label>Brewery Pin</label>
-        <input ng-model="MapCtrl.pin" type="text"/>
-    </md-input-container> 
-    <h4 ng-show="MapCtrl.confirmed">Punch Added!</h4>
 
-    <button ng-show="MapCtrl.confirm" ng-click="MapCtrl.addPunch(MapCtrl.punchInfo.beer, MapCtrl.punchInfo.brewery)">Add Punch</button>
-    <button ng-show="MapCtrl.confirm" ng-click="MapCtrl.CloseConfirm()">Cancel</button>
-    <button ng-show="MapCtrl.confirmed" ng-click="MapCtrl.CloseConfirm()">Close</button>
-</div>
+    <!-- selected brewery beers -->
+    <section ng-switch-when="selectBeer">
+        <h3>Select Beer:</h3>
+        <md-list flex class="mapSwitch">
+            <md-list-item aria-label="" class="md-3-line" ng-repeat="beer in MapCtrl.brewery.brewery_beers" ng-click="MapCtrl.confirmPunch(beer, MapCtrl.brewery)">
+                <img src="http://{{beer.beer_logo}}" class="md-avatar" alt="{{beer.beer_name}}" />
+                <div class="md-list-item-text" layout="column">
+                    <h4>{{beer.beer_name}}</h4>
+                    <p>{{beer.beer_type}}</p>
+                </div>
+                <md-divider></md-divider>
+            </md-list-item>
+        </md-list>
+    </section>
 
+    <!-- add punch layout for specific beer -->
+    <div id="confirmPunchPage" ng-switch-when="confirmation">
+        <h3>Confirm Punch</h3>
+        <section id="confirmPunchInfo">
+            <img class="breweryBeerLogos" src="http://{{MapCtrl.punchInfo.beer.beer_logo}}" alt="{{MapCtrl.punchInfo.beer.beer_name}}" />
+            <h3>{{MapCtrl.punchInfo.beer.beer_name}}</h3>
+            <h5>{{MapCtrl.punchInfo.brewery.brewery_Name}}</h5>
+        </section>
+        <p ng-show="MapCtrl.confirming">Enter Brewery Pin</p>
+        <md-input-container ng-show="MapCtrl.confirm">
+            <label>Brewery Pin</label>
+            <input ng-model="MapCtrl.pin" type="text" />
+        </md-input-container>
+        <h4 ng-show="MapCtrl.confirmed">Punch Added!</h4>
+
+        <div>
+            <md-button ng-show="MapCtrl.confirm" ng-click="MapCtrl.addPunch(MapCtrl.punchInfo.beer, MapCtrl.punchInfo.brewery)">Add Punch</md-button>
+            <md-button ng-show="MapCtrl.confirm" ng-click="MapCtrl.CloseConfirm()">Cancel</md-button>
+            <md-button ng-show="MapCtrl.confirmed" ng-click="MapCtrl.CloseConfirm()">Close</md-button>
+        </div>
+
+    </div>
+</article>
+
+<!-- bottom nav include -->
 <div ng-include="'/Templates/bottomnav.html'"></div>
 
