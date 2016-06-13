@@ -7,7 +7,7 @@
         <button ng-click="MapCtrl.currentLoc()"><span class="glyphicon glyphicon-screenshot" aria-hidden="true"></span></button>
 
         <!-- submit address button -->
-        <button ng-click="MapCtrl.manualLoc()">Find Breweries</button>
+        <!--<button ng-click="MapCtrl.manualLoc()">Find Breweries</button>-->
     </div>
 
     <!-- map div -->
@@ -21,7 +21,7 @@
 <article ng-switch on="MapCtrl.punchStatus">
 
     <!-- all breweries section -->
-    <section ng-switch-when="breweries">
+    <section class="animate-switch" ng-switch-when="breweries">
         <h3>Nearby Breweries:</h3>
         <span>Select a brewery</span>
         <md-list flex class="mapSwitch">
@@ -39,8 +39,9 @@
     </section>
 
     <!-- selected brewery beers -->
-    <section ng-switch-when="selectBeer">
-        <h3>Select Beer:</h3>
+    <section class="animate-switch" ng-switch-when="selectBeer">
+        <h3>Beers on Tap</h3>
+        <span ng-click="MapCtrl.CloseConfirm()">Back to breweries</span>
         <md-list flex class="mapSwitch">
             <md-list-item aria-label="" class="md-3-line" ng-repeat="beer in MapCtrl.brewery.brewery_beers" ng-click="MapCtrl.confirmPunch(beer, MapCtrl.brewery)">
                 <img src="http://{{beer.beer_logo}}" class="md-avatar" alt="{{beer.beer_name}}" />
@@ -54,7 +55,7 @@
     </section>
 
     <!-- add punch layout for specific beer -->
-    <div id="confirmPunchPage" ng-switch-when="confirmation">
+    <div id="confirmPunchPage" class="animate-switch" ng-switch-when="confirmation">
         <h3>Confirm Punch</h3>
         <section id="confirmPunchInfo">
             <img class="breweryBeerLogos" src="http://{{MapCtrl.punchInfo.beer.beer_logo}}" alt="{{MapCtrl.punchInfo.beer.beer_name}}" />
