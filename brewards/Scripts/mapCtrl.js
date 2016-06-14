@@ -148,8 +148,8 @@
         brewery.breweryPin = parseInt(vm.pin);
         vm.pin = "";
         var userpurchase = {
-            Beer_info: beer,
-            Brewery_info: brewery,
+            BeerInfo: beer,
+            BreweryInfo: brewery,
         };
         $http.post('/api/Userpurchase?purchase=', userpurchase)
             .error(function () {
