@@ -98,15 +98,20 @@ textarea {
     z-index:101;
 }
 
-.mapSwitch{
+#punchSection{
     height: 250px;
+    position: relative;
+    border-top: 1px solid black;
+}
+.mapSwitch{
     overflow: scroll;
+    height: 200px;
 }
 
 .animate-switch.ng-animate {
   transition:all cubic-bezier(0.250, 0.460, 0.450, 0.940) 0.25s;
 
-  position:relative;
+  position:absolute;
   top:0;
   left:0;
   right:0;
