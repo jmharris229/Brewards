@@ -2,13 +2,13 @@
     <md-list flex>
         <md-subheader class="md-no-sticky">Purchases</md-subheader>
         <input ng-model="searchBrewery" placeholder="Search Breweries" />
-        <md-list-item class="md-3-line" ng-repeat="brewery in PurchasesCtrl.purchaseData | orderBy: 'brewery_name' | filter:searchBrewery" ng-click="null">
-            <img src="http://{{brewery.brewery_info.brewery_logo}}" class="md-avatar" alt="{{brewery.brewery_info.brewery_Name}}" />
+        <md-list-item class="md-3-line" ng-repeat="brewery in PurchasesCtrl.purchaseData | orderBy: 'breweryName' | filter:searchBrewery" ng-click="null">
+            <img src="http://{{brewery.brewery_info.breweryLogo}}" class="md-avatar" alt="{{brewery.brewery_info.breweryName}}" />
             <div class="md-list-item-text" layout="column">
-                <h3>{{ brewery.brewery_info.brewery_Name }}</h3>
-                <h4>Number Purchases: {{ brewery.number_purchased }}</h4>
-                <span ng-repeat="beer in brewery.purchased_beers">
-                    <img class="breweryBeerLogos" src="http://{{ beer.logo }}" alt="{{beer.beer_name}}" /> {{beer.beer_name}}: {{beer.number_purchased}}
+                <h3>{{ brewery.brewery_info.breweryName }}</h3>
+                <h4>Number Purchases: {{ brewery.numberPurchased }}</h4>
+                <span ng-repeat="beer in brewery.purchasedBeers">
+                    <img class="breweryBeerLogos" src="http://{{ beer.logo }}" alt="{{beer.beerName}}" /> {{beer.beerName}}: {{beer.numberPurchased}}
                 </span>
             </div>
             <md-divider></md-divider>

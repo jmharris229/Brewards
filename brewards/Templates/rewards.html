@@ -3,15 +3,15 @@
         <md-subheader class="md-no-sticky">PUNCHCARDS</md-subheader>
         <input placeholder="Search punchcards" ng-model="searchPunchcards"/>
         <md-list-item class="md-3-line" ng-repeat="brewery in RewardsCtrl.punchcardData | orderBy:'brewery_name' | filter:searchPunchcards" ng-click="null">
-            <img src="http://{{brewery.brewery_info.brewery_logo}}" class="md-avatar" alt="{{brewery.brewery_info.brewery_Name}}" />
+            <img src="http://{{brewery.brewery_info.breweryLogo}}" class="md-avatar" alt="{{brewery.brewery_info.breweryName}}" />
             <div class="md-list-item-text" layout="column">
-                <h3>{{ brewery.brewery_info.brewery_Name }}</h3>
-                <h4>Number Punches: {{ brewery.number_purchased }}</h4>
-                <span ng-repeat="beer in brewery.purchased_beers">
-                    <img class="breweryBeerLogos" src="http://{{ beer.logo }}" alt="{{beer.beer_name}}"/> {{beer.beer_name}}: {{beer.number_purchased}}         
+                <h3>{{ brewery.brewery_info.breweryName }}</h3>
+                <h4>Number Punches: {{ brewery.numberPurchased }}</h4>
+                <span ng-repeat="beer in brewery.purchasedBeers">
+                    <img class="breweryBeerLogos" src="http://{{ beer.logo }}" alt="{{beer.beerName}}"/> {{beer.beerName}}: {{beer.numberPurchased}}         
                 </span>
             </div>
-            <md-button ng-show="{{brewery.number_purchased >= 8}}" ng-click="RewardsCtrl.redeem(brewery)">REDEEM</md-button>
+            <md-button ng-show="{{brewery.numberPurchased >= 8}}" ng-click="RewardsCtrl.redeem(brewery)">REDEEM</md-button>
             <md-divider></md-divider>
         </md-list-item>
 

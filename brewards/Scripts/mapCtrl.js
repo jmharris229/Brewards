@@ -50,6 +50,7 @@
 
     //returns a json string of breweries just in current location city
     function getCityBreweries(pos) {
+
         //get request to web api to retrieve current city breweries, Nashville will be replaced with vm.currentcity
         $http.get('/api/brewery?breweryCity=Nashville')
             .then(function (response) {
@@ -66,12 +67,12 @@
                     });
                     //for loop to place markers of breweries
                     for (var i = 0; i < response.data.length; i++) {
-                        var address = response.data[i].brewery_address + response.data[i].brewery_city + response.data[i].brewery_state + response.data[i].brewery_zip;
+                        var address = response.data[i].breweryAddress + response.data[i].breweryCity + response.data[i].breweryState + response.data[i].breweryZip;
                         var geocoder = new google.maps.Geocoder();
                         var counter = 0;
                         geocoder.geocode({ 'address': address }, function (results, status, i) {
                             var icon = {
-                                url: "http://" + response.data[counter].brewery_logo,
+                                url: "http://" + response.data[counter].breweryLogo,
                                 scaledSize: new google.maps.Size(25,25)
                             }
                             //creates new marker
@@ -86,9 +87,8 @@
                                 //switch to mousedown for production and demo
                                 var brewerymark = counter;
                                 marker.addListener('click', function () {
-                                    map.setZoom(8);
+                                    map.setZoom(10);
                                     vm.getSpecificBrewery(brewerymark);
-                                    vm.toggleRight();
                                 })
                             }
                             counter++;
@@ -145,7 +145,7 @@
 
     //post purchase to database
     vm.addPunch = function (beer, brewery) {
-        brewery.brewery_pin = parseInt(vm.pin);
+        brewery.breweryPin = parseInt(vm.pin);
         vm.pin = "";
         var userpurchase = {
             Beer_info: beer,

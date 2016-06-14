@@ -26,12 +26,12 @@
         <span>Select a brewery</span>
         <md-list flex class="mapSwitch">
             <!--<input ng-model="searchBrewery" placeholder="Search Breweries" />-->
-            <md-list-item aria-label="" class="md-3-line" ng-repeat="brewery in MapCtrl.breweries | orderBy: 'brewery_name'" ng-click="MapCtrl.getSpecificBrewery($index)">
-                <img src="http://{{brewery.brewery_logo}}" class="md-avatar" alt="{{brewery.brewery_Name}}" />
+            <md-list-item aria-label="" class="md-3-line" ng-repeat="brewery in MapCtrl.breweries" ng-click="MapCtrl.getSpecificBrewery($index)">
+                <img src="http://{{brewery.breweryLogo}}" class="md-avatar" alt="{{brewery.breweryName}}" />
                 <div class="md-list-item-text" layout="column">
-                    <h3>{{ brewery.brewery_Name }}</h3>
-                    <p>{{brewery.brewery_address}}</p>
-                    <p>{{brewery.brewery_city}}, {{brewery.brewery_state}} {{brewery.brewery_zip}}</p>
+                    <h3>{{ brewery.breweryName }}</h3>
+                    <p>{{brewery.breweryAddress}}</p>
+                    <p>{{brewery.breweryCity}}, {{brewery.breweryState}} {{brewery.breweryZip}}</p>
                 </div>
                 <md-divider></md-divider>
             </md-list-item>
@@ -43,11 +43,11 @@
         <h3>Beers on Tap</h3>
         <span ng-click="MapCtrl.CloseConfirm()">Back to breweries</span>
         <md-list flex class="mapSwitch">
-            <md-list-item aria-label="" class="md-3-line" ng-repeat="beer in MapCtrl.brewery.brewery_beers" ng-click="MapCtrl.confirmPunch(beer, MapCtrl.brewery)">
-                <img src="http://{{beer.beer_logo}}" class="md-avatar" alt="{{beer.beer_name}}" />
+            <md-list-item aria-label="" class="md-3-line" ng-repeat="beer in MapCtrl.brewery.breweryBeers" ng-click="MapCtrl.confirmPunch(beer, MapCtrl.brewery)">
+                <img src="http://{{beer.beerLogo}}" class="md-avatar" alt="{{beer.beerName}}" />
                 <div class="md-list-item-text" layout="column">
-                    <h4>{{beer.beer_name}}</h4>
-                    <p>{{beer.beer_type}}</p>
+                    <h4>{{beer.beerName}}</h4>
+                    <p>{{beer.beerType}}</p>
                 </div>
                 <md-divider></md-divider>
             </md-list-item>
@@ -58,9 +58,9 @@
     <div id="confirmPunchPage" class="animate-switch" ng-switch-when="confirmation">
         <h3>Confirm Punch</h3>
         <section id="confirmPunchInfo">
-            <img class="breweryBeerLogos" src="http://{{MapCtrl.punchInfo.beer.beer_logo}}" alt="{{MapCtrl.punchInfo.beer.beer_name}}" />
-            <h3>{{MapCtrl.punchInfo.beer.beer_name}}</h3>
-            <h5>{{MapCtrl.punchInfo.brewery.brewery_Name}}</h5>
+            <img class="breweryBeerLogos" src="http://{{MapCtrl.punchInfo.beer.beerLogo}}" alt="{{MapCtrl.punchInfo.beer.beerName}}" />
+            <h3>{{MapCtrl.punchInfo.beer.beerName}}</h3>
+            <h5>{{MapCtrl.punchInfo.brewery.breweryName}}</h5>
         </section>
         <p ng-show="MapCtrl.confirming">Enter Brewery Pin</p>
         <md-input-container ng-show="MapCtrl.confirm">

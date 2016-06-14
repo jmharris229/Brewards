@@ -4,6 +4,7 @@
     vm.renderPunchcards = function () {
         $http.get('/api/Userpurchase?filter=true')
             .then(function (response) {
+                console.log(response.data)
                 vm.punchcardData = response.data;
             }
         )
