@@ -24,15 +24,22 @@ namespace brewards.Controllers
             _repo = repo;
         }
 
+        //put request to update the reward status table
         [HttpPut]
-        public IHttpActionResult PUT(Rewardstatus redemption)
+        public IHttpActionResult PUT(RewardStatus redemption)
         {
-            string user_id = User.Identity.GetUserId();
-            redemption.User = _repo.getUser(user_id);
-            redemption.Redeem_date = DateTime.Now;
-            _repo.AddRedemption(redemption);
-            return Ok(redemption);
+            string userId = User.Identity.GetUserId();
+            redemption.User = _repo.getUser(userId);
+            redemption.RedeemDate = DateTime.Now;
+            int redeemed = _repo.AddRedemption(redemption);
+            if (redeemed == 1)
+            {
+                return Ok(redemption);
+            }
+            else
+            {
+                return NotFound();
+            }           
         }
-
     }
 }

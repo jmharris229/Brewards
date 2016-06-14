@@ -11,7 +11,7 @@ namespace brewards.DAL
     {
         public virtual DbSet<Beer> Beers { get; set; }
         public virtual DbSet<Brewery> Breweries { get; set; }
-        public virtual DbSet<Rewardstatus> Reward_statuses { get; set; }
-        public virtual DbSet<Userpurchase> User_purchases { get; set; }
+        public virtual DbSet<RewardStatus> RewardStatuses { get; set; }
+        public virtual DbSet<Userpurchase> UserPurchases { get; set; }
     }
 }

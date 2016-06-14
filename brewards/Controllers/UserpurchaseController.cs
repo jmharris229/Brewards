@@ -28,21 +28,21 @@ namespace brewards.Controllers
             _repo = repo;
         }
         
+        //posts a user pruchase to the user purchase table
         [ResponseType(typeof(void))]
         [HttpPost]
         public IHttpActionResult PostPurchase(Userpurchase purchase)
         {
+            //checks to see if the post brewery pin matches a specific breweries pin number
+            bool pinMatch = _repo.MatchPin(purchase.BreweryInfo.BreweryPin, purchase.BreweryInfo.BreweryName);
 
-            bool PinMatch = _repo.MatchPin(purchase.Brewery_info.Brewery_pin, purchase.Brewery_info.Brewery_Name);
-
-            if (PinMatch)
+            //if there's a match updates the purchase date and adds to table
+            if (pinMatch)
             {
                 string user_id = User.Identity.GetUserId();
                 purchase.Purchaser = _repo.getUser(user_id);
-                purchase.Purchase_date = DateTime.Now;
-
+                purchase.PurchaseDate = DateTime.Now;
                 _repo.AddPurchase(purchase);
-
                 return Ok(purchase);
             }
             else
@@ -51,17 +51,18 @@ namespace brewards.Controllers
             }
         }
         
+        //gets the view model user purchase list
         public IEnumerable<UserPurchaseViewModel> Get(string filter)
         {
-            bool boolfilter = Convert.ToBoolean(filter);
-            string user_id = User.Identity.GetUserId();
-            if (boolfilter)
+            bool boolFilter = Convert.ToBoolean(filter);
+            string userId = User.Identity.GetUserId();
+            if (boolFilter)
             {
-                return _repo.GetPunchPurchases(user_id);
+                return _repo.GetPunchPurchases(userId);
             }
             else
             {
-                return _repo.GetAllPurchases(user_id);
+                return _repo.GetAllPurchases(userId);
             }
         }
 

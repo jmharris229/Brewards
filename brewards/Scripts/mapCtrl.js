@@ -8,29 +8,6 @@
     vm.currentCity;
     vm.punchStatus = 'breweries';
 
-    //side nav functionality
-    vm.toggleRight = buildToggler('right');
-    vm.isOpenRight = function () {
-        return $mdSidenav('right').isOpen();
-    }
-    function buildToggler(navID) {
-        return function () {
-            $mdSidenav(navID)
-      		.toggle()
-      		.then(function () {
-      		    $log.debug("toggle " + navID + " is done");
-      		});
-        }
-    }
-
-    vm.close = function () {
-        $mdSidenav('right').close()
-        .then(function () {
-            $log.debug("close RIGHT is done");
-        });
-    }
-    //end side nav functionality
-
     //once document is ready runs function to add google maps script and gets current location   
     $(document).ready(function () {
         var googleScript = document.createElement('script');
@@ -65,7 +42,6 @@
                 var commaPos = response.data.results[2].formatted_address.indexOf('-');
                 var city = response.data.results[2].formatted_address.substring(0, commaPos);
                 vm.currentCity = city;
-                console.log(city);
 
                 //call to retrieve city breweries
                 getCityBreweries(pos);
@@ -148,9 +124,7 @@
                 getCityBreweries(pos);
             });
     }
-    /*infoWindow.setPosition(pos);
-    infoWindow.setContent('Location found.');
-    map.setCenter(pos);*/
+
     vm.breweryInfo;
     vm.breweryView = function (index) {
         vm.breweryInfo = vm.breweries[index];
@@ -171,23 +145,27 @@
 
     //post purchase to database
     vm.addPunch = function (beer, brewery) {
-        brewery.Brewery_pin = parseInt(vm.pin);
+        brewery.brewery_pin = parseInt(vm.pin);
         vm.pin = "";
-        vm.confirm = false;
-        vm.confirmed = true;
         var userpurchase = {
             Beer_info: beer,
             Brewery_info: brewery,
         };
         $http.post('/api/Userpurchase?purchase=', userpurchase)
             .error(function () {
-                alert('failure');
+                vm.confirmDeclined = true;
             })
             .success(function () {
-                alert("success");
+                vm.confirm = false;
+                vm.confirmed = true;
             });
     }
+    //switches back to brewery list
+
     vm.CloseConfirm = function () {
         vm.punchStatus = 'breweries';
+        vm.confirm = true;
+        vm.confirmed = false;
+        vm.confirmDeclined = false;
     }
 });

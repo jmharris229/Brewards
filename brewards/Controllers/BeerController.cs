@@ -23,6 +23,7 @@ namespace brewards.Controllers
             _repo = repo;
         }
 
+        //retrieves a list of beers
         public List<Beer> Get()
         {
             return _repo.GetAllBeers();

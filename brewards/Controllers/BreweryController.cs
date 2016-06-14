@@ -26,7 +26,7 @@ namespace brewards.Controllers
         //gets a list of breweries by city name
         public IEnumerable<Brewery> GetBreweries(string breweryCity)
         {
-            IEnumerable<Brewery> cityBreweries = _repo.GetAllBreweries().FindAll(b => b.Brewery_city == breweryCity);
+            IEnumerable<Brewery> cityBreweries = _repo.GetAllBreweries().FindAll(b => b.BreweryCity == breweryCity);
             return cityBreweries;
         }
 

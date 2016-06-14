@@ -23,42 +23,74 @@ namespace brewards.DAL
             _context = context;
         }
 
+        //gets the user object
+        internal ApplicationUser getUser(string userId)
+        {
+            return _context.Users.FirstOrDefault(user => user.Id == userId);
+        }
+
+        //gets a specific beer
+        public Beer GetBeer(int beer)
+        {
+            return _context.Beers.FirstOrDefault(b => b.BeerId == beer);
+        }
+
+        //gets all beers in beer table
         public List<Beer> GetAllBeers()
         {
             return _context.Beers.ToList();
         }
 
+        //adds a new brewery to the context
+        public void addBrewery(Brewery newBrewery)
+        {
+            _context.Breweries.Add(newBrewery);
+        }
+
+        //gets all breweries in brewery table
         public List<Brewery> GetAllBreweries()
         {
             return _context.Breweries.ToList();
         }
 
-        internal void AddRedemption(Rewardstatus redemption)
+        //returns a specific brewery
+        public IEnumerable<Brewery> GetBrewery(string breweryName)
         {
-            Rewardstatus found_existing_punchcard = _context.Reward_statuses.FirstOrDefault(punchcard => punchcard.Brewery_info.BreweryId == redemption.Brewery_info.BreweryId);
+            IEnumerable<Brewery> requestedBrewery = _context.Breweries.Where(br => br.BreweryName == breweryName);
+            return requestedBrewery;
+        }
 
-            if(found_existing_punchcard != null)
+        //gets a brewery by the id
+        public Brewery getBreweryById(int breweryId)
+        {
+            return _context.Breweries.FirstOrDefault(b => b.BreweryId == breweryId);
+        }
+
+        //adds or updates a redemption to the reward status table
+        internal int AddRedemption(RewardStatus redemption)
+        {
+            //statement to determine if punchcard already exists or not
+            RewardStatus foundExistingPunchcard = _context.RewardStatuses.FirstOrDefault(punchcard => punchcard.BreweryInfo.BreweryId == redemption.BreweryInfo.BreweryId);
+
+            //a punch card was found updates redeem date and saves changes otherwise it adds a new reward status item
+            if(foundExistingPunchcard != null)
             {
-                found_existing_punchcard.Redeem_date = redemption.Redeem_date;
-                _context.SaveChanges();
+                //updates punchcard redemption date to new redeem date
+                foundExistingPunchcard.RedeemDate = redemption.RedeemDate;
+                return _context.SaveChanges();
             }
             else
             {
-                redemption.Brewery_info = _context.Breweries.Find(redemption.Brewery_info.BreweryId);
-                _context.Reward_statuses.Add(redemption);
-                _context.SaveChanges();
+                redemption.BreweryInfo = _context.Breweries.Find(redemption.BreweryInfo.BreweryId);
+                _context.RewardStatuses.Add(redemption);
+                return _context.SaveChanges();               
             }
         }
 
-        public IEnumerable<Brewery> GetBrewery(string brewery_name)
+        //matches the entered pin with a pin in the database to confirm a true purchase
+        internal bool MatchPin(int pin, string breweryName)
         {
-            IEnumerable<Brewery> req_Brewery = _context.Breweries.Where(br => br.Brewery_Name == brewery_name);
-            return req_Brewery;
-        }
-
-        internal bool MatchPin(int pin, string brewery_name)
-        {
-            Brewery returnedBrewery = _context.Breweries.FirstOrDefault(brew => brew.Brewery_pin == pin && brew.Brewery_Name == brewery_name);
+            Brewery returnedBrewery = _context.Breweries.FirstOrDefault(brew => brew.BreweryPin == pin && brew.BreweryName == breweryName);
             if (returnedBrewery != null)
             {
                 return true;
@@ -69,32 +101,18 @@ namespace brewards.DAL
             }
         }
 
-        internal ApplicationUser getUser(string user_id)
-        {
-            return _context.Users.FirstOrDefault(user => user.Id == user_id);
-        }
-
-        public Brewery getBreweryById(int brewery_id)
-        {
-            return _context.Breweries.FirstOrDefault(b => b.BreweryId == brewery_id);
-        }
-
-        public Beer GetBeer(int beer)
-        {
-            return _context.Beers.FirstOrDefault(b => b.BeerId == beer);
-        }
-
+        //adds a purhcase and if the count is at 8 on a punchcard sends Twilio text
         public void AddPurchase(Userpurchase purchase)
         {
-            purchase.Brewery_info = _context.Breweries.Find(purchase.Brewery_info.BreweryId);
-            purchase.Beer_info = _context.Beers.Find(purchase.Beer_info.BeerId);
+            purchase.BreweryInfo = _context.Breweries.Find(purchase.BreweryInfo.BreweryId);
+            purchase.BeerInfo = _context.Beers.Find(purchase.BeerInfo.BeerId);
 
-            _context.User_purchases.Add(purchase);
+            _context.UserPurchases.Add(purchase);
             _context.SaveChanges();
 
-            IEnumerable<UserPurchaseViewModel> PunchCompletionCheck = this.GetPunchPurchases(purchase.Purchaser.Id);
+            IEnumerable<UserPurchaseViewModel> punchCompletionCheck = this.GetPunchPurchases(purchase.Purchaser.Id);
 
-            if(PunchCompletionCheck.Any(punchcard => punchcard.Brewery_info.Brewery_Name == purchase.Brewery_info.Brewery_Name && punchcard.number_purchased == 8)){
+            if(punchCompletionCheck.Any(punchcard => punchcard.BreweryInfo.BreweryName == purchase.BreweryInfo.BreweryName && punchcard.NumberPurchased == 8)){
                 var accountSid = "--";
                 var authToken = "--";
 
@@ -108,43 +126,43 @@ namespace brewards.DAL
             }
         }
 
-        public void addBrewery(Brewery newBrewery)
+        //returns all of a users purchases
+        public IEnumerable<UserPurchaseViewModel> GetAllPurchases(string userId)
         {
-            _context.Breweries.Add(newBrewery);
+            List<Userpurchase> UserPurchases = _context.UserPurchases.Where(purchase => purchase.Purchaser.Id == userId).ToList();
+
+            List<UserPurchaseViewModel> ViewModelPurchases = service.ToUserPurchaseViewModel(UserPurchases);
+            return ViewModelPurchases;
         }
 
-        public List<UserPurchaseViewModel> GetPunchPurchases(string user_id)
+        //generates the view model for userpurchase punchcards
+        public List<UserPurchaseViewModel> GetPunchPurchases(string userId)
         {
-            List<Rewardstatus> punchcards = _context.Reward_statuses.Where(reward => reward.User.Id == user_id).ToList();
-            List<Userpurchase> filtered_purchases = new List<Userpurchase>();
+            //finds punchcards for a user
+            List<RewardStatus> punchcards = _context.RewardStatuses.Where(reward => reward.User.Id == userId).ToList();
 
+            List<Userpurchase> filteredPurchases = new List<Userpurchase>();
+
+            //if the list of user cards is greater than 0 then loop through cards and create a list of purhcases for those breweries
             if(punchcards.Count > 0)
             {
                 foreach (var punchcard in punchcards)
                 {
-                    List<Userpurchase> prefiltered_purchases = _context.User_purchases.Include(p => p.Brewery_info.Brewery_beers).Where(user => user.Purchaser.Id == user_id && user.Purchase_date > punchcard.Redeem_date && user.Brewery_info.Brewery_Name == punchcard.Brewery_info.Brewery_Name).ToList();
-                    prefiltered_purchases.ForEach(delegate (Userpurchase purchase)
+                    List<Userpurchase> prefilteredPurchases = _context.UserPurchases.Include(p => p.BreweryInfo.BreweryBeers).Where(user => user.Purchaser.Id == userId && user.PurchaseDate > punchcard.RedeemDate && user.BreweryInfo.BreweryName == punchcard.BreweryInfo.BreweryName).ToList();
+                    prefilteredPurchases.ForEach(delegate (Userpurchase purchase)
                     {
-                        filtered_purchases.Add(purchase);
+                        filteredPurchases.Add(purchase);
                     });
                 }
             }
             else
             {
-                filtered_purchases = _context.User_purchases.Include(p => p.Brewery_info.Brewery_beers).Where(user => user.Purchaser.Id == user_id).ToList();
+                filteredPurchases = _context.UserPurchases.Include(p => p.BreweryInfo.BreweryBeers).Where(user => user.Purchaser.Id == userId).ToList();
             }
 
-            
-            List<UserPurchaseViewModel> viewModelPurchases = service.ToUserPurchaseViewModel(filtered_purchases);
+            //send the list of filtered purchases to the view model method
+            List<UserPurchaseViewModel> viewModelPurchases = service.ToUserPurchaseViewModel(filteredPurchases);
             return viewModelPurchases;
-        }
-
-        public IEnumerable<UserPurchaseViewModel> GetAllPurchases(string user_id)
-        {
-            List<Userpurchase> UserPurchases = _context.User_purchases.Where(purchase => purchase.Purchaser.Id == user_id).ToList();
-
-            List<UserPurchaseViewModel> ViewModelPurchases = service.ToUserPurchaseViewModel(UserPurchases);
-            return ViewModelPurchases;
         }
     }
 }

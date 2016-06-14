@@ -2,9 +2,9 @@
 {
     public class Litebeer
     {
-        public int litebeerId { get; set; }
-        public string beer_name { get; set; }
-        public int number_purchased { get; set; }
-        public string logo { get; set; }
+        public int LiteBeerId { get; set; }
+        public string BeerName { get; set; }
+        public int NumberPurchased { get; set; }
+        public string Logo { get; set; }
     }
 }

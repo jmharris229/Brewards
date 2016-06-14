@@ -5,13 +5,13 @@ using System.Web;
 
 namespace brewards.Models
 {
-    public class Rewardstatus
+    public class RewardStatus
     {
         public int RewardstatusId { get; set; }       
-        public DateTime Redeem_date { get; set; }
+        public DateTime RedeemDate { get; set; }
 
         //retrieves user object
         public virtual ApplicationUser User { get; set; }
-        public virtual Brewery Brewery_info { get; set; }
+        public virtual Brewery BreweryInfo { get; set; }
     }
 }

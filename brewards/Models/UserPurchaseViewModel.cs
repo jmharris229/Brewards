@@ -8,8 +8,8 @@ namespace brewards.Models
     public class UserPurchaseViewModel
     {
         public int UserPurchaseViewModelID { get; set; }
-        public virtual Brewery Brewery_info { get; set; }
-        public int number_purchased { get; set; }
-        public virtual ICollection<Litebeer> purchased_beers { get; set; }
+        public virtual Brewery BreweryInfo { get; set; }
+        public int NumberPurchased { get; set; }
+        public virtual ICollection<Litebeer> PurchasedBeers { get; set; }
     }
 }

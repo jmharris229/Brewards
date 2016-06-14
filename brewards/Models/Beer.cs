@@ -14,22 +14,17 @@ namespace brewards.Models
 
         [MaxLength(500)]
         [Required]
-        public string Beer_name { get; set; }
+        public string BeerName { get; set; }
 
         [MaxLength(50)]
         [Required]
-        public string Beer_type { get; set; }
+        public string BeerType { get; set; }
 
         [MaxLength(600)]
-        public string Beer_logo { get; set; }
+        public string BeerLogo { get; set; }
     
-        //[ForeignKey("BreweryId")]
+        //navigation key for brewery id
         public int BreweryId { get; set; }
 
-        //navigation property for brewery object
-        //public virtual Brewery Brewery_info { get; set; }
-
-        //collection of purchases for each beer
-        //public virtual ICollection<Userpurchase> Beer_purchases { get; set; }
     }
 }

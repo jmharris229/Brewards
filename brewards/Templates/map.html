@@ -68,7 +68,7 @@
             <input ng-model="MapCtrl.pin" type="text" />
         </md-input-container>
         <h4 ng-show="MapCtrl.confirmed">Punch Added!</h4>
-
+        <h4 ng-show="MapCtrl.confirmDeclined">Wrong Pin!</h4>
         <div>
             <md-button ng-show="MapCtrl.confirm" ng-click="MapCtrl.addPunch(MapCtrl.punchInfo.beer, MapCtrl.punchInfo.brewery)">Add Punch</md-button>
             <md-button ng-show="MapCtrl.confirm" ng-click="MapCtrl.CloseConfirm()">Cancel</md-button>

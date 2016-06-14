@@ -31,94 +31,94 @@ namespace brewards.Migrations
 
             List<Beer> Jackalope_Beers = new List<Beer>
             {
-                new Beer {BeerId=1, Beer_name="Thunder Ann", Beer_type="APA", Beer_logo="www.jackalopebrew.com/new/wp-content/uploads/2013/09/jacka-thunderann-500x500.png"},
-                new Beer {BeerId=2, Beer_name="Rompo", Beer_type="Red Rye Ale", Beer_logo="www.jackalopebrew.com/new/wp-content/uploads/2013/09/jackalope-rompocirc-500x500.png"},
-                new Beer {BeerId=3, Beer_name="Bearwalker",  Beer_type="Brown Ale", Beer_logo="www.jackalopebrew.com/new/wp-content/uploads/2013/09/jackalope-bearwalker-500x500.png"},
-                new Beer {BeerId=4, Beer_name="Leghorn", Beer_type="Rye IPA", Beer_logo="www.jackalopebrew.com/new/wp-content/uploads/2013/09/jacka-leghorn-500x500.png"}
+                new Beer {BeerId=1, BeerName="Thunder Ann", BeerType="APA", BeerLogo="www.jackalopebrew.com/new/wp-content/uploads/2013/09/jacka-thunderann-500x500.png"},
+                new Beer {BeerId=2, BeerName="Rompo", BeerType="Red Rye Ale", BeerLogo="www.jackalopebrew.com/new/wp-content/uploads/2013/09/jackalope-rompocirc-500x500.png"},
+                new Beer {BeerId=3, BeerName="Bearwalker",  BeerType="Brown Ale", BeerLogo="www.jackalopebrew.com/new/wp-content/uploads/2013/09/jackalope-bearwalker-500x500.png"},
+                new Beer {BeerId=4, BeerName="Leghorn", BeerType="Rye IPA", BeerLogo="www.jackalopebrew.com/new/wp-content/uploads/2013/09/jacka-leghorn-500x500.png"}
             };
 
             List<Beer> TBW_Beers = new List<Beer>
             {
-                new Beer {BeerId=5, Beer_name="Southern Wit", Beer_type="Belgian White", Beer_logo="www.untappd.akamaized.net/site/beer_logos/beer-334613_25944_sm.jpeg"},
-                new Beer {BeerId=6, Beer_name="Extra Easy", Beer_type="American ESB", Beer_logo="www.tnbrew.com/sites/default/files/Extra_Easy_Pick.png"},
-                new Beer {BeerId=7, Beer_name="Cutaway IPA", Beer_type="IPA", Beer_logo="www.untappd.akamaized.net/site/beer_logos/beer-334960_e608a_sm.jpeg"}
+                new Beer {BeerId=5, BeerName="Southern Wit", BeerType="Belgian White", BeerLogo="www.untappd.akamaized.net/site/beer_logos/beer-334613_25944_sm.jpeg"},
+                new Beer {BeerId=6, BeerName="Extra Easy", BeerType="American ESB", BeerLogo="www.tnbrew.com/sites/default/files/Extra_Easy_Pick.png"},
+                new Beer {BeerId=7, BeerName="Cutaway IPA", BeerType="IPA", BeerLogo="www.untappd.akamaized.net/site/beer_logos/beer-334960_e608a_sm.jpeg"}
             };
 
             List<Beer> BI_Beers = new List<Beer>
             {
-                new Beer {BeerId=8, Beer_name="Lady Friend", Beer_type="Saison", Beer_logo=""},
-                new Beer {BeerId=9, Beer_name="Habit", Beer_type="IPA", Beer_logo=""},
-                new Beer {BeerId=10, Beer_name="Local Color", Beer_type="Beire de Garde", Beer_logo=""},
-                new Beer {BeerId=11, Beer_name="Suspicion", Beer_type="Dark English Mild", Beer_logo=""},
-                new Beer {BeerId=12, Beer_name="Persona", Beer_type="Pale Ale", Beer_logo=""}
+                new Beer {BeerId=8, BeerName="Lady Friend", BeerType="Saison", BeerLogo=""},
+                new Beer {BeerId=9, BeerName="Habit", BeerType="IPA", BeerLogo=""},
+                new Beer {BeerId=10, BeerName="Local Color", BeerType="Beire de Garde", BeerLogo=""},
+                new Beer {BeerId=11, BeerName="Suspicion", BeerType="Dark English Mild", BeerLogo=""},
+                new Beer {BeerId=12, BeerName="Persona", BeerType="Pale Ale", BeerLogo=""}
             };
 
             List<Beer> Yazoo_Beers = new List<Beer>
             {
-                new Beer {BeerId=13, Beer_name="Hop Project", Beer_type="IPA", Beer_logo="www.bruguru.com/hop-header1.png"},
-                new Beer {BeerId=14, Beer_name="Dos Perros", Beer_type="Brown Ale", Beer_logo="www.bruguru.com/yazoodosperros.jpg"},
-                new Beer {BeerId=15, Beer_name="Gerst", Beer_type="Amber Ale", Beer_logo="www.s-media-cache-ak0.pinimg.com/736x/80/0f/c8/800fc8b72afa7b38e3fd4c967738302e.jpg"},
-                new Beer {BeerId=16, Beer_name="Sly Rye Porter", Beer_type="Porter", Beer_logo="www.beerstreetjournal.com/wp-content/uploads/Yazoo-Sly-Rye-Porter.jpg"}
+                new Beer {BeerId=13, BeerName="Hop Project", BeerType="IPA", BeerLogo="www.bruguru.com/hop-header1.png"},
+                new Beer {BeerId=14, BeerName="Dos Perros", BeerType="Brown Ale", BeerLogo="www.bruguru.com/yazoodosperros.jpg"},
+                new Beer {BeerId=15, BeerName="Gerst", BeerType="Amber Ale", BeerLogo="www.s-media-cache-ak0.pinimg.com/736x/80/0f/c8/800fc8b72afa7b38e3fd4c967738302e.jpg"},
+                new Beer {BeerId=16, BeerName="Sly Rye Porter", BeerType="Porter", BeerLogo="www.beerstreetjournal.com/wp-content/uploads/Yazoo-Sly-Rye-Porter.jpg"}
             };
 
             List<Beer> Tailgate_Beers = new List<Beer>
             {
-                new Beer {BeerId=17, Beer_name="Peanut Butter Milk Stout", Beer_type="Milk Stout", Beer_logo="www.r1.nashvillepost.com/files/base/scomm/nvp/image/2016/04/9x16/640w/PB_Milk_Stout.570ff01f308e3.jpg"},
-                new Beer {BeerId=18, Beer_name="Grapefruit IPA", Beer_type="IPA", Beer_logo="www.worldbeerawards.com/media/bottles/25134-120x400.jpg"},
-                new Beer {BeerId=19, Beer_name="Blacktop Blonde", Beer_type="Blonde Ale", Beer_logo="www.s-media-cache-ak0.pinimg.com/236x/b1/3a/c1/b13ac1a54511d47607a898ec91f61f7c.jpg"},
-                new Beer {BeerId=20, Beer_name="Session IPA", Beer_type="IPA", Beer_logo="www.s-media-cache-ak0.pinimg.com/236x/83/00/0e/83000e2c8861a6b6fe3b54ebcb2997aa.jpg"}
+                new Beer {BeerId=17, BeerName="Peanut Butter Milk Stout", BeerType="Milk Stout", BeerLogo="www.r1.nashvillepost.com/files/base/scomm/nvp/image/2016/04/9x16/640w/PB_Milk_Stout.570ff01f308e3.jpg"},
+                new Beer {BeerId=18, BeerName="Grapefruit IPA", BeerType="IPA", BeerLogo="www.worldbeerawards.com/media/bottles/25134-120x400.jpg"},
+                new Beer {BeerId=19, BeerName="Blacktop Blonde", BeerType="Blonde Ale", BeerLogo="www.s-media-cache-ak0.pinimg.com/236x/b1/3a/c1/b13ac1a54511d47607a898ec91f61f7c.jpg"},
+                new Beer {BeerId=20, BeerName="Session IPA", BeerType="IPA", BeerLogo="www.s-media-cache-ak0.pinimg.com/236x/83/00/0e/83000e2c8861a6b6fe3b54ebcb2997aa.jpg"}
             };
 
             List<Beer> SG_Beers = new List<Beer>
             {
-                new Beer {BeerId=21, Beer_name="Bean There, Brown That", Beer_type="Brown Ale", Beer_logo=""},
-                new Beer {BeerId=22, Beer_name="Nashville Mule", Beer_type="Sour", Beer_logo=""},
-                new Beer {BeerId=23, Beer_name="Bine As Hell", Beer_type="Double IPA", Beer_logo=""},
-                new Beer {BeerId=24, Beer_name="There Gose Train", Beer_type="Gose", Beer_logo=""}
+                new Beer {BeerId=21, BeerName="Bean There, Brown That", BeerType="Brown Ale", BeerLogo=""},
+                new Beer {BeerId=22, BeerName="Nashville Mule", BeerType="Sour", BeerLogo=""},
+                new Beer {BeerId=23, BeerName="Bine As Hell", BeerType="Double IPA", BeerLogo=""},
+                new Beer {BeerId=24, BeerName="There Gose Train", BeerType="Gose", BeerLogo=""}
             };
 
             List<Beer> BA_Beers = new List<Beer>
             {
-                new Beer {BeerId=25, Beer_name="The Rose", Beer_type="Blonde Ale", Beer_logo="www.blackabbeybrewing.com/wp-content/uploads/2016/01/the-Rose-Logo-1-559x559.png"},
-                new Beer {BeerId=26, Beer_name="Potus 44", Beer_type="Porter", Beer_logo="www.blackabbeybrewing.com/wp-content/uploads/2016/01/Potus-44-Logo-1-559x559.png"},
-                new Beer {BeerId=27, Beer_name="The Champion", Beer_type="APA", Beer_logo="www.blackabbeybrewing.com/wp-content/uploads/2016/01/The-Champion-logo-1-559x559.png"},
-                new Beer {BeerId=28, Beer_name="The Chapter House", Beer_type="Red Ale", Beer_logo="www.central-distributors.com/uploads/beer-images/TheChapterHouseFinal.png"}
+                new Beer {BeerId=25, BeerName="The Rose", BeerType="Blonde Ale", BeerLogo="www.blackabbeybrewing.com/wp-content/uploads/2016/01/the-Rose-Logo-1-559x559.png"},
+                new Beer {BeerId=26, BeerName="Potus 44", BeerType="Porter", BeerLogo="www.blackabbeybrewing.com/wp-content/uploads/2016/01/Potus-44-Logo-1-559x559.png"},
+                new Beer {BeerId=27, BeerName="The Champion", BeerType="APA", BeerLogo="www.blackabbeybrewing.com/wp-content/uploads/2016/01/The-Champion-logo-1-559x559.png"},
+                new Beer {BeerId=28, BeerName="The Chapter House", BeerType="Red Ale", BeerLogo="www.central-distributors.com/uploads/beer-images/TheChapterHouseFinal.png"}
             };
 
             //Jackalope
             context.Breweries.AddOrUpdate(
-                brewery => brewery.Brewery_Name,
-                new Brewery{ BreweryId = 1, Brewery_Name = "Jackalope Brewing Co.", Brewery_address = "701 8th Avenue South", Brewery_city = "Nashville", Brewery_state = "TN", Brewery_zip = "37203", Brewery_phone = "6158734313", Brewery_url = "www.jackalopebrew.com", Brewery_logo = "www.drinkabeerandplayagame.com/wp-content/uploads/2015/06/jackalope_logo_trademark.jpg", Brewery_beers = Jackalope_Beers, Brewery_pin = 1000 }
+                brewery => brewery.BreweryName,
+                new Brewery{ BreweryId = 1, BreweryName = "Jackalope Brewing Co.", BreweryAddress = "701 8th Avenue South", BreweryCity = "Nashville", BreweryState = "TN", BreweryZip = "37203", BreweryPhone = "6158734313", BreweryUrl = "www.jackalopebrew.com", BreweryLogo = "www.drinkabeerandplayagame.com/wp-content/uploads/2015/06/jackalope_logo_trademark.jpg", BreweryBeers = Jackalope_Beers, BreweryPin = 1000 }
                 );
             //Tennessee Brew works
             context.Breweries.AddOrUpdate(
-            brewery => brewery.Brewery_Name,
-            new Brewery { BreweryId = 2, Brewery_Name = "Tennessee Brew Works", Brewery_address = "809 Ewing Avenue", Brewery_city = "Nashville", Brewery_state = "TN", Brewery_zip = "37203", Brewery_phone = "6154360050", Brewery_url = "www.tnbrew.com", Brewery_logo = "www.tnbrew.com/sites/all/themes/tnbrew/img/logo.png", Brewery_beers = TBW_Beers, Brewery_pin = 1001 }
+            brewery => brewery.BreweryName,
+            new Brewery { BreweryId = 2, BreweryName = "Tennessee Brew Works", BreweryAddress = "809 Ewing Avenue", BreweryCity = "Nashville", BreweryState = "TN", BreweryZip = "37203", BreweryPhone = "6154360050", BreweryUrl = "www.tnbrew.com", BreweryLogo = "www.tnbrew.com/sites/all/themes/tnbrew/img/logo.png", BreweryBeers = TBW_Beers, BreweryPin = 1001 }
                 );
             //Bearded Iris Brewing Co.
             context.Breweries.AddOrUpdate(
-            brewery => brewery.Brewery_Name,
-            new Brewery { BreweryId = 3, Brewery_Name = "Bearded Iris Brewing Co.", Brewery_address = "101 Van Buren St.", Brewery_city = "Nashville", Brewery_state = "TN", Brewery_zip = "37208", Brewery_phone = "", Brewery_url = "www.beardedirisbrewing.com", Brewery_logo = "www.mtsusidelines.com/wp-content/uploads/2016/02/MTSUSidelines_Lifestyles_Food_BeardedIrisLogo_FILE.jpg", Brewery_beers = BI_Beers,Brewery_pin = 1002 }
+            brewery => brewery.BreweryName,
+            new Brewery { BreweryId = 3, BreweryName = "Bearded Iris Brewing Co.", BreweryAddress = "101 Van Buren St.", BreweryCity = "Nashville", BreweryState = "TN", BreweryZip = "37208", BreweryPhone = "", BreweryUrl = "www.beardedirisbrewing.com", BreweryLogo = "www.mtsusidelines.com/wp-content/uploads/2016/02/MTSUSidelines_Lifestyles_Food_BeardedIrisLogo_FILE.jpg", BreweryBeers = BI_Beers,BreweryPin = 1002 }
                 );
             //Yazoo Brewing Co.
             context.Breweries.AddOrUpdate(
-            brewery => brewery.Brewery_Name,
-            new Brewery { BreweryId = 4, Brewery_Name = "Yazoo Brewing Co.", Brewery_address = "901 Division St", Brewery_city = "Nashville", Brewery_state = "TN", Brewery_zip = "37207", Brewery_phone = "6158914649", Brewery_url = "www.yazoobrew.com", Brewery_logo = "www.yazoobrew.com/images/Yazoologo-Red.png", Brewery_beers = Yazoo_Beers, Brewery_pin = 1003 }
+            brewery => brewery.BreweryName,
+            new Brewery { BreweryId = 4, BreweryName = "Yazoo Brewing Co.", BreweryAddress = "901 Division St", BreweryCity = "Nashville", BreweryState = "TN", BreweryZip = "37207", BreweryPhone = "6158914649", BreweryUrl = "www.yazoobrew.com", BreweryLogo = "www.yazoobrew.com/images/Yazoologo-Red.png", BreweryBeers = Yazoo_Beers, BreweryPin = 1003 }
                 );
             //TailGate Brewing Co.
             context.Breweries.AddOrUpdate(
-            brewery => brewery.Brewery_Name,
-            new Brewery { BreweryId = 5, Brewery_Name = "Tailgate Brewing Co.", Brewery_address = "7300 Charlotte Pike", Brewery_city = "Nashville", Brewery_state = "TN", Brewery_zip = "37209", Brewery_phone = "6158619842", Brewery_url = "www.tailgatebeer.com/", Brewery_logo = "www.tailgatebeer.com/wp-content/uploads/2015/04/beer_menu_tailgate.jpg", Brewery_beers = Tailgate_Beers, Brewery_pin = 1004 }
+            brewery => brewery.BreweryName,
+            new Brewery { BreweryId = 5, BreweryName = "Tailgate Brewing Co.", BreweryAddress = "7300 Charlotte Pike", BreweryCity = "Nashville", BreweryState = "TN", BreweryZip = "37209", BreweryPhone = "6158619842", BreweryUrl = "www.tailgatebeer.com/", BreweryLogo = "www.tailgatebeer.com/wp-content/uploads/2015/04/beer_menu_tailgate.jpg", BreweryBeers = Tailgate_Beers, BreweryPin = 1004 }
                 );
             //Southern Grist Brewing Co.
             context.Breweries.AddOrUpdate(
-            brewery => brewery.Brewery_Name,
-            new Brewery { BreweryId = 6, Brewery_Name = "Southern Grist Brewing Co.", Brewery_address = "1201 Porter Rd", Brewery_city = "Nashville", Brewery_state = "TN", Brewery_zip = "37206", Brewery_phone = "6157271201", Brewery_url = "www.southerngristbrewing.com", Brewery_logo = "www.res.cloudinary.com/ratebeer/image/upload/w_400,c_limit/brew_26443.jpg", Brewery_beers = SG_Beers, Brewery_pin = 1005 }
+            brewery => brewery.BreweryName,
+            new Brewery { BreweryId = 6, BreweryName = "Southern Grist Brewing Co.", BreweryAddress = "1201 Porter Rd", BreweryCity = "Nashville", BreweryState = "TN", BreweryZip = "37206", BreweryPhone = "6157271201", BreweryUrl = "www.southerngristbrewing.com", BreweryLogo = "www.res.cloudinary.com/ratebeer/image/upload/w_400,c_limit/brew_26443.jpg", BreweryBeers = SG_Beers, BreweryPin = 1005 }
                 );
             //Black Abbey Brewing Co.
             context.Breweries.AddOrUpdate(
-            brewery => brewery.Brewery_Name,
-            new Brewery { BreweryId = 7, Brewery_Name = "Black Abbey Brewing Co.", Brewery_address = "2952 Sidco Drive", Brewery_city = "Nashville", Brewery_state = "TN", Brewery_zip = "37204", Brewery_phone = "6157550070", Brewery_url = "www.blackabbeybrewing.com", Brewery_logo = "www.trademarks.justia.com/media/image.php?serial=85266168", Brewery_beers = BA_Beers, Brewery_pin = 1006 }
+            brewery => brewery.BreweryName,
+            new Brewery { BreweryId = 7, BreweryName = "Black Abbey Brewing Co.", BreweryAddress = "2952 Sidco Drive", BreweryCity = "Nashville", BreweryState = "TN", BreweryZip = "37204", BreweryPhone = "6157550070", BreweryUrl = "www.blackabbeybrewing.com", BreweryLogo = "www.trademarks.justia.com/media/image.php?serial=85266168", BreweryBeers = BA_Beers, BreweryPin = 1006 }
                 );
         }
     }
