@@ -1,0 +1,22 @@
+﻿
+<!-- all breweries section -->
+<section>
+    <h3>Breweries in</h3>
+    <span>Select a brewery</span>
+    <md-list flex>
+
+        <md-list-item aria-label="" class="md-3-line" ng-repeat="brewery in NearbyBreweriesCtrl.breweries">
+            <img src="http://{{brewery.breweryLogo}}" class="md-avatar" alt="{{brewery.breweryName}}" />
+            <div class="md-list-item-text" layout="column">
+                <h3>{{ brewery.breweryName }}</h3>
+                <p>{{brewery.breweryAddress}}</p>
+                <p>{{brewery.breweryCity}}, {{brewery.breweryState}} {{brewery.breweryZip}}</p>
+            </div>
+            <span>></span>
+            <md-divider></md-divider>
+        </md-list-item>
+    </md-list>
+</section>
+
+
+<div ng-include="'/Templates/bottomnav.html'"></div>

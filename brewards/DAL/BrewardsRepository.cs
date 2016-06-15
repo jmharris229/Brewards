@@ -54,9 +54,9 @@ namespace brewards.DAL
         }
 
         //returns a specific brewery
-        public IEnumerable<Brewery> GetBrewery(string breweryName)
+        public Brewery GetBreweryByCoords(double lat, double lng)
         {
-            IEnumerable<Brewery> requestedBrewery = _context.Breweries.Where(br => br.BreweryName == breweryName);
+            Brewery requestedBrewery = _context.Breweries.FirstOrDefault(br => br.BreweryLat == lat && br.BreweryLng == lng);
             return requestedBrewery;
         }
 

@@ -35,10 +35,11 @@ namespace brewards
                 "~/Scripts/angular-animate/angular-animate.min.js",
                 "~/Scripts/angular-aria/angular-aria.min.js",
                 "~/Scripts/app.js",
-                "~/Scripts/mapCtrl.js",
+                "~/Scripts/addPunchCtrl.js",
                 "~/Scripts/rewardsCtrl.js",
                 "~/Scripts/purchasesCtrl.js",
                 "~/Scripts/authService.js",
+                "~/Scripts/nearbyBreweriesCtrl.js",
                 "~/Scripts/homeCtrl.js"
                 ));
             bundles.Add(new ScriptBundle("~/bundles/libraries").Include(

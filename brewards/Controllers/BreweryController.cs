@@ -23,19 +23,11 @@ namespace brewards.Controllers
             _repo = repo;
         }
 
-        //gets a list of breweries by city name
-        public IEnumerable<Brewery> GetBreweries(string breweryCity)
+        public Brewery GetBreweryByCoords(string breweryCoords)
         {
-            IEnumerable<Brewery> cityBreweries = _repo.GetAllBreweries().FindAll(b => b.BreweryCity == breweryCity);
-            return cityBreweries;
+            string[] coords = breweryCoords.Split(',');
+            Brewery currentBrewery = _repo.GetBreweryByCoords(Convert.ToDouble(coords[0]), Convert.ToDouble(coords[1]));
+            return currentBrewery;
         }
-
-        //gets a specific brewery by brewery name
-        public IEnumerable<Brewery> GetBreweryByName(string breweryName)
-        {
-            IEnumerable<Brewery> brewery = _repo.GetBrewery(breweryName);
-            return brewery;
-        }
-
     }
 }

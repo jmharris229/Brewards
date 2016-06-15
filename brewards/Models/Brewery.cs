@@ -32,6 +32,9 @@ namespace brewards.Models
         [Required]
         public string BreweryZip { get; set; }
 
+        public double BreweryLat { get; set; }
+        public double BreweryLng { get; set; }
+
         [Range(1000, 9999)]
         [NonSerialized]
         private int _breweryPin;

@@ -3,7 +3,7 @@
 
     authService.getAuth().then(function(loginStatus){
         if (loginStatus) {
-            $location.url('/map');
+            $location.url('/addpunch');
         } else {
             $location.url('/');          
         }

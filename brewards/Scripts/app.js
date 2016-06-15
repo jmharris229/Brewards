@@ -7,9 +7,9 @@ app.config(['$routeProvider',function ($routeProvider) {
             controller: 'homeCtrl as HomeCtrl',
             authorize: false
         })
-        .when('/map', {
-            templateUrl: '/Templates/map.html',
-            controller: 'mapCtrl as MapCtrl',
+        .when('/addpunch', {
+            templateUrl: '/Templates/addpunch.html',
+            controller: 'addPunchCtrl as AddPunchCtrl',
             authorize: true
         })
         .when('/rewards', {
@@ -20,6 +20,11 @@ app.config(['$routeProvider',function ($routeProvider) {
         .when('/purchases', {
             templateUrl: '/Templates/purchases.html',
             controller: 'purchasesCtrl as PurchasesCtrl',
+            authorize: true
+        })
+        .when('/nearbyBreweries', {
+            templateUrl: '/Templates/nearbyBreweries.html',
+            controller: 'nearbyBreweriesCtrl as NearbyBreweriesCtrl',
             authorize: true
         })
         .otherwise({ redirectTo: '/' });
