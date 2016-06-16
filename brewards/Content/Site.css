@@ -136,3 +136,46 @@ textarea {
     display:inline-block;
 }
 
+.punchStack{
+  width: 300px;
+  height: 250px;
+  position: relative;
+  max-width: 100%;
+}
+.punchStack-queue{
+  transition: all 1s;
+}
+.punchStack-queue .punchcard{
+  transform-origin: 50% -65%;
+  max-width: 100%;
+  border: 1px solid black;
+  box-shadow: 1px -1px 4px black;
+}
+.punchStack .punchcard{
+  position: absolute;
+  transition: 1s;
+  background-color: white;
+  /*height: 500px;*/
+  width: 100%;
+}
+.punchStack-queue .punchcard:nth-child(2){
+  position: relative;
+  /*height: 500px;*/
+}
+.punchStack-queue.active{
+  transform: scale(0.9);
+}
+.punchStack-queue.active .punchcard:first-child{
+  transform: scale(0.7);
+}
+/*.punchStack-queue.active .punchcard:nth-child(2){
+  transform: scale(0.8);
+  background-color: green;
+}
+.punchStack-queue.active .punchcard:nth-child(3){
+  background-color: red;
+  transform: scale(0.9);
+}*/
+
+
+

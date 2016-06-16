@@ -1,5 +1,5 @@
-﻿<article>
-    <md-card ng-repeat="brewery in RewardsCtrl.punchcardData | orderBy:'brewery_name' | filter:searchPunchcards">
+﻿<article class="punchStack punchStack-queue">
+    <md-card class="punchcard" ng-repeat="brewery in RewardsCtrl.punchcardData | orderBy:'brewery_name' | filter:searchPunchcards">
         <md-card-header>
             <md-card-avatar>
                 <md-icon class="md-avatar-icon" md-svg-icon="http://{{brewery.breweryInfo.breweryLogo}}"></md-icon>

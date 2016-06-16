@@ -25,4 +25,15 @@
                 alert("success");
             });
     }
+
+    function toggleQueue() {
+        if ($('.punchStack').hasClass('active')) {
+            $('.punchStack').removeClass('active');
+        } else {
+            $('.punchStack').addClass('active');
+        }
+
+    }
+    
+    //toggleQueue();
 });
