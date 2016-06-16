@@ -41,6 +41,7 @@ textarea {
 .addBeerLogo{
     height: 30px;
     width: 30px;
+    display:inline-block;
 }
 .addBreweryLogo{
     height: 100px;
@@ -130,5 +131,8 @@ textarea {
 .geoLogo{
     width: 100px;
     height: 100px;
+}
+.punchIcons{
+    display:inline-block;
 }
 

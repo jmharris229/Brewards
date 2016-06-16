@@ -1,4 +1,4 @@
-﻿app.controller('nearbyBreweriesCtrl', function ($http) {
+﻿app.controller('nearbyBreweriesCtrl', function ($http, authService, $location) {
     var vm = this;
     vm.breweries;
 
@@ -11,4 +11,10 @@
             })
     }
     vm.listOfBreweries();
+
+    vm.selectBrewery = function (brewery) {
+        authService.atBrewery = false;
+        authService.actualBrewery = brewery;
+        $location.url('/addPunch');
+    }
 });

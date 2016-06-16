@@ -3,21 +3,29 @@
     var vm = this;
     vm.breweries;
     vm.brewery;
+    vm.beer;
     vm.punchStatus = 'breweries';
     vm.atBrewery = true;
-    //once document is ready runs function to add google maps script and gets current location   
-    $(document).ready(function () {
-        var googleScript = document.createElement('script');
-        googleScript.setAttribute('src', "https://maps.googleapis.com/maps/api/js?key=AIzaSyCaP1HGGwG3R2OpeRAoIQaZSNkj4LeGLhk&callback=CurrentLoc");
-        window.CurrentLoc = function () {
-            if (navigator.geolocation) {
-                navigator.geolocation.getCurrentPosition(getCurrentBrewery)
-            } else {
-                Alert("device does not support geolocation");
+    //once document is ready runs function to add google maps script and gets current location
+    console.log(authService.atBrewery);
+    if (authService.atBrewery) {
+
+        $(document).ready(function () {
+            var googleScript = document.createElement('script');
+            googleScript.setAttribute('src', "https://maps.googleapis.com/maps/api/js?key=AIzaSyCaP1HGGwG3R2OpeRAoIQaZSNkj4LeGLhk&callback=CurrentLoc");
+            window.CurrentLoc = function () {
+                if (navigator.geolocation) {
+                    navigator.geolocation.getCurrentPosition(getCurrentBrewery)
+                } else {
+                    Alert("device does not support geolocation");
+                }
             }
-        }
-        $('head').append(googleScript);
-    });
+            $('head').append(googleScript);
+        });
+    } else {
+        vm.currentBreweryObject = authService.actualBrewery;
+    }
+
 
     vm.currentLoc = function () {
         window.CurrentLoc();
@@ -59,6 +67,7 @@
     }
 
     vm.goToNearbyBreweries = function () {
+
         $location.url('/nearbyBreweries');
     }
 
@@ -78,6 +87,7 @@
 
     //post purchase to database
     vm.addPunch = function (beer, brewery) {
+        console.log(beer, brewery);
         brewery.breweryPin = parseInt(vm.pin);
         vm.pin = "";
         var userpurchase = {

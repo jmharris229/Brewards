@@ -1,4 +1,4 @@
-﻿<!-- section to show only if person not at brewery based on coordinates -->
+﻿    <!-- section to show only if person not at brewery based on coordinates -->
 <article ng-hide="AddPunchCtrl.atBrewery">
     Oh No, looks like we couldn't find a brewery that you are currently located at. 
 
@@ -40,7 +40,7 @@
         <h3>Beers on Tap for {{AddPunchCtrl.currentBreweryObject.breweryName}}</h3>
         <span ng-click="AddPunchCtrl.CloseConfirm()">Back to breweries</span>
         <md-list flex class="mapSwitch">
-            <md-list-item aria-label="" class="md-3-line" ng-repeat="beer in AddPunchCtrl.currentBreweryObject.breweryBeers" ng-click="AddPunchCtrl.confirmPunch(beer, AddPunchCtrl.brewery)">
+            <md-list-item aria-label="" class="md-3-line" ng-repeat="beer in AddPunchCtrl.currentBreweryObject.breweryBeers" ng-click="AddPunchCtrl.confirmPunch(beer, AddPunchCtrl.currentBreweryObject)">
                 <img src="http://{{beer.beerLogo}}" class="md-avatar" alt="{{beer.beerName}}" />
                 <div class="md-list-item-text" layout="column">
                     <h4>{{beer.beerName}}</h4>

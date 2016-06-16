@@ -5,7 +5,7 @@
     <span>Select a brewery</span>
     <md-list flex>
 
-        <md-list-item aria-label="" class="md-3-line" ng-repeat="brewery in NearbyBreweriesCtrl.breweries">
+        <md-list-item aria-label="" class="md-3-line" ng-repeat="brewery in NearbyBreweriesCtrl.breweries" ng-click="NearbyBreweriesCtrl.selectBrewery(brewery)">
             <img src="http://{{brewery.breweryLogo}}" class="md-avatar" alt="{{brewery.breweryName}}" />
             <div class="md-list-item-text" layout="column">
                 <h3>{{ brewery.breweryName }}</h3>

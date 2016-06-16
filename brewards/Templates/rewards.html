@@ -1,7 +1,63 @@
 ﻿<article>
-    <md-list flex>
+    <md-card ng-repeat="brewery in RewardsCtrl.punchcardData | orderBy:'brewery_name' | filter:searchPunchcards">
+        <md-card-header>
+            <md-card-avatar>
+                <md-icon class="md-avatar-icon" md-svg-icon="http://{{brewery.breweryInfo.breweryLogo}}"></md-icon>
+            </md-card-avatar>
+            <md-card-header-text>
+                <span class="md-title">{{brewery.breweryInfo.breweryName}}</span>
+                <span class="md-subhead" ng-if="brewery.breweryInfo.numberPurchased == 8">Redeemable</span>
+            </md-card-header-text>
+        </md-card-header>
+        <!--<img ng-src="{{imagePath}}" class="md-card-image" alt="Washed Out">-->
+        <md-card-title>
+            <md-card-title-text>
+                <span class="md-headline">{{brewery.breweryInfo.breweryName}}</span>
+                <!--<span class="md-subhead">Description</span>-->
+            </md-card-title-text>
+        </md-card-title>
+        <md-card-content>
+            <div layout="row" layout-align="start center">
+                <span ng-repeat="beer in brewery.purchasedBeers"><img class="breweryBeerLogos" src="http://{{beer.logo}}" /></span>
+            </div>
+        </md-card-content>
+        <section>
+            <img class="addBeerLogo" src="http://{{brewery.breweryInfo.breweryLogo}}"/>
+            <img class="addBeerLogo" src="http://{{brewery.breweryInfo.breweryLogo}}"/>
+            <img class="addBeerLogo" src="http://{{brewery.breweryInfo.breweryLogo}}"/>
+            <img class="addBeerLogo" src="http://{{brewery.breweryInfo.breweryLogo}}"/>
+        </section>
+        <section>
+            <img class="addBeerLogo" src="http://{{brewery.breweryInfo.breweryLogo}}"/>
+            <img class="addBeerLogo" src="http://{{brewery.breweryInfo.breweryLogo}}"/>
+            <img class="addBeerLogo" src="http://{{brewery.breweryInfo.breweryLogo}}"/>
+            <img class="addBeerLogo" src="http://{{brewery.breweryInfo.breweryLogo}}"/>
+        </section>
+
+        <!--<md-card-actions class="punchIcons" layout="row" layout-align="start center">
+
+        </md-card-actions>
+        <md-card-actions class="punchIcons" layout="row" layout-align="start center">
+            <div><img class="addBeerLogo" src="http://{{brewery.breweryInfo.breweryLogo}}"</div>
+            <div><img class="addBeerLogo" src="http://{{brewery.breweryInfo.breweryLogo}}"</div>
+            <div><img class="addBeerLogo" src="http://{{brewery.breweryInfo.breweryLogo}}"</div>
+            <div><img class="addBeerLogo" src="http://{{brewery.breweryInfo.breweryLogo}}"</div>
+        </md-card-actions>-->
+    </md-card>
+
+
+
+
+
+
+
+    <!--<md-list flex>
         <md-subheader class="md-no-sticky">PUNCHCARDS</md-subheader>
         <input placeholder="Search punchcards" ng-model="searchPunchcards"/>
+
+
+
+
         <md-list-item class="md-3-line" ng-repeat="brewery in RewardsCtrl.punchcardData | orderBy:'brewery_name' | filter:searchPunchcards" ng-click="null">
             <img src="http://{{brewery.breweryInfo.breweryLogo}}" class="md-avatar" alt="{{brewery.breweryInfo.breweryName}}" />
             <div class="md-list-item-text" layout="column">
@@ -15,7 +71,7 @@
             <md-divider></md-divider>
         </md-list-item>
 
-    </md-list>
+    </md-list>-->
 </article>
 <div ng-include="'/Templates/bottomnav.html'"></div>
 
