@@ -59,5 +59,36 @@ namespace brewards.Services
             //return the list
             return viewModelPurchases;
         }
+
+        public List<BreweryNewsViewModel> ToBreweryNewsViewModel(List<BreweryNews> news)
+        {
+            Dictionary<DateTime, BreweryNewsViewModel> offersByDate = new Dictionary<DateTime, BreweryNewsViewModel>();
+            foreach(var offer in news)
+            {
+                if(offersByDate.ContainsKey(offer.NewsDate))
+                {
+                    DateFeed newOffer = new DateFeed { BreweryLogo = offer.BreweryInfo.BreweryLogo, BreweryName = offer.BreweryInfo.BreweryName, BreweryNews = offer.NewsMessage };
+
+                    offersByDate[offer.NewsDate].NewsFeed.Add(newOffer);
+                }
+                else
+                {
+                    List<DateFeed> newDateFeed = new List<DateFeed>();
+
+                    DateFeed newDate = new DateFeed { BreweryName = offer.BreweryInfo.BreweryName, BreweryLogo = offer.BreweryInfo.BreweryLogo, BreweryNews = offer.NewsMessage };
+
+                    newDateFeed.Add(newDate);
+
+                    BreweryNewsViewModel newOffer = new BreweryNewsViewModel { NewsDate = offer.NewsDate, NewsFeed = newDateFeed };
+                    offersByDate.Add(offer.NewsDate, newOffer);
+                }
+            }
+            List<BreweryNewsViewModel> OffersGroupedByDate = new List<BreweryNewsViewModel>();
+            foreach(var date in offersByDate)
+            {
+                OffersGroupedByDate.Add(date.Value);
+            }
+            return OffersGroupedByDate;
+        }
     }
 }

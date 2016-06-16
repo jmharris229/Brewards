@@ -28,7 +28,6 @@ namespace brewards.Migrations
             //      new Person { FullName = "Rowan Miller" }
             //    );
             //
-
             List<Beer> Jackalope_Beers = new List<Beer>
             {
                 new Beer {BeerId=1, BeerName="Thunder Ann", BeerType="APA", BeerLogo="www.jackalopebrew.com/new/wp-content/uploads/2013/09/jacka-thunderann-500x500.png"},
@@ -85,41 +84,90 @@ namespace brewards.Migrations
                 new Beer {BeerId=28, BeerName="The Chapter House", BeerType="Red Ale", BeerLogo="www.central-distributors.com/uploads/beer-images/TheChapterHouseFinal.png"}
             };
 
+            Brewery Jackalope = new Brewery { BreweryId = 1, BreweryName = "Jackalope Brewing Co.", BreweryAddress = "701 8th Avenue South", BreweryCity = "Nashville", BreweryState = "TN", BreweryZip = "37203", BreweryPhone = "6158734313", BreweryUrl = "www.jackalopebrew.com", BreweryLogo = "www.drinkabeerandplayagame.com/wp-content/uploads/2015/06/jackalope_logo_trademark.jpg", BreweryBeers = Jackalope_Beers, BreweryPin = 1000, BreweryLat = 36.150338, BreweryLng = -86.779493 };
+
             //Jackalope
             context.Breweries.AddOrUpdate(
                 brewery => brewery.BreweryName,
-                new Brewery{ BreweryId = 1, BreweryName = "Jackalope Brewing Co.", BreweryAddress = "701 8th Avenue South", BreweryCity = "Nashville", BreweryState = "TN", BreweryZip = "37203", BreweryPhone = "6158734313", BreweryUrl = "www.jackalopebrew.com", BreweryLogo = "www.drinkabeerandplayagame.com/wp-content/uploads/2015/06/jackalope_logo_trademark.jpg", BreweryBeers = Jackalope_Beers, BreweryPin = 1000, BreweryLat = 36.150338, BreweryLng = -86.779493 }
+                Jackalope
                 );
+
+            Brewery TBW = new Brewery { BreweryId = 2, BreweryName = "Tennessee Brew Works", BreweryAddress = "809 Ewing Avenue", BreweryCity = "Nashville", BreweryState = "TN", BreweryZip = "37203", BreweryPhone = "6154360050", BreweryUrl = "www.tnbrew.com", BreweryLogo = "www.tnbrew.com/sites/all/themes/tnbrew/img/logo.png", BreweryBeers = TBW_Beers, BreweryPin = 1001, BreweryLat = 36.150350, BreweryLng = -86.776266 };
+
             //Tennessee Brew works
             context.Breweries.AddOrUpdate(
-            brewery => brewery.BreweryName,
-            new Brewery { BreweryId = 2, BreweryName = "Tennessee Brew Works", BreweryAddress = "809 Ewing Avenue", BreweryCity = "Nashville", BreweryState = "TN", BreweryZip = "37203", BreweryPhone = "6154360050", BreweryUrl = "www.tnbrew.com", BreweryLogo = "www.tnbrew.com/sites/all/themes/tnbrew/img/logo.png", BreweryBeers = TBW_Beers, BreweryPin = 1001 , BreweryLat = 0, BreweryLng = 0 }
+                brewery => brewery.BreweryName,
+                TBW
                 );
+
+            Brewery BIB = new Brewery { BreweryId = 3, BreweryName = "Bearded Iris Brewing Co.", BreweryAddress = "101 Van Buren St.", BreweryCity = "Nashville", BreweryState = "TN", BreweryZip = "37208", BreweryPhone = "", BreweryUrl = "www.beardedirisbrewing.com", BreweryLogo = "www.mtsusidelines.com/wp-content/uploads/2016/02/MTSUSidelines_Lifestyles_Food_BeardedIrisLogo_FILE.jpg", BreweryBeers = BI_Beers, BreweryPin = 1002, BreweryLat = 36.181305, BreweryLng = -86.786279 };
+
             //Bearded Iris Brewing Co.
             context.Breweries.AddOrUpdate(
-            brewery => brewery.BreweryName,
-            new Brewery { BreweryId = 3, BreweryName = "Bearded Iris Brewing Co.", BreweryAddress = "101 Van Buren St.", BreweryCity = "Nashville", BreweryState = "TN", BreweryZip = "37208", BreweryPhone = "", BreweryUrl = "www.beardedirisbrewing.com", BreweryLogo = "www.mtsusidelines.com/wp-content/uploads/2016/02/MTSUSidelines_Lifestyles_Food_BeardedIrisLogo_FILE.jpg", BreweryBeers = BI_Beers,BreweryPin = 1002,  BreweryLat = 0, BreweryLng = 0 }
+                brewery => brewery.BreweryName,
+                BIB
                 );
+
+            Brewery Yazoo = new Brewery { BreweryId = 4, BreweryName = "Yazoo Brewing Co.", BreweryAddress = "901 Division St", BreweryCity = "Nashville", BreweryState = "TN", BreweryZip = "37207", BreweryPhone = "6158914649", BreweryUrl = "www.yazoobrew.com", BreweryLogo = "www.yazoobrew.com/images/Yazoologo-Red.png", BreweryBeers = Yazoo_Beers, BreweryPin = 1003, BreweryLat = 36.151200, BreweryLng = -86.782117 };
+
+
             //Yazoo Brewing Co.
             context.Breweries.AddOrUpdate(
             brewery => brewery.BreweryName,
-            new Brewery { BreweryId = 4, BreweryName = "Yazoo Brewing Co.", BreweryAddress = "901 Division St", BreweryCity = "Nashville", BreweryState = "TN", BreweryZip = "37207", BreweryPhone = "6158914649", BreweryUrl = "www.yazoobrew.com", BreweryLogo = "www.yazoobrew.com/images/Yazoologo-Red.png", BreweryBeers = Yazoo_Beers, BreweryPin = 1003, BreweryLat = 0, BreweryLng = 0 }
+                Yazoo
                 );
+
+            Brewery TGB = new Brewery { BreweryId = 5, BreweryName = "Tailgate Brewing Co.", BreweryAddress = "7300 Charlotte Pike", BreweryCity = "Nashville", BreweryState = "TN", BreweryZip = "37209", BreweryPhone = "6158619842", BreweryUrl = "www.tailgatebeer.com/", BreweryLogo = "www.tailgatebeer.com/wp-content/uploads/2015/04/beer_menu_tailgate.jpg", BreweryBeers = Tailgate_Beers, BreweryPin = 1004, BreweryLat = 36.119999, BreweryLng = -86.919825 };
+
+
             //TailGate Brewing Co.
             context.Breweries.AddOrUpdate(
             brewery => brewery.BreweryName,
-            new Brewery { BreweryId = 5, BreweryName = "Tailgate Brewing Co.", BreweryAddress = "7300 Charlotte Pike", BreweryCity = "Nashville", BreweryState = "TN", BreweryZip = "37209", BreweryPhone = "6158619842", BreweryUrl = "www.tailgatebeer.com/", BreweryLogo = "www.tailgatebeer.com/wp-content/uploads/2015/04/beer_menu_tailgate.jpg", BreweryBeers = Tailgate_Beers, BreweryPin = 1004, BreweryLat = 0, BreweryLng =0 }
+                TGB
                 );
+
+
+            Brewery SGB = new Brewery { BreweryId = 6, BreweryName = "Southern Grist Brewing Co.", BreweryAddress = "1201 Porter Rd", BreweryCity = "Nashville", BreweryState = "TN", BreweryZip = "37206", BreweryPhone = "6157271201", BreweryUrl = "www.southerngristbrewing.com", BreweryLogo = "www.res.cloudinary.com/ratebeer/image/upload/w_400,c_limit/brew_26443.jpg", BreweryBeers = SG_Beers, BreweryPin = 1005, BreweryLat = 36.188814, BreweryLng = -86.728765 };
+
+
             //Southern Grist Brewing Co.
             context.Breweries.AddOrUpdate(
             brewery => brewery.BreweryName,
-            new Brewery { BreweryId = 6, BreweryName = "Southern Grist Brewing Co.", BreweryAddress = "1201 Porter Rd", BreweryCity = "Nashville", BreweryState = "TN", BreweryZip = "37206", BreweryPhone = "6157271201", BreweryUrl = "www.southerngristbrewing.com", BreweryLogo = "www.res.cloudinary.com/ratebeer/image/upload/w_400,c_limit/brew_26443.jpg", BreweryBeers = SG_Beers, BreweryPin = 1005, BreweryLat = 0, BreweryLng = 0 }
+                SGB
                 );
+
+            Brewery BAB = new Brewery { BreweryId = 7, BreweryName = "Black Abbey Brewing Co.", BreweryAddress = "2952 Sidco Drive", BreweryCity = "Nashville", BreweryState = "TN", BreweryZip = "37204", BreweryPhone = "6157550070", BreweryUrl = "www.blackabbeybrewing.com", BreweryLogo = "www.trademarks.justia.com/media/image.php?serial=85266168", BreweryBeers = BA_Beers, BreweryPin = 1006, BreweryLat = 36.105917, BreweryLng = -86.755414 };
+
             //Black Abbey Brewing Co.
             context.Breweries.AddOrUpdate(
             brewery => brewery.BreweryName,
-            new Brewery { BreweryId = 7, BreweryName = "Black Abbey Brewing Co.", BreweryAddress = "2952 Sidco Drive", BreweryCity = "Nashville", BreweryState = "TN", BreweryZip = "37204", BreweryPhone = "6157550070", BreweryUrl = "www.blackabbeybrewing.com", BreweryLogo = "www.trademarks.justia.com/media/image.php?serial=85266168", BreweryBeers = BA_Beers, BreweryPin = 1006, BreweryLat = 0, BreweryLng = 0  }
+                BAB
                 );
+
+            context.BreweryNews.AddOrUpdate(
+               bn => bn.NewsMessage,
+               new BreweryNews { BreweryNewsId = 1, NewsDate = DateTime.Today, BreweryInfo = Jackalope, NewsMessage = "Bring a friend and get half off on a pint!" }
+                );
+
+            context.BreweryNews.AddOrUpdate(
+               bn => bn.NewsMessage,
+               new BreweryNews { BreweryNewsId = 2, NewsDate = DateTime.Today, BreweryInfo = TBW, NewsMessage = "Half off Appetizers from 7-8 PM" }
+                );
+
+            context.BreweryNews.AddOrUpdate(
+               bn => bn.NewsMessage,
+               new BreweryNews { BreweryNewsId = 3, NewsDate = DateTime.Today.AddDays(1), BreweryInfo = TBW, NewsMessage = "Half off Appetizers from 7-8 PM" }
+                );
+
+            context.BreweryNews.AddOrUpdate(
+               bn => bn.NewsMessage,
+               new BreweryNews { BreweryNewsId = 4, NewsDate = DateTime.Today.AddDays(1), BreweryInfo = SGB, NewsMessage = "Bingo night & 2-4-1!" }
+            );
+
+            context.BreweryNews.AddOrUpdate(
+               bn => bn.NewsMessage,
+               new BreweryNews { BreweryNewsId = 5, NewsDate = DateTime.Today.AddDays(2), BreweryInfo = TGB, NewsMessage = "Watermelon Wheat Release, first 100 recieve a free pint!" }
+            );
         }
     }
 }

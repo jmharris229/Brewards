@@ -164,5 +164,14 @@ namespace brewards.DAL
             List<UserPurchaseViewModel> viewModelPurchases = service.ToUserPurchaseViewModel(filteredPurchases);
             return viewModelPurchases;
         }
+
+        internal IEnumerable<BreweryNewsViewModel> getNews(string breweryCity)
+        {
+            DateTime today = DateTime.Today;
+            DateTime weekInFuture = today.AddDays(7);
+            List<BreweryNews> newsInRange = _context.BreweryNews.Where(bn => bn.NewsDate >= today && bn.NewsDate <= weekInFuture && bn.BreweryInfo.BreweryCity == breweryCity).ToList();
+
+            return service.ToBreweryNewsViewModel(newsInRange);
+        }
     }
 }

@@ -7,6 +7,11 @@ app.config(['$routeProvider',function ($routeProvider) {
             controller: 'homeCtrl as HomeCtrl',
             authorize: false
         })
+        .when('/breweryNews', {
+            templateUrl: '/Templates/breweryNews.html',
+            controller: 'brewNewsCtrl as BrewNewsCtrl',
+            authorize: true
+        })
         .when('/addpunch', {
             templateUrl: '/Templates/addpunch.html',
             controller: 'addPunchCtrl as AddPunchCtrl',

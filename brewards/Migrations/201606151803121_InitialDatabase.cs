@@ -3,7 +3,7 @@ namespace brewards.Migrations
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class initialMigration : DbMigration
+    public partial class InitialDatabase : DbMigration
     {
         public override void Up()
         {
@@ -12,10 +12,10 @@ namespace brewards.Migrations
                 c => new
                     {
                         BeerId = c.Int(nullable: false, identity: true),
+                        BeerName = c.String(nullable: false, maxLength: 500),
+                        BeerType = c.String(nullable: false, maxLength: 50),
+                        BeerLogo = c.String(maxLength: 600),
                         BreweryId = c.Int(nullable: false),
-                        Beer_name = c.String(nullable: false, maxLength: 500),
-                        Beer_type = c.String(nullable: false, maxLength: 50),
-                        Beer_logo = c.String(maxLength: 600),
                     })
                 .PrimaryKey(t => t.BeerId)
                 .ForeignKey("dbo.Breweries", t => t.BreweryId, cascadeDelete: true)
@@ -26,29 +26,47 @@ namespace brewards.Migrations
                 c => new
                     {
                         BreweryId = c.Int(nullable: false, identity: true),
-                        Brewery_Name = c.String(nullable: false, maxLength: 100),
-                        Brewery_address = c.String(nullable: false, maxLength: 75),
-                        Brewery_city = c.String(nullable: false, maxLength: 50),
-                        Brewery_state = c.String(nullable: false, maxLength: 3),
-                        Brewery_zip = c.String(nullable: false, maxLength: 6),
-                        Brewery_phone = c.String(maxLength: 11),
-                        Brewery_url = c.String(nullable: false, maxLength: 100),
-                        Brewery_logo = c.String(nullable: false, maxLength: 600),
+                        BreweryName = c.String(nullable: false, maxLength: 100),
+                        BreweryAddress = c.String(nullable: false, maxLength: 75),
+                        BreweryCity = c.String(nullable: false, maxLength: 50),
+                        BreweryState = c.String(nullable: false, maxLength: 3),
+                        BreweryZip = c.String(nullable: false, maxLength: 6),
+                        BreweryLat = c.Double(nullable: false),
+                        BreweryLng = c.Double(nullable: false),
+                        BreweryPin = c.Int(nullable: false),
+                        BreweryPhone = c.String(maxLength: 11),
+                        BreweryUrl = c.String(maxLength: 100),
+                        BreweryLogo = c.String(maxLength: 600),
                     })
                 .PrimaryKey(t => t.BreweryId);
             
             CreateTable(
-                "dbo.Rewardstatus",
+                "dbo.BreweryNews",
+                c => new
+                    {
+                        BreweryNewsId = c.Int(nullable: false, identity: true),
+                        NewsDate = c.DateTime(nullable: false),
+                        NewsMessage = c.String(),
+                        BreweryInfo_BreweryId = c.Int(),
+                    })
+                .PrimaryKey(t => t.BreweryNewsId)
+                .ForeignKey("dbo.Breweries", t => t.BreweryInfo_BreweryId)
+                .Index(t => t.BreweryInfo_BreweryId);
+            
+            CreateTable(
+                "dbo.RewardStatus",
                 c => new
                     {
                         RewardstatusId = c.Int(nullable: false, identity: true),
-                        BreweryId = c.Int(nullable: false),
-                        Number_purchased = c.Int(nullable: false),
-                        UserId_Id = c.String(maxLength: 128),
+                        RedeemDate = c.DateTime(nullable: false),
+                        BreweryInfo_BreweryId = c.Int(),
+                        User_Id = c.String(maxLength: 128),
                     })
                 .PrimaryKey(t => t.RewardstatusId)
-                .ForeignKey("dbo.AspNetUsers", t => t.UserId_Id)
-                .Index(t => t.UserId_Id);
+                .ForeignKey("dbo.Breweries", t => t.BreweryInfo_BreweryId)
+                .ForeignKey("dbo.AspNetUsers", t => t.User_Id)
+                .Index(t => t.BreweryInfo_BreweryId)
+                .Index(t => t.User_Id);
             
             CreateTable(
                 "dbo.AspNetUsers",
@@ -122,34 +140,47 @@ namespace brewards.Migrations
                 "dbo.Userpurchases",
                 c => new
                     {
-                        UserpurchaseId = c.Int(nullable: false, identity: true),
-                        BeerId = c.Int(nullable: false),
-                        Purchase_date = c.DateTime(nullable: false),
-                        UserId_Id = c.String(maxLength: 128),
+                        UserPurchaseId = c.Int(nullable: false, identity: true),
+                        PurchaseDate = c.DateTime(nullable: false),
+                        BeerInfo_BeerId = c.Int(),
+                        BreweryInfo_BreweryId = c.Int(),
+                        Purchaser_Id = c.String(maxLength: 128),
                     })
-                .PrimaryKey(t => t.UserpurchaseId)
-                .ForeignKey("dbo.AspNetUsers", t => t.UserId_Id)
-                .Index(t => t.UserId_Id);
+                .PrimaryKey(t => t.UserPurchaseId)
+                .ForeignKey("dbo.Beers", t => t.BeerInfo_BeerId)
+                .ForeignKey("dbo.Breweries", t => t.BreweryInfo_BreweryId)
+                .ForeignKey("dbo.AspNetUsers", t => t.Purchaser_Id)
+                .Index(t => t.BeerInfo_BeerId)
+                .Index(t => t.BreweryInfo_BreweryId)
+                .Index(t => t.Purchaser_Id);
             
         }
         
         public override void Down()
         {
-            DropForeignKey("dbo.Userpurchases", "UserId_Id", "dbo.AspNetUsers");
+            DropForeignKey("dbo.Userpurchases", "Purchaser_Id", "dbo.AspNetUsers");
+            DropForeignKey("dbo.Userpurchases", "BreweryInfo_BreweryId", "dbo.Breweries");
+            DropForeignKey("dbo.Userpurchases", "BeerInfo_BeerId", "dbo.Beers");
             DropForeignKey("dbo.AspNetUserRoles", "RoleId", "dbo.AspNetRoles");
-            DropForeignKey("dbo.Rewardstatus", "UserId_Id", "dbo.AspNetUsers");
+            DropForeignKey("dbo.RewardStatus", "User_Id", "dbo.AspNetUsers");
             DropForeignKey("dbo.AspNetUserRoles", "UserId", "dbo.AspNetUsers");
             DropForeignKey("dbo.AspNetUserLogins", "UserId", "dbo.AspNetUsers");
             DropForeignKey("dbo.AspNetUserClaims", "UserId", "dbo.AspNetUsers");
+            DropForeignKey("dbo.RewardStatus", "BreweryInfo_BreweryId", "dbo.Breweries");
+            DropForeignKey("dbo.BreweryNews", "BreweryInfo_BreweryId", "dbo.Breweries");
             DropForeignKey("dbo.Beers", "BreweryId", "dbo.Breweries");
-            DropIndex("dbo.Userpurchases", new[] { "UserId_Id" });
+            DropIndex("dbo.Userpurchases", new[] { "Purchaser_Id" });
+            DropIndex("dbo.Userpurchases", new[] { "BreweryInfo_BreweryId" });
+            DropIndex("dbo.Userpurchases", new[] { "BeerInfo_BeerId" });
             DropIndex("dbo.AspNetRoles", "RoleNameIndex");
             DropIndex("dbo.AspNetUserRoles", new[] { "RoleId" });
             DropIndex("dbo.AspNetUserRoles", new[] { "UserId" });
             DropIndex("dbo.AspNetUserLogins", new[] { "UserId" });
             DropIndex("dbo.AspNetUserClaims", new[] { "UserId" });
             DropIndex("dbo.AspNetUsers", "UserNameIndex");
-            DropIndex("dbo.Rewardstatus", new[] { "UserId_Id" });
+            DropIndex("dbo.RewardStatus", new[] { "User_Id" });
+            DropIndex("dbo.RewardStatus", new[] { "BreweryInfo_BreweryId" });
+            DropIndex("dbo.BreweryNews", new[] { "BreweryInfo_BreweryId" });
             DropIndex("dbo.Beers", new[] { "BreweryId" });
             DropTable("dbo.Userpurchases");
             DropTable("dbo.AspNetRoles");
@@ -157,7 +188,8 @@ namespace brewards.Migrations
             DropTable("dbo.AspNetUserLogins");
             DropTable("dbo.AspNetUserClaims");
             DropTable("dbo.AspNetUsers");
-            DropTable("dbo.Rewardstatus");
+            DropTable("dbo.RewardStatus");
+            DropTable("dbo.BreweryNews");
             DropTable("dbo.Breweries");
             DropTable("dbo.Beers");
         }

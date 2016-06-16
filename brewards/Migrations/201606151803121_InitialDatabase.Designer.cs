@@ -7,13 +7,13 @@ namespace brewards.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.1.3-40302")]
-    public sealed partial class beerclassupdate : IMigrationMetadata
+    public sealed partial class InitialDatabase : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(beerclassupdate));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(InitialDatabase));
         
         string IMigrationMetadata.Id
         {
-            get { return "201605281832201_beerclassupdate"; }
+            get { return "201606151803121_InitialDatabase"; }
         }
         
         string IMigrationMetadata.Source

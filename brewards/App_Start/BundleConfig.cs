@@ -38,6 +38,7 @@ namespace brewards
                 "~/Scripts/addPunchCtrl.js",
                 "~/Scripts/rewardsCtrl.js",
                 "~/Scripts/purchasesCtrl.js",
+                "~/Scripts/brewNewsCtrl.js",
                 "~/Scripts/authService.js",
                 "~/Scripts/nearbyBreweriesCtrl.js",
                 "~/Scripts/homeCtrl.js"

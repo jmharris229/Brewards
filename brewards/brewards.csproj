@@ -229,6 +229,7 @@
     <Compile Include="Controllers\BeerController.cs" />
     <Compile Include="Controllers\BreweriesController.cs" />
     <Compile Include="Controllers\BreweryController.cs" />
+    <Compile Include="Controllers\BreweryNewsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\RewardstatusController.cs" />
@@ -239,38 +240,17 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201605190109435_initialMigration.cs" />
-    <Compile Include="Migrations\201605190109435_initialMigration.Designer.cs">
-      <DependentUpon>201605190109435_initialMigration.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201605190225186_NewUPModel.cs" />
-    <Compile Include="Migrations\201605190225186_NewUPModel.Designer.cs">
-      <DependentUpon>201605190225186_NewUPModel.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201605281832201_beerclassupdate.cs" />
-    <Compile Include="Migrations\201605281832201_beerclassupdate.Designer.cs">
-      <DependentUpon>201605281832201_beerclassupdate.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201606050346143_addbrewerypin.cs" />
-    <Compile Include="Migrations\201606050346143_addbrewerypin.Designer.cs">
-      <DependentUpon>201606050346143_addbrewerypin.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201606070140194_updatedRewardStatus.cs" />
-    <Compile Include="Migrations\201606070140194_updatedRewardStatus.Designer.cs">
-      <DependentUpon>201606070140194_updatedRewardStatus.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201606140315124_updatedPropertyNames.cs" />
-    <Compile Include="Migrations\201606140315124_updatedPropertyNames.Designer.cs">
-      <DependentUpon>201606140315124_updatedPropertyNames.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201606150338184_addedLatAndLngToBrewery.cs" />
-    <Compile Include="Migrations\201606150338184_addedLatAndLngToBrewery.Designer.cs">
-      <DependentUpon>201606150338184_addedLatAndLngToBrewery.cs</DependentUpon>
+    <Compile Include="Migrations\201606151803121_InitialDatabase.cs" />
+    <Compile Include="Migrations\201606151803121_InitialDatabase.Designer.cs">
+      <DependentUpon>201606151803121_InitialDatabase.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Beer.cs" />
     <Compile Include="Models\Brewery.cs" />
+    <Compile Include="Models\BreweryNews.cs" />
+    <Compile Include="Models\BreweryNewsViewModel.cs" />
+    <Compile Include="Models\DateFeed.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\Litebeer.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
@@ -318,6 +298,7 @@
     <Content Include="Scripts\angular-aria\angular-aria.min.js.map" />
     <Content Include="Scripts\angular-animate\angular-animate.min.js.map" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
+    <Content Include="Scripts\brewNewsCtrl.js" />
     <Content Include="Scripts\homeCtrl.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -339,6 +320,7 @@
     <Content Include="Scripts\rewardsCtrl.js" />
     <Content Include="Scripts\_references.js" />
     <Content Include="Templates\bottomnav.html" />
+    <Content Include="Templates\breweryNews.html" />
     <Content Include="Templates\home.html" />
     <Content Include="Templates\addpunch.html" />
     <Content Include="Templates\nearbyBreweries.html" />
@@ -391,26 +373,8 @@
     <Content Include="Scripts\jquery-1.10.2.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201605190109435_initialMigration.resx">
-      <DependentUpon>201605190109435_initialMigration.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201605190225186_NewUPModel.resx">
-      <DependentUpon>201605190225186_NewUPModel.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201605281832201_beerclassupdate.resx">
-      <DependentUpon>201605281832201_beerclassupdate.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201606050346143_addbrewerypin.resx">
-      <DependentUpon>201606050346143_addbrewerypin.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201606070140194_updatedRewardStatus.resx">
-      <DependentUpon>201606070140194_updatedRewardStatus.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201606140315124_updatedPropertyNames.resx">
-      <DependentUpon>201606140315124_updatedPropertyNames.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201606150338184_addedLatAndLngToBrewery.resx">
-      <DependentUpon>201606150338184_addedLatAndLngToBrewery.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201606151803121_InitialDatabase.resx">
+      <DependentUpon>201606151803121_InitialDatabase.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
