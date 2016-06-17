@@ -15,6 +15,7 @@
     vm.selectBrewery = function (brewery) {
         authService.atBrewery = false;
         authService.actualBrewery = brewery;
+        authService.selectBeer = true;
         $location.url('/addPunch');
     }
 });

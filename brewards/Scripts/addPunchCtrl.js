@@ -7,9 +7,7 @@
     vm.punchStatus = 'breweries';
     vm.atBrewery = true;
     //once document is ready runs function to add google maps script and gets current location
-    console.log(authService.atBrewery);
     if (authService.atBrewery) {
-
         $(document).ready(function () {
             var googleScript = document.createElement('script');
             googleScript.setAttribute('src', "https://maps.googleapis.com/maps/api/js?key=AIzaSyCaP1HGGwG3R2OpeRAoIQaZSNkj4LeGLhk&callback=CurrentLoc");
@@ -24,6 +22,7 @@
         });
     } else {
         vm.currentBreweryObject = authService.actualBrewery;
+        vm.punchStatus = 'selectBeer';
     }
 
 
@@ -56,7 +55,6 @@
             });
     }
 
-    //sets the side nav to the specific brewery info
     vm.getBreweryBeers = function () {
         vm.punchStatus = 'selectBeer';
     };

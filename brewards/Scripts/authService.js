@@ -1,6 +1,7 @@
 ﻿app.service('authService', function ($http) {
     var self = this;
     self.atBrewery = true;
+    self.selectBeer = false;
     self.actualBrewery = {};
     self.getAuth = function () {
        return $http.get('api/user')
