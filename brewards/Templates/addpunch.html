@@ -14,12 +14,11 @@
 
 <!-- article to show if coordinates matched a brewery in db -->
 <article ng-show="AddPunchCtrl.atBrewery" id="punchSection" ng-switch on="AddPunchCtrl.punchStatus" ng-cloak>
-
-    <h4 class="addPunchContent">ADD A PUNCH?</h4>
     
     <!--brewery info-->
-    <section layout="column" layout-align="center center" class="animate-switch spacing" ng-switch-when="breweries">
-        <img class="addPunchLogo" src="http://{{AddPunchCtrl.currentBreweryObject.breweryLogo}}" alt="{{AddPunchCtrl.currentBreweryObject.breweryName}}" />
+    <section layout="column" layout-align="center center" class="animate-switch" ng-switch-when="breweries">
+        <h4 class="addPunchContent">YOU ARE AT</h4>
+        <img class="addPunchLogo spacing" src="http://{{AddPunchCtrl.currentBreweryObject.breweryLogo}}" alt="{{AddPunchCtrl.currentBreweryObject.breweryName}}" />
         <h3>{{AddPunchCtrl.currentBreweryObject.breweryName}}</h3>
         <h4>{{AddPunchCtrl.currentBreweryObject.breweryAddress}}</h4>
         <h4>{{AddPunchCtrl.currentBreweryObject.breweryCity}}, {{AddPunchCtrl.currentBreweryObject.breweryState}} {{AddPunchCtrl.currentBreweryObject.breweryZip}}</h4>
@@ -32,42 +31,44 @@
 
     <!-- selected brewery beers -->
     <section class="animate-switch" ng-switch-when="selectBeer">
-        <h3>Beers on Tap for {{AddPunchCtrl.currentBreweryObject.breweryName}}</h3>
-        <span ng-click="AddPunchCtrl.CloseConfirm()">Back to breweries</span>
-        <md-list flex class="mapSwitch">
+        <md-button ng-click="AddPunchCtrl.CloseConfirm()" class="md-raised"><span class="glyphicon glyphicon-chevron-left"></span>breweries</md-button>
+        <h4 class="text-center">{{AddPunchCtrl.currentBreweryObject.breweryName}}</h4>
+        <h3 class="text-center">BEERS ON TAP</h3>
+        <md-list flex class="addPunchBeers">
             <md-list-item aria-label="" class="md-3-line" ng-repeat="beer in AddPunchCtrl.currentBreweryObject.breweryBeers" ng-click="AddPunchCtrl.confirmPunch(beer, AddPunchCtrl.currentBreweryObject)">
                 <img src="http://{{beer.beerLogo}}" class="md-avatar" alt="{{beer.beerName}}" />
                 <div class="md-list-item-text" layout="column">
                     <h4>{{beer.beerName}}</h4>
                     <p>{{beer.beerType}}</p>
                 </div>
-                <span>></span>
+                <span class="glyphicon glyphicon-chevron-right"></span>
                 <md-divider></md-divider>
-            </md-list-item>
+         </md-list-item>
         </md-list>
     </section>
 
     <!-- add punch layout for specific beer -->
     <div id="confirmPunchPage" class="animate-switch" ng-switch-when="confirmation">
-        <h3>Confirm Punch</h3>
-        <section id="confirmPunchInfo">
+      <md-button ng-click="AddPunchCtrl.toAddPunchBeers()" class="md-raised"><span class="glyphicon glyphicon-chevron-left"></span>Beers</md-button>       
+        <section layout="column" layout-align="center center" id="confirmPunchInfo">
+            <h2>Confirm Punch</h2>
             <img class="breweryBeerLogos" src="http://{{AddPunchCtrl.punchInfo.beer.beerLogo}}" alt="{{AddPunchCtrl.punchInfo.beer.beerName}}" />
-            <h3>{{AddPunchCtrl.punchInfo.beer.beerName}}</h3>
-            <h5>{{AddPunchCtrl.punchInfo.brewery.breweryName}}</h5>
-        </section>
-        <p ng-show="AddPunchCtrl.confirming">Enter Brewery Pin</p>
-        <md-input-container ng-show="AddPunchCtrl.confirm">
-            <label>Brewery Pin</label>
-            <input ng-model="AddPunchCtrl.pin" type="text" />
-        </md-input-container>
-        <h4 ng-show="AddPunchCtrl.confirmed">Punch Added!</h4>
-        <h4 ng-show="AddPunchCtrl.confirmDeclined">Wrong Pin!</h4>
-        <div>
-            <md-button ng-show="AddPunchCtrl.confirm" ng-click="AddPunchCtrl.addPunch(AddPunchCtrl.punchInfo.beer, AddPunchCtrl.punchInfo.brewery)">Add Punch</md-button>
-            <md-button ng-show="AddPunchCtrl.confirm" ng-click="AddPunchCtrl.CloseConfirm()">Cancel</md-button>
-            <md-button ng-show="AddPunchCtrl.confirmed" ng-click="AddPunchCtrl.CloseConfirm()">Close</md-button>
-        </div>
+            <h2>{{AddPunchCtrl.punchInfo.beer.beerName}}</h2>
+            <h3>{{AddPunchCtrl.punchInfo.brewery.breweryName}}</h3>
 
+            <p ng-show="AddPunchCtrl.confirming">Enter Brewery Pin</p>
+            <md-input-container ng-show="AddPunchCtrl.confirm">
+                <label>Brewery Pin</label>
+                <input ng-model="AddPunchCtrl.pin" type="number" />
+            </md-input-container>
+            <h4 ng-show="AddPunchCtrl.confirmed">Punch Added!</h4>
+            <h4 ng-show="AddPunchCtrl.confirmDeclined">Wrong Pin!</h4>
+            <div>
+                <md-button ng-show="AddPunchCtrl.confirm" ng-click="AddPunchCtrl.addPunch(AddPunchCtrl.punchInfo.beer, AddPunchCtrl.punchInfo.brewery)" class="md-raised md-warn green">Add Punch</md-button>
+                <md-button ng-show="AddPunchCtrl.confirm" ng-click="AddPunchCtrl.CloseConfirm()" class="md-raised md-warn spacing">Cancel</md-button>
+                <md-button ng-show="AddPunchCtrl.confirmed" ng-click="AddPunchCtrl.CloseConfirm()" class="md-raised md-warn spacing">Close</md-button>
+            </div>
+        </section>
     </div>
 </article>
 

@@ -67,7 +67,6 @@
     }
 
     vm.goToNearbyBreweries = function () {
-
         $location.url('/nearbyBreweries');
     }
 
@@ -103,8 +102,12 @@
                 vm.confirmed = true;
             });
     }
-    //switches back to brewery list
+    //switches back to beer list
+    vm.toAddPunchBeers = function () {
+        vm.punchStatus = 'selectBeer';
+    }
 
+    //switches back to brewery list
     vm.CloseConfirm = function () {
         vm.punchStatus = 'breweries';
         vm.confirm = true;

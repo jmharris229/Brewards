@@ -45,8 +45,8 @@ textarea {
 
 
 .breweryBeerLogos{
-    height: 25px;
-    width: 25px;
+    height: 200px;
+    width: 200px;
 }
 .addBeerLogo{
     height: 30px;
@@ -98,14 +98,15 @@ textarea {
     font-size:1.5em;
     font-weight:bold !important;
 }
-.mapSwitch{
-    overflow: scroll;
+addPunchBeers{
+    overflow:scroll;
+    border-top: 3px solid black;
+    padding: 0 60px;
 }
-
 .animate-switch.ng-animate {
   transition:all cubic-bezier(0.250, 0.460, 0.450, 0.940) 0.25s;
 
-  position:relative;
+  position:absolute;
   top:0;
   left:0;
   right:0;
