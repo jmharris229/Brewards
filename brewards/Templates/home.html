@@ -1,5 +1,9 @@
-﻿<section>
-    <p>This is the home page</p>
-    <button ng-click="HomeCtrl.goToLogin()">Login</button>
-    <button ng-click="HomeCtrl.goToSignup()">Signup</button>
+﻿<section id="homeScreen" layout="column" layout-align="start" ng-cloak>
+    <section layout="row" layout-align="center center">
+        <img class="logoResize" src="/Images/logo03.png" alt="brewards logo"/>
+    </section>
+    <section layout="row" layout-align="center center">       
+        <md-button ng-click="HomeCtrl.goToLogin()"class="md-raised homeButtons">Login</md-button>
+        <md-button ng-click="HomeCtrl.goToSignup()" class="md-raised homeButtons">Register</md-button>
+    </section>
 </section>

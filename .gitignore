@@ -184,3 +184,5 @@ $RECYCLE.BIN/
 **/*.sln.ide
 
 .vs/*
+
+Images/
