@@ -34,7 +34,7 @@
         <md-button ng-click="AddPunchCtrl.CloseConfirm()" class="md-raised"><span class="glyphicon glyphicon-chevron-left"></span>brewery</md-button>
         <h4 class="text-center">{{AddPunchCtrl.currentBreweryObject.breweryName}}</h4>
         <h3 class="text-center">BEERS ON TAP</h3>
-        <md-list flex class="addPunchBeers">
+        <md-list flex class="addPunchBeers scrollSection">
             <md-list-item aria-label="" class="md-3-line" ng-repeat="beer in AddPunchCtrl.currentBreweryObject.breweryBeers" ng-click="AddPunchCtrl.confirmPunch(beer, AddPunchCtrl.currentBreweryObject)">
                 <img src="http://{{beer.beerLogo}}" class="md-avatar" alt="{{beer.beerName}}" />
                 <div class="md-list-item-text" layout="column">

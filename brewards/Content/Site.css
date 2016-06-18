@@ -98,9 +98,9 @@ textarea {
     font-size:1.5em;
     font-weight:bold !important;
 }
-.addPunchBeers{
-    overflow:scroll;
-    height:424px;
+.scrollSection{
+    overflow: scroll !important;
+    height: 462px;
 }
 .animate-switch.ng-animate {
   transition:all cubic-bezier(0.250, 0.460, 0.450, 0.940) 0.25s;

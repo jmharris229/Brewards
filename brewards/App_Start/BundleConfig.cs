@@ -40,11 +40,9 @@ namespace brewards
                 "~/Scripts/purchasesCtrl.js",
                 "~/Scripts/brewNewsCtrl.js",
                 "~/Scripts/authService.js",
+                "~/Scripts/locationService.js",
                 "~/Scripts/nearbyBreweriesCtrl.js",
                 "~/Scripts/homeCtrl.js"
-                ));
-            bundles.Add(new ScriptBundle("~/bundles/libraries").Include(
-                "~/Scripts/lodash.min.js"
                 ));
         }
     }

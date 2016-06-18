@@ -1,6 +1,6 @@
 ﻿<h3>Brews News</h3>
 <article>
-    <md-list flex ng-repeat="offer in BrewNewsCtrl.offers">
+    <md-list class="scrollSection" flex ng-repeat="offer in BrewNewsCtrl.offers">
         <md-subheader class="md-no-sticky">{{offer.newsDate}}</md-subheader>
         <md-list-item aria-label="" class="md-3-line" ng-repeat="feed in offer.newsFeed">
             <img src="http://{{feed.breweryLogo}}" class="md-avatar" alt="{{feed.breweryName}}" />

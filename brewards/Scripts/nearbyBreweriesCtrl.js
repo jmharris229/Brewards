@@ -1,6 +1,11 @@
-﻿app.controller('nearbyBreweriesCtrl', function ($http, authService, $location) {
+﻿app.controller('nearbyBreweriesCtrl', function ($http, authService, locService, $location) {
     var vm = this;
     vm.breweries;
+    vm.city;
+        locService.getCity()
+            .then(function(city){
+                vm.city = city.toUpperCase();
+            });
 
     //add method using google maps api to get current city from github
     vm.listOfBreweries = function () {
