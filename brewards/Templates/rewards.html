@@ -1,6 +1,7 @@
-﻿<article layout="column" layout-align="center center" class="punchStack punchStack-queue">
+﻿<h3 class="nonAmHeaderH3">PUNCHCARDS</h3>
+<article class="punchStack punchStack-queue">
     <md-card class="punchcard" ng-repeat="brewery in RewardsCtrl.punchcardData | orderBy:'brewery_name' | filter:searchPunchcards">
-        <img class="punchcardBg" src="http://{{brewery.breweryInfo.breweryLogo}}"/>
+        <!--<img class="punchcardBg" src="http://{{brewery.breweryInfo.breweryLogo}}"/>-->
         <md-card-header>
             <md-card-avatar>
                 <md-icon class="md-avatar-icon" md-svg-icon="http://{{brewery.breweryInfo.breweryLogo}}"></md-icon>

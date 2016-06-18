@@ -168,9 +168,12 @@ textarea {
 
 .punchStack{
   width: 300px;
-  height: 542px;
+  height: 642px;
   position: relative;
   max-width: 100%;
+  margin: 0 auto;
+  top: 50px;
+  left:-8px
 }
 .punchStack-queue{
   transition: all 1s;
@@ -189,12 +192,13 @@ textarea {
   /*height: 500px;*/
   width: 100%;
 }
-.punchStack-queue .punchcard:nth-child(2){
-  position: relative;
+.punchStack-queue .punchcard:last-child{
+  /*position: relative;*/
   /*height: 500px;*/
 }
 .punchStack-queue.active{
   transform: scale(0.9);
+
 }
 .punchStack-queue.active .punchcard:first-child{
   transform: scale(0.8);
@@ -227,8 +231,8 @@ textarea {
 
 .viewCard{
   animation-name: seeCard;
-  animation-duration: 1.5s;
-  animation-fill-mode: forwards;  
+  animation-duration: 1s;
+  animation-fill-mode: forwards;
 }
 
 .purchasedBeerLogo{
