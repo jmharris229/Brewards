@@ -156,7 +156,7 @@ namespace brewards.Migrations
 
             context.BreweryNews.AddOrUpdate(
                bn => bn.NewsMessage,
-               new BreweryNews { BreweryNewsId = 3, NewsDate = DateTime.Today.AddDays(1), BreweryInfo = TBW, NewsMessage = "Half off Appetizers from 7-8 PM" }
+               new BreweryNews { BreweryNewsId = 3, NewsDate = DateTime.Today.AddDays(1), BreweryInfo = Jackalope, NewsMessage = "Half off Appetizers from 7-9 PM" }
                 );
 
             context.BreweryNews.AddOrUpdate(
@@ -167,6 +167,38 @@ namespace brewards.Migrations
             context.BreweryNews.AddOrUpdate(
                bn => bn.NewsMessage,
                new BreweryNews { BreweryNewsId = 5, NewsDate = DateTime.Today.AddDays(2), BreweryInfo = TGB, NewsMessage = "Watermelon Wheat Release, first 100 recieve a free pint!" }
+            );
+            context.BreweryNews.AddOrUpdate(
+               bn => bn.NewsMessage,
+               new BreweryNews { BreweryNewsId = 6, NewsDate = DateTime.Today.AddDays(6), BreweryInfo = TGB, NewsMessage = "Movie Night Featuring Jaws and Hungry IPA" }
+            );
+            context.BreweryNews.AddOrUpdate(
+               bn => bn.NewsMessage,
+               new BreweryNews { BreweryNewsId = 7, NewsDate = DateTime.Today.AddDays(6), BreweryInfo = Jackalope, NewsMessage = "GIrl's night and free T-Shirt giveaway" }
+            );
+            context.BreweryNews.AddOrUpdate(
+               bn => bn.NewsMessage,
+               new BreweryNews { BreweryNewsId = 8, NewsDate = DateTime.Today.AddDays(7), BreweryInfo = BAB, NewsMessage = "Half price off Mug Club admission" }
+            );
+            context.BreweryNews.AddOrUpdate(
+               bn => bn.NewsMessage,
+               new BreweryNews { BreweryNewsId = 9, NewsDate = DateTime.Today.AddDays(7), BreweryInfo = SGB, NewsMessage = "Hanging out watching Baseball, come enjoy a half off sour" }
+            );
+            context.BreweryNews.AddOrUpdate(
+               bn => bn.NewsMessage,
+               new BreweryNews { BreweryNewsId = 10, NewsDate = DateTime.Today.AddDays(7), BreweryInfo = Yazoo, NewsMessage = "25 year anniversary party, free pint glasses to first 50 people" }
+            );
+            context.BreweryNews.AddOrUpdate(
+               bn => bn.NewsMessage,
+               new BreweryNews { BreweryNewsId =11, NewsDate = DateTime.Today.AddDays(8), BreweryInfo = Jackalope, NewsMessage = "Release of Snow Man Stout" }
+            );
+            context.BreweryNews.AddOrUpdate(
+               bn => bn.NewsMessage,
+               new BreweryNews { BreweryNewsId = 12, NewsDate = DateTime.Today.AddDays(8), BreweryInfo = BIB, NewsMessage = "Food tasting event at Nashville Wine & Food Fest" }
+            );
+            context.BreweryNews.AddOrUpdate(
+               bn => bn.NewsMessage,
+               new BreweryNews { BreweryNewsId = 13, NewsDate = DateTime.Today.AddDays(8), BreweryInfo = TBW, NewsMessage = "Concert Night Featuring Lil Big Town and 2-4-1s" }
             );
         }
     }

@@ -244,6 +244,10 @@
     <Compile Include="Migrations\201606151803121_InitialDatabase.Designer.cs">
       <DependentUpon>201606151803121_InitialDatabase.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201606181622597_addedNewMessages.cs" />
+    <Compile Include="Migrations\201606181622597_addedNewMessages.Designer.cs">
+      <DependentUpon>201606181622597_addedNewMessages.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Beer.cs" />
@@ -300,6 +304,8 @@
     <Content Include="Scripts\angular-route.min.js.map" />
     <Content Include="Scripts\angular-aria\angular-aria.min.js.map" />
     <Content Include="Scripts\angular-animate\angular-animate.min.js.map" />
+    <Content Include="fonts\fontawesome-webfont.woff" />
+    <Content Include="fonts\fontawesome-webfont.woff2" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\brewNewsCtrl.js" />
     <Content Include="Scripts\homeCtrl.js" />
@@ -379,6 +385,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201606151803121_InitialDatabase.resx">
       <DependentUpon>201606151803121_InitialDatabase.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201606181622597_addedNewMessages.resx">
+      <DependentUpon>201606181622597_addedNewMessages.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

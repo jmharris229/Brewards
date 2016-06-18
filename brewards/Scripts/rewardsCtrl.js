@@ -13,16 +13,13 @@
     vm.renderPunchcards();
 
     vm.redeem = function (viewModelData) {
-        console.log(viewModelData);
         var redemption = {
             Brewery_info: viewModelData.brewery_info            
         }
         $http.put('/api/Rewardstatus?=', redemption)
             .error(function () {
-                alert("failure");
             })
             .success(function () {
-                alert("success");
             });
     }
 
