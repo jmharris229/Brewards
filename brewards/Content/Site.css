@@ -172,14 +172,14 @@ textarea {
   position: relative;
   max-width: 100%;
   margin: 0 auto;
-  top: 50px;
+  top: 100px;
   left:-8px
 }
 .punchStack-queue{
   transition: all 1s;
 }
 .punchStack-queue .punchcard{
-  transform-origin: 50% -65%;
+  transform-origin: 50% -100%;
   max-width: 100%;
   border: 1px solid black;
   box-shadow: 1px -1px 4px black;
@@ -198,19 +198,16 @@ textarea {
 }
 .punchStack-queue.active{
   transform: scale(0.9);
-
 }
 .punchStack-queue.active .punchcard:first-child{
-  transform: scale(0.8);
+  transform: scale(0.7);
 }
-/*.punchStack-queue.active .punchcard:nth-child(2){
+.punchStack-queue.active .punchcard:nth-child(2){
   transform: scale(0.8);
-  background-color: green;
 }
 .punchStack-queue.active .punchcard:nth-child(3){
-  background-color: red;
   transform: scale(0.9);
-}*/
+}
 @keyframes seeCard{
   0%{
     
@@ -231,8 +228,20 @@ textarea {
 
 .viewCard{
   animation-name: seeCard;
-  animation-duration: 1s;
+  animation-duration: .8s;
   animation-fill-mode: forwards;
+}
+.exitPunchcardButton{
+    z-index: 30;
+    position: absolute;
+    font-size: large !important;
+    padding:10px;
+    right: 0;
+    top: 0;
+}
+.punchAvatar{
+    height:30px;
+    width: 30px;
 }
 
 .purchasedBeerLogo{

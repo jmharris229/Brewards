@@ -2,13 +2,16 @@
 <article class="punchStack punchStack-queue">
     <md-card class="punchcard" ng-repeat="brewery in RewardsCtrl.punchcardData | orderBy:'brewery_name' | filter:searchPunchcards">
         <!--<img class="punchcardBg" src="http://{{brewery.breweryInfo.breweryLogo}}"/>-->
+        <i ng-click="RewardsCtrl.closePunchcard($event)" class="fa fa-times exitPunchcardButton" aria-hidden="true"></i>
         <md-card-header>
             <md-card-avatar>
-                <md-icon class="md-avatar-icon" md-svg-icon="http://{{brewery.breweryInfo.breweryLogo}}"></md-icon>
+                <img class="punchAvatar" src="http://{{brewery.breweryInfo.breweryLogo}}"/>
+                <!--<md-icon class="md-avatar-icon" md-svg-src="http://{{brewery.breweryInfo.breweryLogo}}"></md-icon>-->
             </md-card-avatar>
             <md-card-header-text>
                 <span class="md-title">{{brewery.breweryInfo.breweryName}}</span>
                 <span class="md-subhead" ng-if="brewery.numberPurchased == 8">Redeemable</span>
+
             </md-card-header-text>
         </md-card-header>
             <md-card-title-text class="cardTitle">
