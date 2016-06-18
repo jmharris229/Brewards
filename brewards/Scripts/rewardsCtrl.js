@@ -32,8 +32,11 @@
         } else {
             $('.punchStack').addClass('active');
         }
-
     }
     
-    //toggleQueue();
+    toggleQueue();
+
+    $('.punchStack').on('click', '.punchcard', function(){
+        $(this).addClass('viewCard');
+    })
 });

@@ -16,7 +16,7 @@
 <article ng-show="AddPunchCtrl.atBrewery" id="punchSection" ng-switch on="AddPunchCtrl.punchStatus" ng-cloak>
     
     <!--brewery info-->
-    <section layout="column" layout-align="center center" class="animate-switch" ng-switch-when="breweries">
+    <section layout="column" layout-align="center center" class="animate-switch addPunchSections" ng-switch-when="breweries">
         <h4 class="addPunchContent">ARE YOU AT</h4>
         <img class="addPunchLogo spacing" src="http://{{AddPunchCtrl.currentBreweryObject.breweryLogo}}" alt="{{AddPunchCtrl.currentBreweryObject.breweryName}}" />
         <h3>{{AddPunchCtrl.currentBreweryObject.breweryName}}</h3>
@@ -31,7 +31,7 @@
 
     <!-- selected brewery beers -->
     <section class="animate-switch" ng-switch-when="selectBeer">
-        <md-button ng-click="AddPunchCtrl.CloseConfirm()" class="md-raised"><i class="fa fa-chevron-left" aria-hidden="true"></i></span>brewery</md-button>
+        <md-button ng-click="AddPunchCtrl.CloseConfirm()" class="md-raised"><i class="fa fa-chevron-left" aria-hidden="true"></i></span> brewery</md-button>
         <h4 class="text-center">{{AddPunchCtrl.currentBreweryObject.breweryName}}</h4>
         <h3 class="text-center">BEERS ON TAP</h3>
         <md-list flex class="addPunchBeers scrollSection">
@@ -49,7 +49,7 @@
 
     <!-- add punch layout for specific beer -->
     <div id="confirmPunchPage" class="animate-switch" ng-switch-when="confirmation">
-      <md-button ng-click="AddPunchCtrl.toAddPunchBeers()" class="md-raised"><i class="fa fa-chevron-left" aria-hidden="true"></i></span>Beers</md-button>       
+      <md-button ng-click="AddPunchCtrl.toAddPunchBeers()" class="md-raised"><i class="fa fa-chevron-left" aria-hidden="true"></i></span> Beers</md-button>       
         <section layout="column" layout-align="center center" id="confirmPunchInfo">
             <h2>Confirm Punch</h2>
             <img class="breweryBeerLogos" src="http://{{AddPunchCtrl.punchInfo.beer.beerLogo}}" alt="{{AddPunchCtrl.punchInfo.beer.beerName}}" />

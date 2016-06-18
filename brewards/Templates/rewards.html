@@ -1,4 +1,4 @@
-﻿<article class="punchStack punchStack-queue">
+﻿<article layout="column" layout-align="center center" class="punchStack punchStack-queue">
     <md-card class="punchcard" ng-repeat="brewery in RewardsCtrl.punchcardData | orderBy:'brewery_name' | filter:searchPunchcards">
         <md-card-header>
             <md-card-avatar>
@@ -18,7 +18,7 @@
         </md-card-title>
         <md-card-content>
             <div layout="row" layout-align="start center">
-                <span ng-repeat="beer in brewery.purchasedBeers"><img class="breweryBeerLogos" src="http://{{beer.logo}}" /></span>
+                <!--<span ng-repeat="beer in brewery.purchasedBeers"><img class="breweryBeerLogos" src="http://{{beer.logo}}" /></span>-->
             </div>
         </md-card-content>
         <section>
