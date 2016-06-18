@@ -1,17 +1,16 @@
-﻿<h3>Brews News</h3>
-<article>
+﻿<h3 class="nonAmHeaderH3">Brews News</h3>
+<section>
     <md-list class="scrollSection" flex ng-repeat="offer in BrewNewsCtrl.offers">
-        <md-subheader class="md-no-sticky">{{offer.newsDate}}</md-subheader>
+        <md-subheader class="BNsubHeaders">{{offer.newsDate}}</md-subheader>
         <md-list-item aria-label="" class="md-3-line" ng-repeat="feed in offer.newsFeed">
             <img src="http://{{feed.breweryLogo}}" class="md-avatar" alt="{{feed.breweryName}}" />
             <div class="md-list-item-text" layout="column">
                 <h3>{{ feed.breweryName }}</h3>
                 <p>{{feed.breweryNews}}</p>
             </div>
-            <span>></span>
             <md-divider></md-divider>
         </md-list-item>
     </md-list>
-</article>
+</section>
 
 <div ng-include="'/Templates/bottomnav.html'"></div>

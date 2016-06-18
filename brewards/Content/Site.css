@@ -18,7 +18,9 @@
 .dl-horizontal dt {
     white-space: normal;
 }
-
+.nonAmHeaderH3{
+    text-align: center;
+}
 /* Set width on the form input elements since they're 100% wide by default */
 input,
 select,
@@ -66,8 +68,9 @@ textarea {
     line-height: 50px;
 }
 .bottomNav div a{
-    font-size: 1.3em;
+    font-size: 1.6em;
     color: white;
+
 }
 /*end bottom nav styling*/
 
@@ -166,6 +169,29 @@ textarea {
   background-color: red;
   transform: scale(0.9);
 }*/
+.purchasedBeerLogo{
+    height: 25px;
+    width: 25px;
+}
+::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+  text-align:center;
+}
+::-moz-placeholder { /* Firefox 19+ */
+  text-align:center;
+}
+:-ms-input-placeholder { /* IE 10+ */
+  text-align:center;
+}
+:-moz-placeholder { /* Firefox 18- */
+  text-align:center;
+}
+.inputBottomMargin{
+    margin-bottom: 0px;
+}
 
-
-
+/*start brewery news*/
+.BNsubHeaders{
+    background-color:darkgray;
+    color: darkgoldenrod;
+    font-size: 20px !important;
+}
