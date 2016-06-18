@@ -14,6 +14,7 @@
 }
 h1,h2,h3,h4,h5{
     font-family: 'Roboto Condensed', sans-serif;
+    letter-spacing: 4px;
 }
 /* Override the default bootstrap behavior where horizontal description lists 
    will truncate terms that are too long to fit in the left column 
@@ -79,9 +80,12 @@ textarea {
 
 /*start add punch section*/
 #punchSection{
-    height: 250px;
+    height: 563px;
     position: relative;
     border-top: 1px solid black;
+}
+.addPunchSections{
+    height: 562px;
 }
 .addPunchContent{
     text-align:center;
