@@ -11,7 +11,7 @@
     }
 
     vm.renderPunchcards();
-
+    
     vm.redeem = function (viewModelData) {
         var redemption = {
             Brewery_info: viewModelData.brewery_info            
@@ -36,4 +36,8 @@
     $('.punchStack').on('click', '.punchcard', function(){
         $(this).addClass('viewCard');
     })
+
+    vm.createPunchArray = function (punchNumber) {
+        return new Array(punchNumber);
+    }
 });
