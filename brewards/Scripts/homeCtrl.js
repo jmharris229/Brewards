@@ -1,4 +1,4 @@
-﻿app.controller('homeCtrl', function(authService, $location){
+﻿app.controller('homeCtrl', ['authService','$location', function(authService, $location){
     var vm = this;
 
     authService.getAuth().then(function(loginStatus){
@@ -16,4 +16,4 @@
         window.location.href = '/Account/Register';
     }
 
-});
+}]);

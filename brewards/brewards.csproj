@@ -306,6 +306,7 @@
     <Content Include="Scripts\angular-animate\angular-animate.min.js.map" />
     <Content Include="fonts\fontawesome-webfont.woff" />
     <Content Include="fonts\fontawesome-webfont.woff2" />
+    <None Include="Properties\PublishProfiles\brewards - Web Deploy.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\brewNewsCtrl.js" />
     <Content Include="Scripts\homeCtrl.js" />

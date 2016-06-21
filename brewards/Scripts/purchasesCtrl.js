@@ -1,4 +1,4 @@
-﻿app.controller('purchasesCtrl', function ($http, $q, $scope, $log) {
+﻿app.controller('purchasesCtrl',['$http','$q','$scope','$log', function ($http, $q, $scope, $log) {
     var vm = this;
     vm.purchaseData;
     vm.renderPurchases = function () {
@@ -9,4 +9,4 @@
             })
     }
     vm.renderPurchases();
-});
+}]);

@@ -1,4 +1,4 @@
-﻿app.controller('rewardsCtrl', function ($http, $q, $scope, $log, authService) {
+﻿app.controller('rewardsCtrl', ['$http','$q','$scope','$log','authService', function ($http, $q, $scope, $log, authService) {
     var vm = this;
     vm.punchcardData;
     vm.renderPunchcards = function () {
@@ -33,7 +33,8 @@
     
     toggleQueue();
 
-    $('.punchStack').on('click', '.punchcard', function(){
+    $('.punchStack').on('click', '.punchcard', function () {
+        $('.punchcard').removeClass('viewCard');
         $(this).addClass('viewCard');
     })
 
@@ -55,4 +56,4 @@
     vm.createPunchArray = function (punchNumber) {
         return new Array(punchNumber);
     }
-});
+}]);

@@ -36,7 +36,7 @@ app.config(['$routeProvider',function ($routeProvider) {
 }]);
 
 //authorization feature to determine if logged in or not. prevents redirect if not logged in. 
-app.run(function ($rootScope, $location) {
+app.run(['$rootScope', '$location', function ($rootScope, $location) {
     $rootScope.$on('$routeChangeStart', function (evt, to, from) {
         if (to.authorize === true) {
             to.resolve = to.resolve || {}
@@ -54,4 +54,4 @@ app.run(function ($rootScope, $location) {
                 .path('/')
         }
     });
-});
+}]);

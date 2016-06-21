@@ -1,4 +1,4 @@
-﻿app.service('authService', function ($http) {
+﻿app.service('authService',['$http', function ($http) {
     var self = this;
     self.atBrewery = true;
     self.selectBeer = false;
@@ -15,4 +15,4 @@
     }
 
 
-});
+}]);

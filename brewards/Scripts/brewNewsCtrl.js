@@ -1,4 +1,4 @@
-﻿app.controller('brewNewsCtrl', function($http, locService){
+﻿app.controller('brewNewsCtrl',['$http', 'locService', function($http, locService){
     var vm = this;
 
     vm.offers;
@@ -17,4 +17,4 @@
             console.log(editedOffers);
             vm.offers = editedOffers;
         });
-})
+}])

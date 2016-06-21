@@ -1,4 +1,4 @@
-﻿app.controller('addPunchCtrl', function ($http, $q, $scope, authService, $animate, $location, locService) {
+﻿app.controller('addPunchCtrl', ['$http', '$q', '$scope', 'authService', '$animate', '$location', 'locService', function ($http, $q, $scope, authService, $animate, $location, locService) {
 
 
     var vm = this;
@@ -106,4 +106,4 @@
         vm.confirmed = false;
         vm.confirmDeclined = false;
     }
-});
+}]);
