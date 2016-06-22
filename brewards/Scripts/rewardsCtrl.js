@@ -13,13 +13,18 @@
     vm.renderPunchcards();
     
     vm.redeem = function (viewModelData) {
+        console.log(viewModelData);
         var redemption = {
-            Brewery_info: viewModelData.brewery_info            
+            BreweryInfo: viewModelData.breweryInfo            
         }
         $http.put('/api/Rewardstatus?=', redemption)
             .error(function () {
             })
             .success(function () {
+                $http.get('/api/Userpurchase?filter=true')
+                    .then(function (response) {
+                        vm.punchcarddata = response.data;
+                    })
             });
     }
 

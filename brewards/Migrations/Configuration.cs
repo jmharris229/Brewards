@@ -12,6 +12,7 @@ namespace brewards.Migrations
         public Configuration()
         {
             AutomaticMigrationsEnabled = false;
+            ContextKey = "DAL.brewardsContext";
         }
 
         protected override void Seed(brewards.DAL.brewardsContext context)

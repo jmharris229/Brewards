@@ -144,21 +144,43 @@ namespace brewards.DAL
             List<Userpurchase> filteredPurchases = new List<Userpurchase>();
 
             //if the list of user cards is greater than 0 then loop through cards and create a list of purhcases for those breweries
-            if(punchcards.Count > 0)
+            List<Userpurchase> currentUserPurchases = _context.UserPurchases.Where(purchase => purchase.Purchaser.Id == userId).ToList();
+
+            foreach(var purchase in currentUserPurchases)
             {
-                foreach (var punchcard in punchcards)
+                RewardStatus foundCard = punchcards.FirstOrDefault(punchcard => punchcard.BreweryInfo.BreweryName == purchase.BreweryInfo.BreweryName);
+                if (foundCard != null)
                 {
-                    List<Userpurchase> prefilteredPurchases = _context.UserPurchases.Include(p => p.BreweryInfo.BreweryBeers).Where(user => user.Purchaser.Id == userId && user.PurchaseDate > punchcard.RedeemDate && user.BreweryInfo.BreweryName == punchcard.BreweryInfo.BreweryName).ToList();
-                    prefilteredPurchases.ForEach(delegate (Userpurchase purchase)
+                    if (foundCard.RedeemDate <= purchase.PurchaseDate)
                     {
                         filteredPurchases.Add(purchase);
-                    });
+                    }
+                }
+                else
+                {
+                    filteredPurchases.Add(purchase);
                 }
             }
-            else
-            {
-                filteredPurchases = _context.UserPurchases.Include(p => p.BreweryInfo.BreweryBeers).Where(user => user.Purchaser.Id == userId).ToList();
-            }
+
+
+
+
+
+            //if (punchcards.Count > 0)
+            //{
+            //    foreach (var punchcard in punchcards)
+            //    {
+            //        List<Userpurchase> prefilteredPurchases = _context.UserPurchases.Include(p => p.BreweryInfo.BreweryBeers).Where(user => user.Purchaser.Id == userId && user.PurchaseDate > punchcard.RedeemDate && user.BreweryInfo.BreweryName == punchcard.BreweryInfo.BreweryName).ToList();
+            //        prefilteredPurchases.ForEach(delegate (Userpurchase purchase)
+            //        {
+            //            filteredPurchases.Add(purchase);
+            //        });
+            //    }
+            //}
+            //else
+            //{
+            //    filteredPurchases = _context.UserPurchases.Include(p => p.BreweryInfo.BreweryBeers).Where(user => user.Purchaser.Id == userId).ToList();
+            //}
 
             //send the list of filtered purchases to the view model method
             List<UserPurchaseViewModel> viewModelPurchases = service.ToUserPurchaseViewModel(filteredPurchases);

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity.Migrations;
 using System.Linq;
 using System.Web;
 using System.Web.Http;
@@ -19,6 +20,10 @@ namespace brewards
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
      GlobalConfiguration.Configuration.Formatters.JsonFormatter.SerializerSettings.PreserveReferencesHandling =Newtonsoft.Json.PreserveReferencesHandling.None;
+
+            var configuration = new Migrations.Configuration();
+            var migrator = new DbMigrator(configuration);
+            //migrator.Update();
         }
     }
 }

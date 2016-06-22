@@ -23,15 +23,15 @@
         <h4>{{AddPunchCtrl.currentBreweryObject.breweryAddress}}</h4>
         <h4>{{AddPunchCtrl.currentBreweryObject.breweryCity}}, {{AddPunchCtrl.currentBreweryObject.breweryState}} {{AddPunchCtrl.currentBreweryObject.breweryZip}}</h4>
 
-        <div class="spacing" layout="column" layout-align="center center">
-            <md-button ng-click="AddPunchCtrl.getBreweryBeers()" class="md-raised green punchButtons">Add Punch</md-button>
-            <md-button ng-click="AddPunchCtrl.goToNearbyBreweries()" class="md-raised md-warn spacing punchButtons">Nope, Wrong Brewery</md-button>
+        <div class="spacing" layout="row" layout-align="center center">
+            <md-button ng-click="AddPunchCtrl.getBreweryBeers()" class="md-raised punchButtonsGold">YEP!</md-button>
+            <md-button ng-click="AddPunchCtrl.goToNearbyBreweries()" class="md-raised punchButtonsBlack">Nope</md-button>
         </div>
     </section>
 
     <!-- selected brewery beers -->
     <section class="animate-switch" ng-switch-when="selectBeer">
-        <md-button ng-click="AddPunchCtrl.CloseConfirm()" class="md-raised"><i class="fa fa-chevron-left" aria-hidden="true"></i>brewery</md-button>
+        <md-button ng-click="AddPunchCtrl.CloseConfirm()" class="md-raised punchButtonsBlackBeer"><i class="fa fa-chevron-left" aria-hidden="true"></i>brewery</md-button>
         <h4 class="text-center">{{AddPunchCtrl.currentBreweryObject.breweryName}}</h4>
         <h3 class="text-center">BEERS ON TAP</h3>
         <md-list flex class="addPunchBeers scrollSection">
@@ -49,7 +49,7 @@
 
     <!-- add punch layout for specific beer -->
     <div id="confirmPunchPage" class="animate-switch" ng-switch-when="confirmation">
-      <md-button ng-click="AddPunchCtrl.toAddPunchBeers()" class="md-raised"><i class="fa fa-chevron-left" aria-hidden="true"></i></span> Beers</md-button>       
+      <md-button ng-click="AddPunchCtrl.toAddPunchBeers()" class="md-raised punchButtonsBlackBeer"><i class="fa fa-chevron-left" aria-hidden="true"></i></span> Beers</md-button>       
         <section layout="column" layout-align="center center" id="confirmPunchInfo">
             <h2>Confirm Punch</h2>
             <img class="breweryBeerLogos" src="http://{{AddPunchCtrl.punchInfo.beer.beerLogo}}" alt="{{AddPunchCtrl.punchInfo.beer.beerName}}" />
@@ -64,10 +64,10 @@
 
             <h4 ng-show="AddPunchCtrl.confirmed">Punch Added!</h4>
             <h4 ng-show="AddPunchCtrl.confirmDeclined">Wrong Pin!</h4>
-            <div>
-                <md-button ng-show="AddPunchCtrl.confirm" ng-click="AddPunchCtrl.addPunch(AddPunchCtrl.punchInfo.beer, AddPunchCtrl.punchInfo.brewery)" class="md-raised md-warn green">Add Punch</md-button>
-                <md-button ng-show="AddPunchCtrl.confirm" ng-click="AddPunchCtrl.CloseConfirm()" class="md-raised md-warn spacing">Cancel</md-button>
-                <md-button ng-show="AddPunchCtrl.confirmed" ng-click="AddPunchCtrl.CloseConfirm()" class="md-raised md-warn spacing">Close</md-button>
+            <div layout="row">
+                <md-button ng-show="AddPunchCtrl.confirm" ng-click="AddPunchCtrl.addPunch(AddPunchCtrl.punchInfo.beer, AddPunchCtrl.punchInfo.brewery)" class="md-raised punchButtonsGold">Add Punch!</md-button>
+                <md-button ng-show="AddPunchCtrl.confirm" ng-click="AddPunchCtrl.CloseConfirm()" class="md-raised md-warn spacing punchButtonsBlack">Cancel</md-button>
+                <md-button ng-show="AddPunchCtrl.confirmed" ng-click="AddPunchCtrl.CloseConfirm()" class="md-raised punchButtonsGold spacing">Close</md-button>
             </div>
         </section>
     </div>

@@ -37,12 +37,21 @@ textarea {
     background-size:cover;
     height: 100vh !important;
 }
+#homeScreen section:nth-child(2){
+    padding-bottom: 70px;
+}
+#homeScreen section:first-child{
+    padding-bottom: 35px;
+}
 .logoResize{
     width:375px;
     height: 427px;
 }
 .homeButtons{
-    background-color:cornsilk !important;
+    background-color: #BE8322 !important;
+    color: #FCFCEA !important;
+    font-weight: bolder !important;
+    letter-spacing: 2px !important;
 }
 .homeButtons:first-of-type{
     margin-right:24px !important;
@@ -51,8 +60,9 @@ textarea {
 
 
 .breweryBeerLogos{
-    height: 200px;
-    width: 200px;
+    margin-top: 10px;
+    height: 150px;
+    width: 150px;
 }
 .addBeerLogo{
     margin-left:5px;
@@ -97,17 +107,26 @@ textarea {
 /*start bottom nav styling*/
 .bottomNav{
     z-index: 102;
+    background-color:#232C2D;
 }
 .bottomNav div{
     line-height: 50px;
 }
 .bottomNav div a{
     font-size: 1.6em;
-    color: white;
-
+    color: #FCFCEA;
 }
 /*end bottom nav styling*/
-
+.navbar-inverse{
+    background-color: #232C2D;
+}
+.navbar button{
+    border: none;
+    color: #FCFCEA;
+}
+.navLogo{
+    height:19px;
+}
 /*start add punch section*/
 #punchSection{
     height: 563px;
@@ -133,14 +152,35 @@ textarea {
 .spacing{
     margin-top:30px;
 }
-.punchButtons{
+.punchButtonsGold{
     width:100%;
     font-size:1.5em;
     font-weight:bold !important;
+    background-color:#BE8322 !important;
+    color: #FCFCEA !important;
+    letter-spacing: 2px !important;
+}
+.punchButtonsBlack{
+    width:100%;
+    font-size:1.5em;
+    font-weight:bold !important;
+    background-color:#232C2D !important;
+    color:#BE8322 !important;
+    letter-spacing: 2px !important;
+}
+.punchButtonsBlackBeer{
+    font-size:1.5em;
+    font-weight:bold !important;
+    background-color:#232C2D !important;
+    color:#BE8322 !important;
 }
 .scrollSection{
     overflow: scroll !important;
     height: 462px;
+}
+.scrollPurchases{
+    overflow:scroll !important;
+    height: 423px;
 }
 .animate-switch.ng-animate {
   transition:all cubic-bezier(0.250, 0.460, 0.450, 0.940) 0.25s;
@@ -266,9 +306,11 @@ textarea {
 
 /*start brewery news*/
 .BNsubHeaders{
-    background-color:darkgray;
-    color: darkgoldenrod;
-    font-size: 20px !important;
+    background-color:#232C2D !important;
+    color: #BE8322;
+    font-size: 17px !important;
+    font-weight:bolder !important;
+    letter-spacing:4px;
 }
 .brewNewsLists{
     padding-top: 0 !important;

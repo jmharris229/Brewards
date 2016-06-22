@@ -12,7 +12,7 @@
             for (var i = 0; i < editedOffers.length; i++) {
                 var tIndex = editedOffers[i].newsDate.indexOf('T');
                 var slicedDate = editedOffers[i].newsDate.substring(0, tIndex);
-                editedOffers[i].newsDate = new Date(slicedDate).toDateString();
+                editedOffers[i].newsDate = new Date(slicedDate).toDateString().toUpperCase();
             }
             console.log(editedOffers);
             vm.offers = editedOffers;

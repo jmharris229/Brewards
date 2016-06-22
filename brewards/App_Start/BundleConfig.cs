@@ -26,7 +26,11 @@ namespace brewards
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
                       "~/Content/site.css",
-                      "~/Content/angular-material.min.css" 
+                      "~/Content/angular-material.min.css",
+                      "~/Content/font-awesome.min.css",
+                      "~/fonts/fontawesome-webfont.woff",
+                      "~/fonts/fontawesome-webfont.woff2",
+                      "~/fonts/fontawesome-glyphicons-halflings-regular.ttf"
                       ));
             bundles.Add(new ScriptBundle("~/bundles/angular").Include(
                 "~/Scripts/angular.min.js",

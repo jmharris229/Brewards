@@ -6,7 +6,7 @@
         </md-input-container> 
     </div>
 
-    <md-list flex class="scrollSection">
+    <md-list flex class="scrollPurchases">
         <md-list-item class="md-3-line" ng-repeat="brewery in PurchasesCtrl.purchaseData | orderBy: 'breweryName' | filter:searchBrewery" ng-click="null">
             <img src="http://{{brewery.breweryInfo.breweryLogo}}" class="md-avatar" alt="{{brewery.breweryInfo.breweryName}}" />
             <div class="md-list-item-text" layout="column">
