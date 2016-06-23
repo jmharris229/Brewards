@@ -32,8 +32,8 @@
     <!-- selected brewery beers -->
     <section class="animate-switch" ng-switch-when="selectBeer">
         <md-button ng-click="AddPunchCtrl.CloseConfirm()" class="md-raised punchButtonsBlackBeer"><i class="fa fa-chevron-left" aria-hidden="true"></i>brewery</md-button>
-        <h4 class="text-center">{{AddPunchCtrl.currentBreweryObject.breweryName}}</h4>
-        <h3 class="text-center">BEERS ON TAP</h3>
+        <h4 class="text-center boldHeaders">{{AddPunchCtrl.currentBreweryObject.breweryName}}</h4>
+        <h3 class="text-center boldHeaders">BEERS ON TAP</h3>
         <md-list flex class="addPunchBeers scrollSection">
             <md-list-item aria-label="" class="md-3-line" ng-repeat="beer in AddPunchCtrl.currentBreweryObject.breweryBeers" ng-click="AddPunchCtrl.confirmPunch(beer, AddPunchCtrl.currentBreweryObject)">
                 <img src="http://{{beer.beerLogo}}" class="md-avatar" alt="{{beer.beerName}}" />
@@ -51,7 +51,7 @@
     <div id="confirmPunchPage" class="animate-switch" ng-switch-when="confirmation">
       <md-button ng-click="AddPunchCtrl.toAddPunchBeers()" class="md-raised punchButtonsBlackBeer"><i class="fa fa-chevron-left" aria-hidden="true"></i></span> Beers</md-button>       
         <section layout="column" layout-align="center center" id="confirmPunchInfo">
-            <h2>Confirm Punch</h2>
+            <h2 class="boldHeaders">Confirm Punch</h2>
             <img class="breweryBeerLogos" src="http://{{AddPunchCtrl.punchInfo.beer.beerLogo}}" alt="{{AddPunchCtrl.punchInfo.beer.beerName}}" />
             <h2>{{AddPunchCtrl.punchInfo.beer.beerName}}</h2>
             <h3>{{AddPunchCtrl.punchInfo.brewery.breweryName}}</h3>

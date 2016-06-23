@@ -2,8 +2,8 @@
 <!-- all breweries section -->
 <section>
     <div layout="column" layout-align="center center">
-        <h3>BREWERIES IN {{NearbyBreweriesCtrl.city}}</h3>
-        <h4>SELECT A BREWERY</h4>
+        <h3 class="boldHeaders">BREWERIES IN {{NearbyBreweriesCtrl.city}}</h3>
+        <h4 class="boldHeaders">SELECT A BREWERY</h4>
     </div>
     <md-list flex class="scrollSection">
         <md-list-item aria-label="" class="md-3-line" ng-repeat="brewery in NearbyBreweriesCtrl.breweries" ng-click="NearbyBreweriesCtrl.selectBrewery(brewery)">

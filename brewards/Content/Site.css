@@ -48,8 +48,8 @@ textarea {
     height: 427px;
 }
 .homeButtons{
-    background-color: #BE8322 !important;
-    color: #FCFCEA !important;
+    background-color: #FCFCEA !important;
+    color: #232C2D !important;
     font-weight: bolder !important;
     letter-spacing: 2px !important;
 }
@@ -315,4 +315,7 @@ textarea {
 .brewNewsLists{
     padding-top: 0 !important;
     padding-bottom:0 !important;
+}
+.boldHeaders{
+    font-weight: 600;
 }
